@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<title>D3: Pie layout ring chart</title>
-		<script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+		<script type="text/javascript" src="d3.js"></script>
 		<style type="text/css">
 
 			text {
@@ -23,13 +23,11 @@
 
 			var dataset = [ 5, 10, 20, 45, 6, 25 ];
 
-			var outerRadius = w / 2;
-			var innerRadius = w / 3;
-			var arc = d3.svg.arc()
-							.innerRadius(innerRadius)
-							.outerRadius(outerRadius);
-			
-			var pie = d3.layout.pie();
+			var radius = w / 2;
+			//var innerRadius = w / 3;
+			//var arc = d3.svg.arc()
+			//				.innerRadius(innerRadius)
+			//				.outerRadius(outerRadius);
 			
 			//Easy colors accessible via a 10-step ordinal scale
 			var color = d3.scale.category10();
@@ -39,31 +37,59 @@
 						.append("svg")
 						.attr("width", w)
 						.attr("height", h);
+
+			var pie = d3.layout.pie()
+    			.value(function(d) { return d; })
+    			.sort(null);
+
+    		var arc = d3.svg.arc()
+			    .innerRadius(radius - 100)
+			    .outerRadius(radius - 20);
 			
 			//Set up groups
-			var arcs = svg.selectAll("g.arc")
-						  .data(pie(dataset))
+			//var arcs = svg.selectAll("g.arc")
+			var arcs = svg.datum(dataset).selectAll("path")
+						  .data(pie)
 						  .enter()
 						  .append("g")
 						  .attr("class", "arc")
-						  .attr("transform", "translate(" + outerRadius + "," + outerRadius + ")");
+						  .attr("fill", function(d, i) { return color(i); })
+						  .attr("transform", "translate(" + radius + "," + radius + ")")
+						  .attr("d", arc)
+						  .each(function(d) { this._current = d; });
+
+			arcs.on("mousedown", change);
+
+			  function change() {
+			  	dataset.shift();
+			  	dataset.push( Math.floor(Math.random() * 100));
+			    //clearTimeout(timeout);
+			    //pie.value(function(d) { return d[value]; }); // change the value function
+			    arcs = arcs.data(pie(dataset)); // compute the new angles
+			    arcs.transition().duration(750).attrTween("d", arcTween); // redraw the arcs
+			  }
 			
-			//Draw arc paths
-			arcs.append("path")
-			    .attr("fill", function(d, i) {
-			    	return color(i);
-			    })
-			    .attr("d", arc);
-			
-			//Labels
-			arcs.append("text")
-			    .attr("transform", function(d) {
-			    	return "translate(" + arc.centroid(d) + ")";
-			    })
-			    .attr("text-anchor", "middle")
-			    .text(function(d) {
-			    	return d.value;
-			    });
+
+			// this is called when the values are changed
+			// but it seems to have no effect
+			function arcTween(a) 
+			{
+			  	/*var interpolateFunction = d3.interpolate(this._current, a);
+			  	this._current = interpolateFunction(0);
+			  	return function(t) 
+			  	{
+			  		console.log(t);
+			    	return arc(interpolateFunction(t));
+			  	};*/
+			  	var newRadius = a.value * 4;
+			  	console.log(newRadius);
+			  	var i = d3.interpolate(this._current, a),
+		             k = d3.interpolate(arc.outerRadius()(), newRadius);
+		         this._current = i(0);
+		         return function(t) {
+		             return arc.innerRadius(k(t)/4).outerRadius(k(t))(i(t));
+		         };
+			}
 						
 		</script>
 	</body>
