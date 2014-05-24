@@ -32,41 +32,44 @@
 
   var masterTime = 1297110663, // start time (seconds since epoch)
       v = 70, // start value (subscribers)
-      data = d3.range(33).map(next); // starting dataset
+      data = [];//d3.range(33).map(next); // starting dataset
 
-    
-  function next() {
-      return {
-          time: ++masterTime, value: v = ~~Math.max(10, Math.min(90, v + 10 * (Math.random() - .5)))
-      };
-  }
 
-  var w = 40,
-      h = 120;
-    
-  var x = d3.scale.linear()
-      .domain([0, 1])
-      .range([0, w]);
-    
-  var y = d3.scale.linear()
-     .domain([0, 100])
-     .rangeRound([0, h]);
+  d3.json("../data/humans_in_low_earth.json", function(error, json)
+  {
+    console.log(json);
+    data = json.data;
 
-  var chart = d3.select("body").append("svg")
-     .attr("class", "chart")
-     .attr("width", w * data.length - 1)
-     .attr("height", h);
+    var w = 40,
+        h = 120;
+      
+    var x = d3.scale.linear()
+        .domain([0, 1])
+        .range([0, w]);
+      
+    var y = d3.scale.linear()
+       .domain([0, 100])
+       .rangeRound([0, h]);
+  
 
-  chart.selectAll("rect")
-     .data(data)
-     .enter().append("rect")
-     .attr("x", function(d, i) { return x(i) - .5; })
-     //.attr("y", function(d) { return h - y(d.value) - .5; })
-     .attr("y", function(d) { return h - .5; })
-     .attr("width", w)
-     .transition().delay(function (d,i){ return i * 300;}).duration(300)
-     .attr("height", function(d) { return y(d.value); })
-     .attr("y", function(d) { return h - y(d.value) - .5; });
+    console.log(data);
+
+    var chart = d3.select("body").append("svg")
+       .attr("class", "chart")
+       .attr("width", w * (data.length))
+       .attr("height", h);
+
+    chart.selectAll("rect")
+       .data(data)
+       .enter().append("rect")
+       .attr("x", function(d, i) { return x(i) - .5; })
+       //.attr("y", function(d) { return h - y(d.value) - .5; })
+       .attr("y", function(d) { return h - .5; })
+       .attr("width", w)
+       .transition().delay(function (d,i){ return i * 300;}).duration(300)
+       .attr("height", function(d) { return y(d.value); })
+       .attr("y", function(d) { return h - y(d.value) - .5; });
+  });
 
 </script>
 </body>
