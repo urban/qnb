@@ -1,0 +1,17 @@
+{
+"title":"Average Percent Fluctation in Value of Currency",
+"data": [
+{"USD":
+	[{"year":2015, "value":0.11}, {"year":2017, "value":0.18}, {"year":2019, "value":0.21}, 
+	{"year":2021, "value":0.9}, {"year":2023, "value":0.7}, {"year":2025, "value":0.8}, 
+	{"year":2027, "value":1.1}, {"year":2029, "value":1.22}, {"year":2031, "value":1.1},
+	{"year":2033, "value":0.9}, {"year":2035, "value":1.32}]},
+
+{"EUR":
+	[{"year":2015, "value":0.15}, {"year":2017, "value":0.14}, {"year":2019, "value":0.18}, 
+	{"year":2021, "value":0.21}, {"year":2023, "value":0.24}, {"year":2025, "value":0.28}, 
+	{"year":2027, "value":1.54}, {"year":2029, "value":1.11}, {"year":2031, "value":1.07},
+	{"year":2033, "value":2.1}, {"year":2035, "value":2.2}]}
+
+]
+}
