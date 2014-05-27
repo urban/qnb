@@ -1,0 +1,36 @@
+{
+"title":"Working Days to Afford 1sq Meter of Housing",
+"data": [
+	{"Country":"India" ,
+	"By Year": [
+	    {"year":2015, "value":25.5}, {"year":2017, "value":24.8}, {"year":2019, "value":25.4}, {"year":2021, "value":27.3}, 
+	    {"year":2023, "value":28.5}, {"year":2025, "value":29.4}, {"year":2027, "value":30.4}, {"year":2029, "value":31.1}, 
+	    {"year":2031, "value":32.1}, {"year":2033, "value":32.2}, {"year":2035, "value":32.8}
+	    ]
+	},
+
+	{"Country":"China" ,
+	"By Year": [
+	    {"year":2015, "value":45.5}, {"year":2017, "value":48.8}, {"year":2019, "value":45.4}, {"year":2021, "value":47.3}, 
+	    {"year":2023, "value":48.5}, {"year":2025, "value":49.4}, {"year":2027, "value":40.4}, {"year":2029, "value":41.1}, 
+	    {"year":2031, "value":42.1}, {"year":2033, "value":42.2}, {"year":2035, "value":42.8}
+	    ]
+	},
+
+	{"Country":"Brazil" ,
+	"By Year": [
+	   	{"year":2015, "value":37.9}, {"year":2017, "value":35}, {"year":2019, "value":31}, {"year":2021, "value":29}, 
+	    {"year":2023, "value":28.2}, {"year":2025, "value":27.2}, {"year":2027, "value":27.6}, {"year":2029, "value":29}, 
+	    {"year":2031, "value":30.2}, {"year":2033, "value":29.6}, {"year":2035, "value":28.6}
+	    ]
+	},
+
+	{"Country":"USA" ,
+	"By Year": [
+	    {"year":2015, "value":3.9}, {"year":2017, "value":4.1}, {"year":2019, "value":5.1}, {"year":2021, "value":6.6}, 
+	    {"year":2023, "value":7.5}, {"year":2025, "value":7.6}, {"year":2027, "value":5.8}, {"year":2029, "value":5.9}, 
+	    {"year":2031, "value":6.4}, {"year":2033, "value":7.0}, {"year":2035, "value":7.1}
+	    ]
+	}
+]
+}

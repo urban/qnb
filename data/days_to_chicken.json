@@ -1,0 +1,36 @@
+{
+"title":"Chickens with Average Day Salary",
+"data": [
+	{"Country":"India" ,
+	"By Year": [
+	    {"year":2015, "value":0.7}, {"year":2017, "value":0.8}, {"year":2019, "value":0.85}, {"year":2021, "value":0.86}, 
+	    {"year":2023, "value":1.2}, {"year":2025, "value":2.4}, {"year":2027, "value":2.9}, {"year":2029, "value":4.2}, 
+	    {"year":2031, "value":6.8}, {"year":2033, "value":9.4}, {"year":2035, "value":11.4}
+	    ]
+	},
+
+	{"Country":"China" ,
+	"By Year": [
+	    {"year":2015, "value":4.1}, {"year":2017, "value":4.8}, {"year":2019, "value":5.4}, {"year":2021, "value":7.3}, 
+	    {"year":2023, "value":8.5}, {"year":2025, "value":10.4}, {"year":2027, "value":11.4}, {"year":2029, "value":11.1}, 
+	    {"year":2031, "value":12.1}, {"year":2033, "value":12.2}, {"year":2035, "value":12.8}
+	    ]
+	},
+
+	{"Country":"Brazil" ,
+	"By Year": [
+	   	{"year":2015, "value":5.2}, {"year":2017, "value":8.2}, {"year":2019, "value":10.4}, {"year":2021, "value":12.4}, 
+	    {"year":2023, "value":14.5}, {"year":2025, "value":12.8}, {"year":2027, "value":14.8}, {"year":2029, "value":13.2}, 
+	    {"year":2031, "value":13.8}, {"year":2033, "value":14.2}, {"year":2035, "value":14.7}
+	    ]
+	},
+
+	{"Country":"USA" ,
+	"By Year": [
+	    {"year":2015, "value":18.2}, {"year":2017, "value":18.2}, {"year":2019, "value":17.8}, {"year":2021, "value":17.2}, 
+	    {"year":2023, "value":17.8}, {"year":2025, "value":17.4}, {"year":2027, "value":17.4}, {"year":2029, "value":17.6}, 
+	    {"year":2031, "value":17.9}, {"year":2033, "value":17.2}, {"year":2035, "value":17.4}
+	    ]
+	}
+]
+}

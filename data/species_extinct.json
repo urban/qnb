@@ -1,0 +1,8 @@
+{
+"title":"Number of Species Extinct Per Year",
+"data": 
+	[{"year":"2015", "value":54750}, {"year":"2017", "value":62750}, {"year":"2019", "value":65000}, 
+	{"year":"2021", "value":65750}, {"year":"2023", "value":66250}, {"year":"2025", "value":60000}, 
+	{"year":"2027", "value":58450}, {"year":"2029", "value":52500}, {"year":"2031", "value":48750}, 
+	{"year":"2033", "value":46580}, {"year":"2035", "value":41020}]
+}
