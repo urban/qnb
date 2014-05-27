@@ -1,0 +1,43 @@
+{
+"title":"Annual Deforestation in Sq. Kilometers",
+"data": [
+{"Continent":"Africa",
+"By Year": [
+    {"year":2015, "value":80}, {"year":2017, "value":11}, {"year":2019, "value":11}, {"year":2021, "value":12}, 
+    {"year":2023, "value":14}, {"year":2025, "value":15}, {"year":2027, "value":19}, {"year":2029, "value":18}, 
+    {"year":2031, "value":18}, {"year":2033, "value":18}, {"year":2035, "value":19}
+    ]
+},
+
+{"Continent":"Asia",
+"By Year": [
+    {"year":2015, "value":2}, {"year":2017, "value":3}, {"year":2019, "value":5}, {"year":2021, "value":12}, 
+    {"year":2023, "value":13}, {"year":2025, "value":14}, {"year":2027, "value":15}, {"year":2029, "value":16}, 
+    {"year":2031, "value":17}, {"year":2033, "value":16}, {"year":2035, "value":15}
+    ]
+},
+
+{"Continent":"North America",
+"By Year": [
+    {"year":2015, "value":28}, {"year":2017, "value":29}, {"year":2019, "value":30}, {"year":2021, "value":29}, 
+    {"year":2023, "value":27}, {"year":2025, "value":32}, {"year":2027, "value":34}, {"year":2029, "value":35}, 
+    {"year":2031, "value":36}, {"year":2033, "value":35}, {"year":2035, "value":33}
+    ]
+},
+
+{"Continent":"South America",
+"By Year": [
+    {"year":2015, "value":17}, {"year":2017, "value":16}, {"year":2019, "value":18}, {"year":2021, "value":19}, 
+    {"year":2023, "value":22}, {"year":2025, "value":24}, {"year":2027, "value":24}, {"year":2029, "value":22}, 
+    {"year":2031, "value":21}, {"year":2033, "value":20}, {"year":2035, "value":18}
+    ]
+},
+{"Continent":"Europe",
+"By Year": [
+    {"year":2015, "value":17}, {"year":2017, "value":16}, {"year":2019, "value":18}, {"year":2021, "value":19}, 
+    {"year":2023, "value":22}, {"year":2025, "value":24}, {"year":2027, "value":24}, {"year":2029, "value":22}, 
+    {"year":2031, "value":21}, {"year":2033, "value":20}, {"year":2035, "value":18}
+    ]
+}
+]
+}
