@@ -1,75 +1,75 @@
 {
 "title":"Surgeries by Country and Income Bracket",
 
-data: {
-    "India": [
-        "2015": [{"bracket":0-25, "value":0}, {"bracket":26-50, "value":2}, {"bracket":51-75, "value":3}, {"bracket":76-100, "value":9}], 
-        "2017": [{"bracket":0-25, "value":0}, {"bracket":26-50, "value":2}, {"bracket":51-75, "value":5}, {"bracket":76-100, "value":7}], 
-        "2019": [{"bracket":0-25, "value":0}, {"bracket":26-50, "value":3}, {"bracket":51-75, "value":7}, {"bracket":76-100, "value":9}], 
-        "2021": [{"bracket":0-25, "value":0}, {"bracket":26-50, "value":4}, {"bracket":51-75, "value":8}, {"bracket":76-100, "value":9}], 
-        "2023": [{"bracket":0-25, "value":1}, {"bracket":26-50, "value":4}, {"bracket":51-75, "value":9}, {"bracket":76-100, "value":10}], 
-        "2025": [{"bracket":0-25, "value":1}, {"bracket":26-50, "value":5}, {"bracket":51-75, "value":10}, {"bracket":76-100, "value":10}], 
-        "2027": [{"bracket":0-25, "value":1}, {"bracket":26-50, "value":6}, {"bracket":51-75, "value":8}, {"bracket":76-100, "value":10}], 
-        "2029": [{"bracket":0-25, "value":2}, {"bracket":26-50, "value":7}, {"bracket":51-75, "value":9}, {"bracket":76-100, "value":10}], 
-        "2031": [{"bracket":0-25, "value":2}, {"bracket":26-50, "value":6}, {"bracket":51-75, "value":11}, {"bracket":76-100, "value":10}], 
-        "2033": [{"bracket":0-25, "value":3}, {"bracket":26-50, "value":7}, {"bracket":51-75, "value":15}, {"bracket":76-100, "value":12}], 
-        "2035": [{"bracket":0-25, "value":4}, {"bracket":26-50, "value":6}, {"bracket":51-75, "value":16}, {"bracket":76-100, "value":13}]
-    ],
+"data": [
+    {"India": [
+            {"2015": [{"bracket":"0-25", "value":0}, {"bracket":"26-50", "value":2}, {"bracket":"51-75", "value":3}, {"bracket":"76-100", "value":9}]},
+            {"2017": [{"bracket":"0-25", "value":0}, {"bracket":"26-50", "value":2}, {"bracket":"51-75", "value":5}, {"bracket":"76-100", "value":7}]}, 
+            {"2019": [{"bracket":"0-25", "value":0}, {"bracket":"26-50", "value":3}, {"bracket":"51-75", "value":7}, {"bracket":"76-100", "value":9}]}, 
+            {"2021": [{"bracket":"0-25", "value":0}, {"bracket":"26-50", "value":4}, {"bracket":"51-75", "value":8}, {"bracket":"76-100", "value":9}]}, 
+            {"2023": [{"bracket":"0-25", "value":1}, {"bracket":"26-50", "value":4}, {"bracket":"51-75", "value":9}, {"bracket":"76-100", "value":10}]}, 
+            {"2025": [{"bracket":"0-25", "value":1}, {"bracket":"26-50", "value":5}, {"bracket":"51-75", "value":10}, {"bracket":"76-100", "value":10}]}, 
+            {"2027": [{"bracket":"0-25", "value":1}, {"bracket":"26-50", "value":6}, {"bracket":"51-75", "value":8}, {"bracket":"76-100", "value":10}]}, 
+            {"2029": [{"bracket":"0-25", "value":2}, {"bracket":"26-50", "value":7}, {"bracket":"51-75", "value":9}, {"bracket":"76-100", "value":10}]}, 
+            {"2031": [{"bracket":"0-25", "value":2}, {"bracket":"26-50", "value":6}, {"bracket":"51-75", "value":11}, {"bracket":"76-100", "value":10}]}, 
+            {"2033": [{"bracket":"0-25", "value":3}, {"bracket":"26-50", "value":7}, {"bracket":"51-75", "value":15}, {"bracket":"76-100", "value":12}]}, 
+            {"2035": [{"bracket":"0-25", "value":4}, {"bracket":"26-50", "value":6}, {"bracket":"51-75", "value":16}, {"bracket":"76-100", "value":13}]}
+        ]},
 
-    "China": [ 
-        "2015": [{"bracket":0-25, "value":0}, {"bracket":26-50, "value":2}, {"bracket":51-75, "value":3}, {"bracket":76-100, "value":9}], 
-        "2017": [{"bracket":0-25, "value":0}, {"bracket":26-50, "value":2}, {"bracket":51-75, "value":5}, {"bracket":76-100, "value":7}], 
-        "2019": [{"bracket":0-25, "value":0}, {"bracket":26-50, "value":3}, {"bracket":51-75, "value":7}, {"bracket":76-100, "value":9}], 
-        "2021": [{"bracket":0-25, "value":0}, {"bracket":26-50, "value":4}, {"bracket":51-75, "value":8}, {"bracket":76-100, "value":9}], 
-        "2023": [{"bracket":0-25, "value":1}, {"bracket":26-50, "value":4}, {"bracket":51-75, "value":9}, {"bracket":76-100, "value":10}], 
-        "2025": [{"bracket":0-25, "value":1}, {"bracket":26-50, "value":5}, {"bracket":51-75, "value":10}, {"bracket":76-100, "value":10}], 
-        "2027": [{"bracket":0-25, "value":1}, {"bracket":26-50, "value":6}, {"bracket":51-75, "value":8}, {"bracket":76-100, "value":10}], 
-        "2029": [{"bracket":0-25, "value":2}, {"bracket":26-50, "value":7}, {"bracket":51-75, "value":9}, {"bracket":76-100, "value":10}], 
-        "2031": [{"bracket":0-25, "value":2}, {"bracket":26-50, "value":6}, {"bracket":51-75, "value":11}, {"bracket":76-100, "value":10}], 
-        "2033": [{"bracket":0-25, "value":3}, {"bracket":26-50, "value":7}, {"bracket":51-75, "value":15}, {"bracket":76-100, "value":12}], 
-        "2035": [{"bracket":0-25, "value":4}, {"bracket":26-50, "value":6}, {"bracket":51-75, "value":16}, {"bracket":76-100, "value":13}]
-    ],
+    {"China": [ 
+            {"2015": [{"bracket":"0-25", "value":0}, {"bracket":"26-50", "value":2}, {"bracket":"51-75", "value":3}, {"bracket":"76-100", "value":9}]}, 
+            {"2017": [{"bracket":"0-25", "value":0}, {"bracket":"26-50", "value":2}, {"bracket":"51-75", "value":5}, {"bracket":"76-100", "value":7}]}, 
+            {"2019": [{"bracket":"0-25", "value":0}, {"bracket":"26-50", "value":3}, {"bracket":"51-75", "value":7}, {"bracket":"76-100", "value":9}]}, 
+            {"2021": [{"bracket":"0-25", "value":0}, {"bracket":"26-50", "value":4}, {"bracket":"51-75", "value":8}, {"bracket":"76-100", "value":9}]}, 
+            {"2023": [{"bracket":"0-25", "value":1}, {"bracket":"26-50", "value":4}, {"bracket":"51-75", "value":9}, {"bracket":"76-100", "value":10}]}, 
+            {"2025": [{"bracket":"0-25", "value":1}, {"bracket":"26-50", "value":5}, {"bracket":"51-75", "value":10}, {"bracket":"76-100", "value":10}]}, 
+            {"2027": [{"bracket":"0-25", "value":1}, {"bracket":"26-50", "value":6}, {"bracket":"51-75", "value":8}, {"bracket":"76-100", "value":10}]}, 
+            {"2029": [{"bracket":"0-25", "value":2}, {"bracket":"26-50", "value":7}, {"bracket":"51-75", "value":9}, {"bracket":"76-100", "value":10}]}, 
+            {"2031": [{"bracket":"0-25", "value":2}, {"bracket":"26-50", "value":6}, {"bracket":"51-75", "value":11}, {"bracket":"76-100", "value":10}]}, 
+            {"2033": [{"bracket":"0-25", "value":3}, {"bracket":"26-50", "value":7}, {"bracket":"51-75", "value":15}, {"bracket":"76-100", "value":12}]}, 
+            {"2035": [{"bracket":"0-25", "value":4}, {"bracket":"26-50", "value":6}, {"bracket":"51-75", "value":16}, {"bracket":"76-100", "value":13}]}
+        ]},
 
-    "Brazil": [
-        "2015": [{"bracket":0-25, "value":0}, {"bracket":26-50, "value":2}, {"bracket":51-75, "value":3}, {"bracket":76-100, "value":9}], 
-        "2017": [{"bracket":0-25, "value":0}, {"bracket":26-50, "value":2}, {"bracket":51-75, "value":5}, {"bracket":76-100, "value":7}], 
-        "2019": [{"bracket":0-25, "value":0}, {"bracket":26-50, "value":3}, {"bracket":51-75, "value":7}, {"bracket":76-100, "value":9}], 
-        "2021": [{"bracket":0-25, "value":0}, {"bracket":26-50, "value":4}, {"bracket":51-75, "value":8}, {"bracket":76-100, "value":9}], 
-        "2023": [{"bracket":0-25, "value":1}, {"bracket":26-50, "value":4}, {"bracket":51-75, "value":9}, {"bracket":76-100, "value":10}], 
-        "2025": [{"bracket":0-25, "value":1}, {"bracket":26-50, "value":5}, {"bracket":51-75, "value":10}, {"bracket":76-100, "value":10}], 
-        "2027": [{"bracket":0-25, "value":1}, {"bracket":26-50, "value":6}, {"bracket":51-75, "value":8}, {"bracket":76-100, "value":10}], 
-        "2029": [{"bracket":0-25, "value":2}, {"bracket":26-50, "value":7}, {"bracket":51-75, "value":9}, {"bracket":76-100, "value":10}], 
-        "2031": [{"bracket":0-25, "value":2}, {"bracket":26-50, "value":6}, {"bracket":51-75, "value":11}, {"bracket":76-100, "value":10}], 
-        "2033": [{"bracket":0-25, "value":3}, {"bracket":26-50, "value":7}, {"bracket":51-75, "value":15}, {"bracket":76-100, "value":12}], 
-        "2035": [{"bracket":0-25, "value":4}, {"bracket":26-50, "value":6}, {"bracket":51-75, "value":16}, {"bracket":76-100, "value":13}]
-    ],
+    {"Brazil": [
+            {"2015": [{"bracket":"0-25", "value":0}, {"bracket":"26-50", "value":2}, {"bracket":"51-75", "value":3}, {"bracket":"76-100", "value":9}]}, 
+            {"2017": [{"bracket":"0-25", "value":0}, {"bracket":"26-50", "value":2}, {"bracket":"51-75", "value":5}, {"bracket":"76-100", "value":7}]}, 
+            {"2019": [{"bracket":"0-25", "value":0}, {"bracket":"26-50", "value":3}, {"bracket":"51-75", "value":7}, {"bracket":"76-100", "value":9}]}, 
+            {"2021": [{"bracket":"0-25", "value":0}, {"bracket":"26-50", "value":4}, {"bracket":"51-75", "value":8}, {"bracket":"76-100", "value":9}]}, 
+            {"2023": [{"bracket":"0-25", "value":1}, {"bracket":"26-50", "value":4}, {"bracket":"51-75", "value":9}, {"bracket":"76-100", "value":10}]}, 
+            {"2025": [{"bracket":"0-25", "value":1}, {"bracket":"26-50", "value":5}, {"bracket":"51-75", "value":10}, {"bracket":"76-100", "value":10}]}, 
+            {"2027": [{"bracket":"0-25", "value":1}, {"bracket":"26-50", "value":6}, {"bracket":"51-75", "value":8}, {"bracket":"76-100", "value":10}]}, 
+            {"2029": [{"bracket":"0-25", "value":2}, {"bracket":"26-50", "value":7}, {"bracket":"51-75", "value":9}, {"bracket":"76-100", "value":10}]}, 
+            {"2031": [{"bracket":"0-25", "value":2}, {"bracket":"26-50", "value":6}, {"bracket":"51-75", "value":11}, {"bracket":"76-100", "value":10}]}, 
+            {"2033": [{"bracket":"0-25", "value":3}, {"bracket":"26-50", "value":7}, {"bracket":"51-75", "value":15}, {"bracket":"76-100", "value":12}]}, 
+            {"2035": [{"bracket":"0-25", "value":4}, {"bracket":"26-50", "value":6}, {"bracket":"51-75", "value":16}, {"bracket":"76-100", "value":13}]}
+        ]},
 
-    "Indonesia": [
-        "2015": [{"bracket":0-25, "value":0}, {"bracket":26-50, "value":1}, {"bracket":51-75, "value":5}, {"bracket":76-100, "value":5}], 
-        "2017": [{"bracket":0-25, "value":0}, {"bracket":26-50, "value":1}, {"bracket":51-75, "value":4}, {"bracket":76-100, "value":6}], 
-        "2019": [{"bracket":0-25, "value":0}, {"bracket":26-50, "value":1}, {"bracket":51-75, "value":6}, {"bracket":76-100, "value":5}], 
-        "2021": [{"bracket":0-25, "value":0}, {"bracket":26-50, "value":1}, {"bracket":51-75, "value":4}, {"bracket":76-100, "value":7}], 
-        "2023": [{"bracket":0-25, "value":0}, {"bracket":26-50, "value":1}, {"bracket":51-75, "value":5}, {"bracket":76-100, "value":8}], 
-        "2025": [{"bracket":0-25, "value":0}, {"bracket":26-50, "value":1}, {"bracket":51-75, "value":6}, {"bracket":76-100, "value":9}], 
-        "2027": [{"bracket":0-25, "value":1}, {"bracket":26-50, "value":1}, {"bracket":51-75, "value":7}, {"bracket":76-100, "value":10}], 
-        "2029": [{"bracket":0-25, "value":1}, {"bracket":26-50, "value":1}, {"bracket":51-75, "value":8}, {"bracket":76-100, "value":12}], 
-        "2031": [{"bracket":0-25, "value":1}, {"bracket":26-50, "value":1}, {"bracket":51-75, "value":9}, {"bracket":76-100, "value":11}], 
-        "2033": [{"bracket":0-25, "value":1}, {"bracket":26-50, "value":1}, {"bracket":51-75, "value":12}, {"bracket":76-100, "value":10}], 
-        "2035": [{"bracket":0-25, "value":1}, {"bracket":26-50, "value":1}, {"bracket":51-75, "value":14}, {"bracket":76-100, "value":9}]
+    {"Indonesia": [
+            {"2015": [{"bracket":"0-25", "value":0}, {"bracket":"26-50", "value":1}, {"bracket":"51-75", "value":5}, {"bracket":"76-100", "value":5}]}, 
+            {"2017": [{"bracket":"0-25", "value":0}, {"bracket":"26-50", "value":1}, {"bracket":"51-75", "value":4}, {"bracket":"76-100", "value":6}]}, 
+            {"2019": [{"bracket":"0-25", "value":0}, {"bracket":"26-50", "value":1}, {"bracket":"51-75", "value":6}, {"bracket":"76-100", "value":5}]}, 
+            {"2021": [{"bracket":"0-25", "value":0}, {"bracket":"26-50", "value":1}, {"bracket":"51-75", "value":4}, {"bracket":"76-100", "value":7}]}, 
+            {"2023": [{"bracket":"0-25", "value":0}, {"bracket":"26-50", "value":1}, {"bracket":"51-75", "value":5}, {"bracket":"76-100", "value":8}]}, 
+            {"2025": [{"bracket":"0-25", "value":0}, {"bracket":"26-50", "value":1}, {"bracket":"51-75", "value":6}, {"bracket":"76-100", "value":9}]}, 
+            {"2027": [{"bracket":"0-25", "value":1}, {"bracket":"26-50", "value":1}, {"bracket":"51-75", "value":7}, {"bracket":"76-100", "value":10}]}, 
+            {"2029": [{"bracket":"0-25", "value":1}, {"bracket":"26-50", "value":1}, {"bracket":"51-75", "value":8}, {"bracket":"76-100", "value":12}]}, 
+            {"2031": [{"bracket":"0-25", "value":1}, {"bracket":"26-50", "value":1}, {"bracket":"51-75", "value":9}, {"bracket":"76-100", "value":11}]}, 
+            {"2033": [{"bracket":"0-25", "value":1}, {"bracket":"26-50", "value":1}, {"bracket":"51-75", "value":12}, {"bracket":"76-100", "value":10}]}, 
+            {"2035": [{"bracket":"0-25", "value":1}, {"bracket":"26-50", "value":1}, {"bracket":"51-75", "value":14}, {"bracket":"76-100", "value":9}]}
+        ]},
+
+     {"USA": [
+             {"2015": [{"bracket":"0-25", "value":5}, {"bracket":"26-50", "value":9}, {"bracket":"51-75", "value":10}, {"bracket":"76-100", "value":9}]}, 
+             {"2017": [{"bracket":"0-25", "value":4}, {"bracket":"26-50", "value":11}, {"bracket":"51-75", "value":13}, {"bracket":"76-100", "value":9}]}, 
+             {"2019": [{"bracket":"0-25", "value":4}, {"bracket":"26-50", "value":12}, {"bracket":"51-75", "value":14}, {"bracket":"76-100", "value":7}]}, 
+             {"2021": [{"bracket":"0-25", "value":5}, {"bracket":"26-50", "value":13}, {"bracket":"51-75", "value":15}, {"bracket":"76-100", "value":7}]}, 
+             {"2023": [{"bracket":"0-25", "value":6}, {"bracket":"26-50", "value":12}, {"bracket":"51-75", "value":14}, {"bracket":"76-100", "value":8}]}, 
+             {"2025": [{"bracket":"0-25", "value":5}, {"bracket":"26-50", "value":13}, {"bracket":"51-75", "value":14}, {"bracket":"76-100", "value":10}]}, 
+             {"2027": [{"bracket":"0-25", "value":6}, {"bracket":"26-50", "value":14}, {"bracket":"51-75", "value":13}, {"bracket":"76-100", "value":9}]}, 
+             {"2029": [{"bracket":"0-25", "value":5}, {"bracket":"26-50", "value":11}, {"bracket":"51-75", "value":15}, {"bracket":"76-100", "value":10}]}, 
+             {"2031": [{"bracket":"0-25", "value":4}, {"bracket":"26-50", "value":10}, {"bracket":"51-75", "value":15}, {"bracket":"76-100", "value":11}]}, 
+             {"2033": [{"bracket":"0-25", "value":4}, {"bracket":"26-50", "value":10}, {"bracket":"51-75", "value":14}, {"bracket":"76-100", "value":12}]}, 
+             {"2035": [{"bracket":"0-25", "value":3}, {"bracket":"26-50", "value":9}, {"bracket":"51-75", "value":16}, {"bracket":"76-100", "value":12}]}
+         ]}
     ]
-
-     "USA": [
-        "2015": [{"bracket":0-25, "value":5}, {"bracket":26-50, "value":9}, {"bracket":51-75, "value":10}, {"bracket":76-100, "value":9}], 
-        "2017": [{"bracket":0-25, "value":4}, {"bracket":26-50, "value":11}, {"bracket":51-75, "value":13}, {"bracket":76-100, "value":9}], 
-        "2019": [{"bracket":0-25, "value":4}, {"bracket":26-50, "value":12}, {"bracket":51-75, "value":14}, {"bracket":76-100, "value":7}], 
-        "2021": [{"bracket":0-25, "value":5}, {"bracket":26-50, "value":13}, {"bracket":51-75, "value":15}, {"bracket":76-100, "value":7}], 
-        "2023": [{"bracket":0-25, "value":6}, {"bracket":26-50, "value":12}, {"bracket":51-75, "value":14}, {"bracket":76-100, "value":8}], 
-        "2025": [{"bracket":0-25, "value":5}, {"bracket":26-50, "value":13}, {"bracket":51-75, "value":14}, {"bracket":76-100, "value":10}], 
-        "2027": [{"bracket":0-25, "value":6}, {"bracket":26-50, "value":14}, {"bracket":51-75, "value":13}, {"bracket":76-100, "value":9}], 
-        "2029": [{"bracket":0-25, "value":5}, {"bracket":26-50, "value":11}, {"bracket":51-75, "value":15}, {"bracket":76-100, "value":10}], 
-        "2031": [{"bracket":0-25, "value":4}, {"bracket":26-50, "value":10}, {"bracket":51-75, "value":15}, {"bracket":76-100, "value":11}], 
-        "2033": [{"bracket":0-25, "value":4}, {"bracket":26-50, "value":10}, {"bracket":51-75, "value":14}, {"bracket":76-100, "value":12}], 
-        "2035": [{"bracket":0-25, "value":3}, {"bracket":26-50, "value":9}, {"bracket":51-75, "value":16}, {"bracket":76-100, "value":12}]
-    ]
-    }
 }
