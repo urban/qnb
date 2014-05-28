@@ -1,6 +1,6 @@
 <link rel="import" href="/bower_components/polymer/polymer.html">
 
-<polymer-element name="q-visualization" attributes="title" noscript>
+<polymer-element name="q-visualization" attributes="title hasContent">
   <template>
     <style>
       :host {
@@ -24,10 +24,29 @@
       #box {
         flex: 1;
       }
+      
+      /*polyfill-next-selector { content: ':host > *:not(header)'; }
+      ::content > * {
+        flex: 1;
+        height: 100%;
+        width: 100%;
+      }*/
     </style>
     <header>
       <h1>{{title}}</h1>
     </header>
-    <frog-thumbnail id="box"></frog-thumbnail>
+    <template if="{{!hasContent}}">
+      <frog-thumbnail id="box"></frog-thumbnail>
+    </template>
+    <template if="{{hasContent}}">
+      <content></content>
+    </template>
   </template>
+  <script>
+    (function () {
+      Polymer('q-visualization', {
+        hasContent: false
+      })
+    })();
+  </script>
 </polymer-element>
