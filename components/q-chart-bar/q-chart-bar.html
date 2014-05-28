@@ -1,0 +1,83 @@
+<link rel="import" href="/bower_components/polymer/polymer.html">
+<script src="/bower_components/d3/d3.min.js"></script>
+
+<polymer-element name="q-chart-bar" attributes="url">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+
+      .bar {
+        fill: steelblue;
+      }
+
+      .bar:hover {
+        fill: brown;
+      }
+
+      .axis {
+        font: 10px sans-serif;
+      }
+
+      .axis path,
+      .axis line {
+        fill: none;
+        stroke: #000;
+        shape-rendering: crispEdges;
+      }
+
+      .x.axis path {
+        display: none;
+      }
+    </style>
+    <svg id="chart"></svg>
+  </template>
+  <script>
+    (function () {
+
+      Polymer('q-chart-bar', {
+        url: null,
+        ready: function () {
+          this.draw();
+        },
+        urlChanged: function (oldVal, newVal) {
+          this.async(this.draw);
+        },
+        draw: function () {
+          var self = this;
+          d3.json(this.url, function(error, json) {
+            
+            var data = json.data;
+            var w = self.clientWidth / data.length;
+            var h = self.clientHeight;
+              
+            var x = d3.scale.linear()
+                .domain([0, 1])
+                .range([0, w]);
+              
+            var y = d3.scale.linear()
+               .domain([0, 100])
+               .rangeRound([0, h]);
+
+            var chart = d3.select(self.$.chart)
+               .attr("class", "chart")
+               .attr("width", w * (data.length))
+               .attr("height", h);
+
+            chart.selectAll("rect")
+               .data(data)
+               .enter().append("rect")
+               .attr("x", function(d, i) { return x(i) - .5; })
+               .attr("y", function(d) { return h - .5; })
+               .attr("width", w)
+               .transition().delay(function (d,i){ return i * 300;}).duration(300)
+               .attr("height", function(d) { return y(d.value); })
+               .attr("y", function(d) { return h - y(d.value) - .5; });
+          });
+        }
+      });
+
+    })();
+  </script>
+</polymer-element>
