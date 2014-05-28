@@ -2,7 +2,7 @@
 "title":"Average Commute One Way in Minutes",
 "data": [
 {"City":"Mumbai", 
-"Average Commute to Workplace in Minutes": [
+"Average Commute to Workplace": [
     {"year":2015, "value":47.45}, {"year":2017, "value":49}, {"year":2019, "value":52}, {"year":2021, "value":55}, {"year":2023, "value":59}, {"year":2025, "value":63}, {"year":2027, "value":64}, {"year":2029, "value":56}, {"year":2031, "value":56}, {"year":2033, "value":55}, {"year":2035, "value":48}
     ]},
 
