@@ -1,0 +1,36 @@
+{
+"title":"Traffic Fatalities per 100000",
+"data": [
+	{"Country":"India" ,
+	"By Year": [
+	    {"year":2015, "value":18.9}, {"year":2017, "value":19.9}, {"year":2019, "value":20.1}, {"year":2021, "value":22.2}, 
+	    {"year":2023, "value":21.2}, {"year":2025, "value":20.4}, {"year":2027, "value":18.9}, {"year":2029, "value":16.5}, 
+	    {"year":2031, "value":12.5}, {"year":2033, "value":14.8}, {"year":2035, "value":10.4}
+	    ]
+	},
+
+	{"Country":"China" ,
+	"By Year": [
+	    {"year":2015, "value":21.25}, {"year":2017, "value":24.8}, {"year":2019, "value":25.4}, {"year":2021, "value":27.3}, 
+	    {"year":2023, "value":28.5}, {"year":2025, "value":30.4}, {"year":2027, "value":31.4}, {"year":2029, "value":26.1}, 
+	    {"year":2031, "value":22.1}, {"year":2033, "value":19.2}, {"year":2035, "value":16.8}
+	    ]
+	},
+
+	{"Country":"Brazil" ,
+	"By Year": [
+	    {"year":2015, "value":24.25}, {"year":2017, "value":24.8}, {"year":2019, "value":25.4}, {"year":2021, "value":27.3}, 
+	    {"year":2023, "value":28.5}, {"year":2025, "value":30.4}, {"year":2027, "value":31.4}, {"year":2029, "value":29.1}, 
+	    {"year":2031, "value":32.1}, {"year":2033, "value":29.2}, {"year":2035, "value":26.8}
+	    ]
+	},
+
+	{"Country":"USA" ,
+	"By Year": [
+	    {"year":2015, "value":18.2}, {"year":2017, "value":18.2}, {"year":2019, "value":17.8}, {"year":2021, "value":17.2}, 
+	    {"year":2023, "value":17.8}, {"year":2025, "value":17.4}, {"year":2027, "value":16.4}, {"year":2029, "value":16.6}, 
+	    {"year":2031, "value":15.9}, {"year":2033, "value":15.2}, {"year":2035, "value":15.4}
+	    ]
+	}
+]
+}

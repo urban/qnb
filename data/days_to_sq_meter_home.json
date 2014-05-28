@@ -27,9 +27,9 @@
 
 	{"Country":"USA" ,
 	"By Year": [
-	    {"year":2015, "value":3.9}, {"year":2017, "value":4.1}, {"year":2019, "value":5.1}, {"year":2021, "value":6.6}, 
-	    {"year":2023, "value":7.5}, {"year":2025, "value":7.6}, {"year":2027, "value":5.8}, {"year":2029, "value":5.9}, 
-	    {"year":2031, "value":6.4}, {"year":2033, "value":7.0}, {"year":2035, "value":7.1}
+	    {"year":2015, "value":3.9}, {"year":2017, "value":4.1}, {"year":2019, "value":5.1}, {"year":2021, "value":9.6}, 
+	    {"year":2023, "value":14.5}, {"year":2025, "value":15.6}, {"year":2027, "value":15.8}, {"year":2029, "value":16.9}, 
+	    {"year":2031, "value":21.4}, {"year":2033, "value":22.0}, {"year":2035, "value":17.1}
 	    ]
 	}
 ]

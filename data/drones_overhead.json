@@ -1,0 +1,50 @@
+{
+"title":"Number of Drones Overhead in Major Cities",
+"data": [
+{"City":"Mumbai", 
+"Drones in air": [
+    {"year":2015, "value":0}, {"year":2017, "value":0}, {"year":2019, "value":0}, {"year":2021, "value":36}, 
+    {"year":2023, "value":75}, {"year":2025, "value":80}, {"year":2027, "value":180}, {"year":2029, "value":260}, 
+    {"year":2031, "value":480}, {"year":2033, "value":800}, {"year":2035, "value":800}
+    ]},
+
+{"City":"Beijing", 
+"Drones in air": [
+     {"year":2015, "value":0}, {"year":2017, "value":32}, {"year":2019, "value":44}, {"year":2021, "value":56}, 
+    {"year":2023, "value":68}, {"year":2025, "value":424}, {"year":2027, "value":1144}, {"year":2029, "value":1156}, 
+    {"year":2031, "value":1160}, {"year":2033, "value":1162}, {"year":2035, "value":1472}
+    ]
+},
+
+{"City":"London", 
+"Drones in air": [
+     {"year":2015, "value":16}, {"year":2017, "value":6}, {"year":2019, "value":32}, {"year":2021, "value":36}, 
+    {"year":2023, "value":62}, {"year":2025, "value":76}, {"year":2027, "value":76}, {"year":2029, "value":150}, 
+    {"year":2031, "value":186}, {"year":2033, "value":192}, {"year":2035, "value":368}
+    ]
+},
+
+{"City":"Jakarta", 
+"Drones in air": [
+     {"year":2015, "value":0.0}, {"year":2017, "value":3}, {"year":2019, "value":4}, {"year":2021, "value":7}, 
+    {"year":2023, "value":9}, {"year":2025, "value":10}, {"year":2027, "value":12}, {"year":2029, "value":14}, 
+    {"year":2031, "value":18}, {"year":2033, "value":422}, {"year":2035, "value":424}
+    ]
+},
+
+{"City":"Rio de Janiero", 
+"Drones in air": [
+ {"year":2015, "value":0}, {"year":2017, "value":3}, {"year":2019, "value":6}, {"year":2021, "value":8}, 
+    {"year":2023, "value":9}, {"year":2025, "value":9}, {"year":2027, "value":14}, {"year":2029, "value":18}, 
+    {"year":2031, "value":26}, {"year":2033, "value":365}, {"year":2035, "value":688}
+    ]
+},
+
+{"City":"Tokyo", 
+"Drones in air": [
+     {"year":2015, "value":0}, {"year":2017, "value":12}, {"year":2019, "value":12}, {"year":2021, "value":36}, 
+    {"year":2023, "value":159}, {"year":2025, "value":163}, {"year":2027, "value":464}, {"year":2029, "value":556}, 
+    {"year":2031, "value":956}, {"year":2033, "value":955}, {"year":2035, "value":1148}
+    ]
+}
+]}

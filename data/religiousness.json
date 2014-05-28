@@ -1,0 +1,284 @@
+{
+"title":"Religiousness",
+
+"data": {
+
+  "India":[
+    {
+      "Not Religious":15,
+      "Somewhat Religious":40,
+      "Religious":33,
+      "Very Religious":12
+    },
+    {
+      "Not Religious":16,
+      "Somewhat Religious":39,
+      "Religious":32,
+      "Very Religious":13
+    },
+    {
+      "Not Religious":16,
+      "Somewhat Religious":38,
+      "Religious":31,
+      "Very Religious":15
+    },
+    {
+      "Not Religious":15,
+      "Somewhat Religious":37,
+      "Religious":31,
+      "Very Religious":17
+    },
+    {
+      "Not Religious":15,
+      "Somewhat Religious":35,
+      "Religious":31,
+      "Very Religious":19
+    },
+    {
+      "Not Religious":16,
+      "Somewhat Religious":33,
+      "Religious":29,
+      "Very Religious":22
+    },
+    {
+      "Not Religious":17,
+      "Somewhat Religious":32,
+      "Religious":27,
+      "Very Religious":24
+    },
+    {
+      "Not Religious":22,
+      "Somewhat Religious":31,
+      "Religious":25,
+      "Very Religious":22
+    },
+    {
+      "Not Religious":23,
+      "Somewhat Religious":30,
+      "Religious":23,
+      "Very Religious":24
+    },
+    {
+      "Not Religious":26,
+      "Somewhat Religious":30,
+      "Religious":22,
+      "Very Religious":22
+    },
+    {
+      "Not Religious":27,
+      "Somewhat Religious":28,
+      "Religious":20,
+      "Very Religious":25
+    }],
+
+  "Malaysia":
+    [{
+      "Not Religious":8,
+      "Somewhat Religious":41,
+      "Religious":42,
+      "Very Religious":9
+    },
+    {
+      "Not Religious":9,
+      "Somewhat Religious":40,
+      "Religious":42,
+      "Very Religious":9
+    },
+    {
+      "Not Religious":11,
+      "Somewhat Religious":38,
+      "Religious":42,
+      "Very Religious":9
+    },
+    {
+      "Not Religious":11,
+      "Somewhat Religious":39,
+      "Religious":40,
+      "Very Religious":10
+    },
+    {
+      "Not Religious":12,
+      "Somewhat Religious":38,
+      "Religious":39,
+      "Very Religious":11
+    },
+    {
+      "Not Religious":12,
+      "Somewhat Religious":37,
+      "Religious":39,
+      "Very Religious":12
+    },
+    {
+      "Not Religious":13,
+      "Somewhat Religious":36,
+      "Religious":38,
+      "Very Religious":13
+    },
+    {
+      "Not Religious":14,
+      "Somewhat Religious":27,
+      "Religious":37,
+      "Very Religious":22
+    },
+    {
+      "Not Religious":15,
+      "Somewhat Religious":29,
+      "Religious":35,
+      "Very Religious":21
+    },
+    {
+      "Not Religious":15,
+      "Somewhat Religious":31,
+      "Religious":34,
+      "Very Religious":20
+    },
+    {
+      "Not Religious":19,
+      "Somewhat Religious":26,
+      "Religious":35,
+      "Very Religious":20
+    }],
+
+  "Brazil":
+    [{
+      "Not Religious":11,
+      "Somewhat Religious":40,
+      "Religious":33,
+      "Very Religious":16
+    },
+    {
+      "Not Religious":11,
+      "Somewhat Religious":39,
+      "Religious":32,
+      "Very Religious":18
+    },
+    {
+      "Not Religious":11,
+      "Somewhat Religious":38,
+      "Religious":31,
+      "Very Religious":20
+    },
+    {
+      "Not Religious":15,
+      "Somewhat Religious":37,
+      "Religious":31,
+      "Very Religious":17
+    },
+    {
+      "Not Religious":15,
+      "Somewhat Religious":35,
+      "Religious":31,
+      "Very Religious":19
+    },
+    {
+      "Not Religious":16,
+      "Somewhat Religious":33,
+      "Religious":29,
+      "Very Religious":22
+    },
+    {
+      "Not Religious":15,
+      "Somewhat Religious":32,
+      "Religious":27,
+      "Very Religious":26
+    },
+    {
+      "Not Religious":19,
+      "Somewhat Religious":31,
+      "Religious":25,
+      "Very Religious":25
+    },
+    {
+      "Not Religious":20,
+      "Somewhat Religious":30,
+      "Religious":23,
+      "Very Religious":27
+    },
+    {
+      "Not Religious":21,
+      "Somewhat Religious":30,
+      "Religious":22,
+      "Very Religious":27
+    },
+    {
+      "Not Religious":22,
+      "Somewhat Religious":28,
+      "Religious":20,
+      "Very Religious":30
+    },
+    {
+      "Not Religious":19,
+      "Somewhat Religious":26,
+      "Religious":35,
+      "Very Religious":20
+    }],
+
+  "Indonesia":
+    {
+      "Not Religious":11,
+      "Somewhat Religious":35,
+      "Religious":32,
+      "Very Religious":22
+    },
+    {
+      "Not Religious":13,
+      "Somewhat Religious":34,
+      "Religious":32,
+      "Very Religious":21
+    },
+    {
+      "Not Religious":15,
+      "Somewhat Religious":30,
+      "Religious":31,
+      "Very Religious":24
+    },
+    {
+      "Not Religious":15,
+      "Somewhat Religious":29,
+      "Religious":31,
+      "Very Religious":25
+    },
+    {
+      "Not Religious":19,
+      "Somewhat Religious":28,
+      "Religious":31,
+      "Very Religious":22
+    },
+    {
+      "Not Religious":25,
+      "Somewhat Religious":27,
+      "Religious":29,
+      "Very Religious":19
+    },
+    {
+      "Not Religious":27,
+      "Somewhat Religious":25,
+      "Religious":27,
+      "Very Religious":21
+    },
+    {
+      "Not Religious":31,
+      "Somewhat Religious":20,
+      "Religious":25,
+      "Very Religious":24
+    },
+    {
+      "Not Religious":32,
+      "Somewhat Religious":21,
+      "Religious":23,
+      "Very Religious":24
+    },
+    {
+      "Not Religious":31,
+      "Somewhat Religious":22,
+      "Religious":22,
+      "Very Religious":25
+    },
+    {
+      "Not Religious":28,
+      "Somewhat Religious":19,
+      "Religious":20,
+      "Very Religious":33
+    }]
+  }
+}

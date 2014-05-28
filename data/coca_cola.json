@@ -1,0 +1,37 @@
+{
+"title":"Coca Cola Consumption per person per year",
+"data": [
+{"Country":"India" ,
+"By Year": [
+    {"year":2015, "value":12}, {"year":2017, "value":18}, {"year":2019, "value":24}, {"year":2021, "value":29}, {"year":2023, "value":32}, 
+    {"year":2025, "value":80}, {"year":2027, "value":76}, {"year":2029, "value":56}, {"year":2031, "value":36}, {"year":2033, "value":42}, 
+    {"year":2035, "value":32}
+    ]
+},
+
+{"Country":"China" ,
+"By Year": [
+        {"year":2015, "value":48}, {"year":2017, "value":59}, {"year":2019, "value":98}, {"year":2021, "value":96}, 
+        {"year":2023, "value":110},  {"year":2025, "value":92}, {"year":2027, "value":86}, {"year":2029, "value":81}, 
+        {"year":2031, "value":74}, {"year":2033, "value":71}, {"year":2035, "value":65}
+    ]
+},
+
+{"Country":"Brazil" ,
+"By Year": [
+    {"year":2015, "value":230}, {"year":2017, "value":241}, {"year":2019, "value":271}, {"year":2021, "value":267}, {"year":2023, "value":269}, 
+    {"year":2025, "value":261}, {"year":2027, "value":299}, {"year":2029, "value":312}, {"year":2031, "value":276}, {"year":2033, "value":249}, 
+    {"year":2035, "value":220}
+
+    ]
+},
+
+{"Country":"USA" ,
+"By Year": [
+    {"year":2015, "value":404}, {"year":2017, "value":384}, {"year":2019, "value":362}, {"year":2021, "value":355}, {"year":2023, "value":345}, 
+    {"year":2025, "value":340}, {"year":2027, "value":346}, {"year":2029, "value":339}, {"year":2031, "value":298}, {"year":2033, "value":312}, 
+    {"year":2035, "value":210}
+    ]
+}
+]
+}

@@ -1,0 +1,44 @@
+{
+"title":"Visited/Joined an Online Dating Service in the past year",
+"data": [
+	{"Country":"India" ,
+	"By Year": [
+	    {"year":2015, "value":7.9}, {"year":2017, "value":9.9}, {"year":2019, "value":11.1}, {"year":2021, "value":12.2}, 
+	    {"year":2023, "value":11.2}, {"year":2025, "value":12.4}, {"year":2027, "value":13.9}, {"year":2029, "value":16.5}, 
+	    {"year":2031, "value":12.5}, {"year":2033, "value":14.8}, {"year":2035, "value":10.4}
+	    ]
+	},
+
+	{"Country":"China" ,
+	"By Year": [
+	    {"year":2015, "value":2.25}, {"year":2017, "value":4.8}, {"year":2019, "value":6.4}, {"year":2021, "value":7.3}, 
+	    {"year":2023, "value":12.5}, {"year":2025, "value":16.4}, {"year":2027, "value":14.4}, {"year":2029, "value":13.1}, 
+	    {"year":2031, "value":14.1}, {"year":2033, "value":12.2}, {"year":2035, "value":16.8}
+	    ]
+	},
+
+	{"Country":"France" ,
+	"By Year": [
+	    {"year":2015, "value":0.25}, {"year":2017, "value":1.8}, {"year":2019, "value":1.4}, {"year":2021, "value":2.3}, 
+	    {"year":2023, "value":1.5}, {"year":2025, "value":2.4}, {"year":2027, "value":2.4}, {"year":2029, "value":3.1}, 
+	    {"year":2031, "value":4.1}, {"year":2033, "value":4.2}, {"year":2035, "value":3.8}
+	    ]
+	},
+
+	{"Country":"Brazil" ,
+	"By Year": [
+	    {"year":2015, "value":2}, {"year":2017, "value":2.8}, {"year":2019, "value":5.4}, {"year":2021, "value":3.3}, 
+	    {"year":2023, "value":8.5}, {"year":2025, "value":10.4}, {"year":2027, "value":11.4}, {"year":2029, "value":12.1}, 
+	    {"year":2031, "value":14.1}, {"year":2033, "value":13.2}, {"year":2035, "value":12.8}
+	    ]
+	},
+
+	{"Country":"USA" ,
+	"By Year": [
+	    {"year":2015, "value":18.2}, {"year":2017, "value":19.2}, {"year":2019, "value":21.8}, {"year":2021, "value":22.2}, 
+	    {"year":2023, "value":23.8}, {"year":2025, "value":24.4}, {"year":2027, "value":25.4}, {"year":2029, "value":28.6}, 
+	    {"year":2031, "value":26.9}, {"year":2033, "value":25.2}, {"year":2035, "value":27.4}
+	    ]
+	}
+]
+}

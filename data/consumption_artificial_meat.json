@@ -1,0 +1,37 @@
+{
+"title":"Synthetic Meat Consumption in Tonness",
+"data": [
+{"Country":"India" ,
+"By Year": [
+    {"year":2015, "value":0}, {"year":2017, "value":0}, {"year":2019, "value":0}, {"year":2021, "value":0}, {"year":2023, "value":4000}, 
+    {"year":2025, "value":560}, {"year":2027, "value":800}, {"year":2029, "value":3650}, {"year":2031, "value":24600}, {"year":2033, "value":120000}, 
+    {"year":2035, "value":2698000}
+    ]
+},
+
+{"Country":"China" ,
+"By Year": [
+        {"year":2015, "value":0}, {"year":2017, "value":0}, {"year":2019, "value":0}, {"year":2021, "value":0}, {"year":2023, "value":0}, 
+    {"year":2025, "value":3600}, {"year":2027, "value":5900}, {"year":2029, "value":21000}, {"year":2031, "value":196000}, {"year":2033, "value":568200}, 
+    {"year":2035, "value":689000}
+    ]
+},
+
+{"Country":"Brazil" ,
+"By Year": [
+    {"year":2015, "value":0}, {"year":2017, "value":0}, {"year":2019, "value":10}, {"year":2021, "value":20}, {"year":2023, "value":240}, 
+    {"year":2025, "value":190}, {"year":2027, "value":350}, {"year":2029, "value":460}, {"year":2031, "value":600}, {"year":2033, "value":800}, 
+    {"year":2035, "value":760}
+
+    ]
+},
+
+{"Country":"Indonesia" ,
+"By Year": [
+        {"year":2015, "value":0}, {"year":2017, "value":0}, {"year":2019, "value":0}, {"year":2021, "value":120}, {"year":2023, "value":360}, 
+    {"year":2025, "value":7200}, {"year":2027, "value":15900}, {"year":2029, "value":31000}, {"year":2031, "value":16000}, {"year":2033, "value":1200}, 
+    {"year":2035, "value":89000}
+    ]
+}
+]
+}

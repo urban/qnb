@@ -1,0 +1,8 @@
+{
+"title":"Number of Streamed Movies Watched Per Year",
+"data": [
+	{"year":"2015", "value":1929}, {"year":"2017", "value":5246}, {"year":"2019", "value":15386}, 
+	{"year":"2021", "value":38324}, {"year":"2023", "value":73223}, {"year":"2025", "value":78128}, 
+	{"year":"2027", "value":71252}, {"year":"2029", "value":69945}, {"year":"2031", "value":67842}, 
+	{"year":"2033", "value":66890}, {"year":"2035", "value":65792}]
+}
