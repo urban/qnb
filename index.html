@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+  <title>Quartz</title>
+  <!-- Load the platform first -->
+  <script src="/bower_components/platform/platform.js"></script>
+  <!-- imports -->
+  <link rel="import" href="/imports.html">
+  <style>
+    html, body {
+      height: 100%;
+      width: 100%;
+    }
+
+    frog-deck {
+      height: 100%;
+      width: 100%;
+    }
+  </style>
+</head>
+<body unresolved>
+
+  <frog-deck id="deck" transition="fade">
+    <frog-card>
+      <q-view url="test">
+        <q-visualization flex title="Home Grown"></q-visualization>
+        <q-visualization title="Homer"></q-visualization>
+        <q-visualization title="Homer"></q-visualization>
+      </q-view>
+    </frog-card>
+    <frog-card>
+      <q-view url="test">
+        <q-visualization title="Homer"></q-visualization>
+        <q-visualization title="Homer"></q-visualization>
+        <q-visualization flex title="Home Grown"></q-visualization>
+      </q-view>
+    </frog-card>
+    <frog-card>
+      <q-view url="test">
+        <q-visualization flex title="Homer"></q-visualization>
+        <q-visualization flex title="Home Grown"></q-visualization>
+      </q-view>
+    </frog-card>
+  </frog-deck>
+
+  <script>
+    var timer;
+    var deck = document.querySelector('#deck');
+
+    document.addEventListener('click', next, false);
+
+    function next() {
+      deck.selected = (deck.selected + 1) % deck.children.length;
+    };
+
+    function start() {
+      timer = window.setInterval(next, 5000);
+    };
+
+    function stop() {
+      window.clearInterval(timer);
+    };
+
+    function toggle() {
+      if (!timer) {
+        start();
+      } else {
+        stop();
+      }
+    };
+
+  </script>
+  
+</body>
+</html>

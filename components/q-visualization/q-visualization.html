@@ -1,0 +1,33 @@
+<link rel="import" href="/bower_components/polymer/polymer.html">
+
+<polymer-element name="q-visualization" attributes="title" noscript>
+  <template>
+    <style>
+      :host {
+        display: -webkit-box !important;
+        display: -ms-flexbox !important;
+        display: -moz-flex !important;
+        display: -webkit-flex !important;
+        display: flex !important;
+        flex-direction: column;
+      }
+
+      header {
+        border-bottom: 1px solid #000;
+        margin-bottom: 1em;
+      }
+
+      header > h1 {
+        margin-top: 0;
+      }
+
+      #box {
+        flex: 1;
+      }
+    </style>
+    <header>
+      <h1>{{title}}</h1>
+    </header>
+    <frog-thumbnail id="box"></frog-thumbnail>
+  </template>
+</polymer-element>

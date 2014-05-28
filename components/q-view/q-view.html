@@ -1,0 +1,108 @@
+<link rel="import" href="/bower_components/polymer/polymer.html">
+
+<polymer-element name="q-view" attributes="url">
+  <template>
+    <style>
+
+      :host {
+        display: -webkit-box !important;
+        display: -ms-flexbox !important;
+        display: -moz-flex !important;
+        display: -webkit-flex !important;
+        display: flex !important;
+        flex-direction: row;
+        height: 100%;
+        width: 100%;
+      }
+
+      *, *:before, *:after {
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+      }
+
+      h1 {
+        font-style: italic;
+        font-weight: normal;
+      }
+
+      h3 {
+        border-bottom: 1px solid #fff;
+        font-weight: normal;
+        margin-top: 0;
+        padding-bottom: 0.4rem;
+      }
+
+      aside {
+        background-color: #f4f4f4;
+        flex: 0 1 auto;
+        order: 1;
+        width: 33.333%;
+      }
+
+      aside > header {
+        background-color: #999;
+        color: #fff;
+        height: 33.333%;
+        padding: 2rem;
+      }
+
+      section {
+        padding: 2rem;
+      }
+
+      section > header {
+        border-bottom: 1px solid #000;
+      }
+
+      .pull-right {
+        float: right;
+      }
+      
+      main {
+        background-color: #fff;
+        height: 100%;
+        order: 2;
+        padding-bottom: 2rem;
+        width: 100%;
+      }
+
+      polyfill-next-selector { content: ':host main > *'; }
+      main ::content > * {
+        height: 50%;
+        float: left;
+        padding: 2rem 1rem 0;
+        width: 50%;
+      }
+
+      polyfill-next-selector { content: ':host main > *[flex]'; }
+      main ::content > [flex] {
+        height: 50%;
+        width: 100%;
+      }
+    </style>
+    <aside>
+      <header>
+        <h3>Data-in-the-Life of the Next Billion</h3>
+        <h1>Home Buying &amp; Investing</h1>
+      </header>
+      <section>
+        <header>
+          <strong>9:00 AM</strong><strong class="pull-right">Pune, India</strong>
+        </header>
+        <p>Kavya's mother continues the search for a new house, but prices have risen sharply in the last few months and available stock is shrinking.</p>
+        <p>Kavya's father spends an hour manipulating stock trades, so that he can deposit extra monies into his poorer brother's account.</p>
+      </section>
+    </aside>
+    <main class="grid">
+      <content></content>
+    </main>
+  </template>
+  <script>
+  (function () {
+    Polymer('q-view', {
+
+    });
+  })();
+  </script>
+</polymer-element>
