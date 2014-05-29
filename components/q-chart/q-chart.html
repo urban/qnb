@@ -1,0 +1,37 @@
+<link rel="import" href="/bower_components/polymer/polymer.html">
+<script src="/bower_components/d3/d3.min.js"></script>
+
+<polymer-element name="q-chart" attributes="url">
+  <script>
+    (function () {
+
+      Polymer('q-chart', {
+        url: null,
+        data: null,
+        chart: null,
+        ready: function () {
+          this.onLoad = (function (err, json) {
+            this.data = json.data;
+            this.update();
+          }).bind(this);
+          this.draw();
+        },
+        urlChanged: function (oldVal, newVal) {
+          d3.json(newVal, this.onLoad);
+        },
+        draw: function () {
+          var chart = this.chart = d3.select(this.$.chart)
+            .attr("class", "chart")
+            .attr("width", this.clientWidth)
+            .attr("height", this.clientHeight);
+
+            if (this.data) update();
+        },
+        update: function () {
+          console.log('needs to be sub-classed or extended')
+        }
+      });
+
+    })();
+  </script>
+</polymer-element>

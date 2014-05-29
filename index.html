@@ -21,37 +21,22 @@
 <body unresolved>
 
   <frog-deck id="deck" transition="fade">
+
     <frog-card>
-      <q-view url="test">
-        <q-visualization full title="Animated Bar Chart" hasContent>
-          <q-chart-bar url="/data/humans_in_low_earth.json"></q-chart-bar>
+      <q-view url="/data/stories/story-1.json">
+        <q-visualization full title="Stacked Bar Chart" hasContent>
+          <q-chart-stacked-bar url="/data/surgeries_lifetime.json"></q-chart-stacked-bar>
         </q-visualization>
       </q-view>
     </frog-card>
 
     <frog-card>
-      <q-view url="test">
+      <q-view url="/data/stories/story-2.json">
         <q-visualization full title="Animated Bar Chart" hasContent>
-          <q-chart-globe url="/data/humans_in_low_earth.json"></q-chart-globe>
+          <q-chart-bar url="/data/humans_in_low_earth.json"></q-chart-bar>
         </q-visualization>
       </q-view>
     </frog-card>
-    
-    <frog-card>
-      <q-view url="test">
-        <q-visualization title="Homer"></q-visualization>
-        <q-visualization title="Homer"></q-visualization>
-        <q-visualization flex title="Home Grown"></q-visualization>
-      </q-view>
-    </frog-card>
-    
-    <frog-card>
-      <q-view url="test">
-        <q-visualization flex title="Homer"></q-visualization>
-        <q-visualization flex title="Home Grown"></q-visualization>
-      </q-view>
-    </frog-card>
-  </frog-deck>
 
   <script>
     var timer;

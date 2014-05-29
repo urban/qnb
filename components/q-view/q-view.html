@@ -90,14 +90,13 @@
     <aside>
       <header>
         <h3>Data-in-the-Life of the Next Billion</h3>
-        <h1>Home Buying &amp; Investing</h1>
+        <h1>{{model.title}}</h1>
       </header>
       <section>
         <header>
-          <strong>9:00 AM</strong><strong class="pull-right">Pune, India</strong>
+          <strong>{{model.time}}</strong><strong class="pull-right">{{model.location}}</strong>
         </header>
-        <p>Kavya's mother continues the search for a new house, but prices have risen sharply in the last few months and available stock is shrinking.</p>
-        <p>Kavya's father spends an hour manipulating stock trades, so that he can deposit extra monies into his poorer brother's account.</p>
+        <p>{{model.story}}</p>
       </section>
     </aside>
     <main class="grid">
@@ -107,7 +106,16 @@
   <script>
   (function () {
     Polymer('q-view', {
-
+      model: null,
+      url: null,
+      ready: function () {
+        this.onLoad = (function (err, data) {
+          this.model = data;
+        }).bind(this);
+      },
+      urlChanged: function (oldVal, newVal) {
+        d3.json(newVal, this.onLoad);
+      }
     });
   })();
   </script>
