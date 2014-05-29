@@ -10,8 +10,8 @@
         data: null,
         chart: null,
         ready: function () {
-          this.onLoad = (function (err, json) {
-            this.data = json.data;
+          this.onLoad = (function (err, res) {
+            this.data = res;
             this.update();
           }).bind(this);
           this.draw();
