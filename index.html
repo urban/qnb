@@ -23,27 +23,43 @@
   <frog-deck id="deck" transition="fade">
 
     <frog-card>
-      <q-view url="/data/stories/story-1.json">
-        <q-visualization full title="Stacked Bar Chart" hasContent>
-          <q-chart-stacked-bar url="/data/surgeries_lifetime.json"></q-chart-stacked-bar>
+      <q-view url="/data/stories/story-2.json">
+        <q-visualization full title="Multi-line Chart" hasContent>
+          <q-chart-line url="/data/face_scans_day.json"></q-chart-line>
         </q-visualization>
       </q-view>
     </frog-card>
 
-    <frog-card>
+    <!-- <frog-card>
       <q-view url="/data/stories/story-2.json">
         <q-visualization full title="World Map of Awfulness" hasContent>
           <q-chart-globe url="/data/deforestation.json" dataTopLevel="Continent"></q-chart-globe>
         </q-visualization>
       </q-view>
-    </frog-card>
+    </frog-card> -->
+
   </frog-deck>
 
   <script>
     var timer;
     var deck = document.querySelector('#deck');
+    var cards = deck.querySelectorAll('frog-card');
+
+    // deck.addEventListener('change', function (e) {
+    //   console.log(e.detail);
+    //   var selected = e.detail.newVal;
+    //   renderVisualizations(cards[selected]);
+    // });
 
     document.addEventListener('click', next, false);
+
+    // function renderVisualizations(card) {
+    //   var visualizations = card.querySelectorAll('q-visualization > *');
+    //   visualizations.array().forEach(function (v) {
+    //     if (v.update) return v.update.call(v);
+    //     if (v.draw) v.draw.call(v);
+    //   });
+    // }
 
     function next() {
       deck.selected = (deck.selected + 1) % deck.children.length;
@@ -64,6 +80,11 @@
         stop();
       }
     };
+
+    // initial render
+    // window.addEventListener('WebComponentsReady', function(e) {
+    //   renderVisualizations(cards[0]);
+    // });
 
   </script>
   
