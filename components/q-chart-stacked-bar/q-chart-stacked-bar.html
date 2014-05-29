@@ -1,5 +1,6 @@
 <link rel="import" href="/bower_components/polymer/polymer.html">
 <script src="/bower_components/d3/d3.min.js"></script>
+<script src="/bower_components/dimple/dist/dimple.v2.0.0.min.js"></script>
 
 <polymer-element name="q-chart-stacked-bar" extends="q-chart" attributes="url">
   <template>
@@ -37,38 +38,99 @@
     (function () {
 
       Polymer('q-chart-stacked-bar', {
-        index: 0,
-        update: function () {
-          return;
-          // console.log('update');
-          // 
-          // this.remapData();
-          // 
-          var w = this.clientWidth / this.data.length;
-          var h = this.clientHeight;
-            
-          var xScale = d3.scale.linear()
-              .domain([0, 1])
-              .range([0, w]);
-            
-          var yScale = d3.scale.linear()
-             .domain([0, 100])
-             .rangeRound([0, h]);
+        draw: function () {
+          this.super();
+        },
+        urlChanged: function (oldVal, newVal) {
+          d3.tsv(newVal, this.onLoad);
+        },
+        start: function () {
 
-          this.chart.selectAll("rect")
-             .data(this.data)
-             .enter().append("rect")
-             .attr("x", function(d, i) { return xScale(i) - .5; })
-             .attr("y", function(d) { return h - .5; })
-             .attr("width", w)
-             .transition().delay(function (d,i){ return i * 300;}).duration(300)
-             .attr("height", function(d) { return yScale(d.value); })
-             .attr("y", function(d) { return h - yScale(d.value) - .5; });
+        },
+        stop: function () {
 
-          this.index++;
-          this.async(this.update, null, 50000);
+        },
+        render: function () {
+          this.isRendered = true;
+          console.log(this.data);
+          var chart = new dimple.chart(this.chart, this.data);
+          // chart.setBounds(60, 45, 510, 315);
+          chart.addCategoryAxis('x', 'country');
+          chart.addMeasureAxis('y', 'value');
+          chart.addSeries('bracket', dimple.plot.bar);
+          chart.addLegend(200, 10, 380, 20, "right");
+          chart.draw();
         }
       });
+
+      // Polymer('q-chart-stacked-bar', {
+      //   index: 0,
+      //   render: function () {
+      //     var index = this.index;
+      //     var data = this.data.data;
+      //     var countries = data.map(function (d) {
+      //       return Object.keys(d)[0];
+      //     });
+      //     var years = data[0][countries[0]].map(function (d) {
+      //       return Object.keys(d)[0];
+      //     });
+      //     var remapped = countries.map(function (country, i) {
+      //       var brackets = data[i][country][index][years[index]];
+      //       brackets.forEach(function (d, ii) {
+      //         d.x = ii;
+      //         d.y = d['value'];
+      //       });
+      //       return brackets;
+      //     });
+      //     var brackets = remapped[0].map(function (d) {
+      //         return d['bracket'];
+      //     });
+      //     console.log(brackets);
+      //     console.log(remapped);
+      //     var stacked = d3.layout.stack()(remapped);
+      //     console.log(stacked);
+      //     // 
+      //     var width = this.clientWidth;
+      //     var height = this.clientHeight;
+          
+      //     var colors = d3.scale.ordinal()
+      //       .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"])
+      //       .domain(brackets);
+      //     console.log(colors('26-50'));
+
+      //     var x = d3.scale.ordinal()
+      //       .rangeRoundBands([0, width], 0.1)
+      //       .domain(stacked[0].map(function (d) {
+      //         return d.x;
+      //       }));
+          
+      //     var y = d3.scale.linear()
+      //       .rangeRound([height, 0])
+      //       .domain([0, d3.max(stacked[stacked.length - 1], function (d) {
+      //         return d.y0 + d.y;
+      //       })]);
+
+      //     console.log("x.domain(): " + x.domain())
+      //     console.log("y.domain(): " + y.domain())
+      //     console.log("------------------------------------------------------------------");
+          
+      //     var valgroup = this.chart.selectAll('g.valgroup')
+      //         .data(stacked)
+      //       .enter().append('g')
+      //         .attr('class', 'valgroup')
+      //         .style('fill', function (d, i) {
+      //           return colors(i);
+      //         });
+
+      //     var rect = valgroup.selectAll('rect')
+      //         .data(function (d) { return d; })
+      //       .enter().append('rect')
+      //         .attr('x', function (d) { return x(d.x); })
+      //         .attr('y', function (d) { return -y(d.y0) - y(d.y) * -1; })
+      //         .attr('height', function (d) { return y(d.y); })
+      //         .attr('width', x.rangeBand());
+      //   }
+      // });
 
     })();
   </script>
