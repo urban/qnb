@@ -1,0 +1,81 @@
+<link rel="import" href="/bower_components/polymer/polymer.html">
+<script src="/bower_components/d3/d3.min.js"></script>
+
+<polymer-element name="q-chart-line" extends="q-chart" attributes="url">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+
+      .bar {
+        fill: steelblue;
+      }
+
+      .bar:hover {
+        fill: brown;
+      }
+
+      .axis {
+        font: 10px sans-serif;
+      }
+
+      .axis path,
+      .axis line {
+        fill: none;
+        stroke: #000;
+        shape-rendering: crispEdges;
+      }
+
+      .x.axis path {
+        display: none;
+      }
+    </style>
+    <svg id="chart"></svg>
+  </template>
+  <script>
+    (function () {
+
+      Polymer('q-chart-line', {
+        update: function () {
+          var w = this.clientWidth / this.data.length;
+          var h = this.clientHeight;
+
+          console.log(this.data);
+          var data = this.data.map(function (d, i) {
+            return d['value'];
+          });
+          console.log(data);
+          return;
+  
+          var xScale = d3.scale.linear()
+              .domain([0, 1])
+              .range([0, w]);
+            
+          var yScale = d3.scale.linear()
+             .domain([0, 100])
+             .rangeRound([0, h]);
+          
+          var line = d3.svg.line()
+            .x(function(d) { return xScale(d.date); })
+            .y(function(d) { return yScale(d.close); });
+
+          this.chart.append('path')
+            .datum(data)
+            .attr('class', 'line')
+            .attr('d', line);
+          // this.chart.selectAll("rect")
+          //    .data(this.data)
+          //    .enter().append("rect")
+          //    .attr("x", function(d, i) { return xScale(i) - .5; })
+          //    .attr("y", function(d) { return h - .5; })
+          //    .attr("width", w)
+          //    .transition().delay(function (d,i){ return i * 300;}).duration(300)
+          //    .attr("height", function(d) { return yScale(d.value); })
+          //    .attr("y", function(d) { return h - yScale(d.value) - .5; });
+        }
+      });
+
+    })();
+  </script>
+</polymer-element>
