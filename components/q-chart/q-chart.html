@@ -9,10 +9,10 @@
         url: null,
         data: null,
         chart: null,
+        isRendered: false,
         ready: function () {
           this.onLoad = (function (err, res) {
             this.data = res;
-            // this.update();
             this.asyncFire('load', res);
           }).bind(this);
           this.draw();
@@ -25,6 +25,15 @@
             .attr("class", "chart")
             .attr("width", this.clientWidth)
             .attr("height", this.clientHeight);
+        },
+        start: function () {
+          console.log('do animation here in sub-class');
+        },
+        stop: function () {
+          console.log('stop animation here in sub-class');
+        },
+        render: function () {
+          console.log('this method should be overriden in the sub-class');
         }
       });
 

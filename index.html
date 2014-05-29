@@ -30,13 +30,13 @@
       </q-view>
     </frog-card>
 
-    <!-- <frog-card>
+    <frog-card>
       <q-view url="/data/stories/story-2.json">
         <q-visualization full title="World Map of Awfulness" hasContent>
           <q-chart-globe url="/data/deforestation.json" dataTopLevel="Continent"></q-chart-globe>
         </q-visualization>
       </q-view>
-    </frog-card> -->
+    </frog-card>
 
   </frog-deck>
 
@@ -46,24 +46,32 @@
     var cards = deck.querySelectorAll('frog-card');
 
     deck.addEventListener('change', function (e) {
-      var selected = e.detail.newVal;
-      renderVisualizations(cards[selected]);
+      var detail = e.detail;
+      if (detail.oldVal) deselectVisualizations(cards[detail.oldVal]);
+      selectVisualizations(cards[detail.newVal]);
     });
 
     document.addEventListener('click', next, false);
 
-    function renderVisualizations(card) {
+    function selectVisualizations(card) {
       var visualizations = card.querySelectorAll('q-visualization > *');
       visualizations.array().forEach(function (v) {
-        var cb;
+        var cb = function () {
+          if (!v.isRendered) v.render();
+          if (v.start) v.start();
+        };
         if (v.data && v.render) {
-          v.render();
+          cb();
         } else {
-          cb = function () {
-            v.render();
-          };
           v.addEventListener('load', cb);
         }
+      });
+    };
+
+    function deselectVisualizations(card) {
+      var visualizations = card.querySelectorAll('q-visualization > *');
+      visualizations.array().forEach(function (v) {
+        if (v.stop) v.stop();
       });
     }
 
@@ -89,7 +97,7 @@
 
     // initial render
     window.addEventListener('WebComponentsReady', function(e) {
-      renderVisualizations(cards[0]);
+      selectVisualizations(cards[0]);
     });
 
   </script>
