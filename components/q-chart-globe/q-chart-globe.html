@@ -1,0 +1,198 @@
+<link rel="import" href="/bower_components/polymer/polymer.html">
+<script src="/bower_components/d3/d3.min.js"></script>
+
+<polymer-element name="q-chart-globe" attributes="url dataTopLevel">
+  <template>
+    <style>
+      :host {
+        display: block;
+      } 
+
+      .foreground {
+        fill: #d8ffff;
+        stroke: #333;
+        stroke-width: 1.5px;
+      }
+       
+      .land {
+        fill: #d7c7ad;
+        stroke: #766951;
+      }
+
+      .bar {
+        fill: steelblue;
+      }
+
+      .bar:hover {
+        fill: brown;
+      }
+
+      .axis {
+        font: 10px sans-serif;
+      }
+
+      .axis path,
+      .axis line {
+        fill: none;
+        stroke: #000;
+        shape-rendering: crispEdges;
+      }
+
+      .x.axis path {
+        display: none;
+      }
+
+      #africa {
+        fill:rgb(255, 0, 0);
+      }
+
+    </style>
+    <svg id="chart"></svg>
+  </template>
+  <script src="http://d3js.org/topojson.v1.min.js"></script>
+  <script>
+    (function () {
+
+      Polymer('q-chart-globe', {
+        url: null,
+        data: null,
+        dataWorld: null,
+        dataTopLevel: null,
+        ready: function () {
+          this.onLoad = this.load.bind(this);
+          this.onLoadWorld = this.loadWorld.bind(this);
+        },
+        domReady: function () {
+          d3.json("/data/world-110m.json", this.onLoadWorld);
+        },
+        urlChanged: function (oldVal, newVal) {
+          // this.async(this.draw);
+          d3.json(newVal, this.onLoad);        
+        },
+        load: function (err, res) {
+          console.log('data', res);
+          this.data = res.data;
+        },
+        loadWorld: function (err, res) {
+          console.log('world',res);
+          this.dataWorld = res;
+        },
+        draw: function () {
+          var self = this;
+          var diameter = 320,
+            radius = diameter/2,
+            velocity = .02,
+            then = Date.now();
+
+          var years = [ "2015", "2017", "2019", "2021", "2023", "2025", "2027", "2029", "2031", "2033", "2035"]
+
+          var lastYearUpdate = Date.now();
+          var yearIndex = 0;
+         
+          var projection = d3.geo.orthographic()
+              .scale(radius - 2)
+              .translate([radius, radius])
+              .clipAngle(90);
+           
+          var svg = d3.select(this.$.chart)
+              .attr("width", diameter)
+              .attr("height", diameter);
+           
+          var path = d3.geo.path()
+              .projection(projection);
+           
+          var globe = {type: "Sphere"};
+
+          svg.append("path")
+              .datum(globe)
+              .attr("class", "foreground")
+              .attr("d", path);
+
+          var currentYear = "2015";
+
+          function getCurrentColor( name )
+          {
+              for( var i = 0; i < self.data.length; i++ ) {
+                if(self.data[i][self.dataTopLevel] == name) {
+                    for( var j = 0; j < self.data[i]["By Year"].length; j++) {
+                        if(self.data[i]["By Year"][j]["year"] == currentYear) {
+                          var hue = d3.scale.linear().domain([-4,10]).range([0,360]);
+
+                          console.log( hue(self.data[i]["By Year"][j]["value"]));
+                          return d3.rgb(
+                            d3.hsl(
+                              hue(self.data[i]["By Year"][j]["value"])
+                              , 0.5, 0.5)).toString();
+                        }
+                    }
+                }
+              }
+              return d3.hsl(0, 0, 0).toString();
+          }
+
+          var countries = topojson.feature(self.dataWorld, self.dataWorld.objects.countries);
+
+          var asia = {type: "FeatureCollection", name: "Asia", color: "#ffbb78", id:"Asia", features: countries.features.filter(function(d) { return d.properties.continent=="Asia"; })};
+          var africa = {type: "FeatureCollection", name: "Africa", id:"Africa", features: countries.features.filter(function(d) { return d.properties.continent=="Africa"; })};
+          var europe = {type: "FeatureCollection", name: "Europe", color: "#ff7f0e", id:"Europe", features: countries.features.filter(function(d) { return d.properties.continent=="Europe"; })};
+          var na = {type: "FeatureCollection", name: "North America", color: "#1f77b4", id:"NA", features: countries.features.filter(function(d) { return d.properties.continent=="North America"; })};
+          var sa = {type: "FeatureCollection", name: "South America", color: "#d62728", id:"SA", features: countries.features.filter(function(d) { return d.properties.continent=="South America"; })};
+
+          var oceania = {type: "FeatureCollection", name: "Oceania", color: "#aec7e8", id:"Oceania", features: countries.features.filter(function(d) { return d.properties.continent=="Oceania"; })};
+
+
+          var continents = [asia,africa,europe,na,sa,oceania];
+          var continent = svg.selectAll(".continent").data(continents);
+          var globe = {type: "Sphere"};
+
+          continent.enter().insert("path")
+            .attr("class", "continent")
+            .attr("d", path)
+            .attr("id", function(d,i) { return d.id; })
+            .style("fill", function(d,i) { return d.color; });
+         
+          d3.timer(function() {
+            var angle = velocity * (Date.now() - then);
+            projection.rotate([angle,0,0]);
+            svg.selectAll("path")
+              .attr("d", path.projection(projection));
+
+            if(Date.now() - lastYearUpdate > 1000)
+            {
+              svg.select('#Africa').style({
+                fill: getCurrentColor("Africa")
+              });
+
+              svg.select('#Asia').style({
+                fill: getCurrentColor("Asia")
+              });
+
+              svg.select('#Europe').style({
+                fill: getCurrentColor("Asia")
+              });
+
+              svg.select('#NA').style({
+                fill: getCurrentColor("North America")
+              });
+
+              svg.select('#SA').style({
+                fill: getCurrentColor("South America")
+              });
+
+              currentYear = years[yearIndex];
+
+              yearIndex++;
+              if(yearIndex > 11)
+              {
+                yearIndex = 0;
+              }
+
+              lastYearUpdate = Date.now();
+            }
+
+          });
+        }
+      })
+    })();
+  </script>
+</polymer-element>
