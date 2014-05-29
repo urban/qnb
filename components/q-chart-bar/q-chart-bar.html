@@ -38,7 +38,8 @@
 
       Polymer('q-chart-bar', {
         update: function () {
-          var w = this.clientWidth / this.data.length;
+          var data = this.data.data;
+          var w = this.clientWidth / data.length;
           var h = this.clientHeight;
             
           var xScale = d3.scale.linear()
@@ -50,7 +51,7 @@
              .rangeRound([0, h]);
 
           this.chart.selectAll("rect")
-             .data(this.data)
+             .data(data)
              .enter().append("rect")
              .attr("x", function(d, i) { return xScale(i) - .5; })
              .attr("y", function(d) { return h - .5; })
