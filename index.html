@@ -45,21 +45,27 @@
     var deck = document.querySelector('#deck');
     var cards = deck.querySelectorAll('frog-card');
 
-    // deck.addEventListener('change', function (e) {
-    //   console.log(e.detail);
-    //   var selected = e.detail.newVal;
-    //   renderVisualizations(cards[selected]);
-    // });
+    deck.addEventListener('change', function (e) {
+      var selected = e.detail.newVal;
+      renderVisualizations(cards[selected]);
+    });
 
     document.addEventListener('click', next, false);
 
-    // function renderVisualizations(card) {
-    //   var visualizations = card.querySelectorAll('q-visualization > *');
-    //   visualizations.array().forEach(function (v) {
-    //     if (v.update) return v.update.call(v);
-    //     if (v.draw) v.draw.call(v);
-    //   });
-    // }
+    function renderVisualizations(card) {
+      var visualizations = card.querySelectorAll('q-visualization > *');
+      visualizations.array().forEach(function (v) {
+        var cb;
+        if (v.data && v.render) {
+          v.render();
+        } else {
+          cb = function () {
+            v.render();
+          };
+          v.addEventListener('load', cb);
+        }
+      });
+    }
 
     function next() {
       deck.selected = (deck.selected + 1) % deck.children.length;
@@ -82,9 +88,9 @@
     };
 
     // initial render
-    // window.addEventListener('WebComponentsReady', function(e) {
-    //   renderVisualizations(cards[0]);
-    // });
+    window.addEventListener('WebComponentsReady', function(e) {
+      renderVisualizations(cards[0]);
+    });
 
   </script>
   

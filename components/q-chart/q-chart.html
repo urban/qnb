@@ -12,7 +12,8 @@
         ready: function () {
           this.onLoad = (function (err, res) {
             this.data = res;
-            this.update();
+            // this.update();
+            this.asyncFire('load', res);
           }).bind(this);
           this.draw();
         },
@@ -24,11 +25,6 @@
             .attr("class", "chart")
             .attr("width", this.clientWidth)
             .attr("height", this.clientHeight);
-
-            if (this.data) update();
-        },
-        update: function () {
-          console.log('needs to be sub-classed or extended')
         }
       });
 
