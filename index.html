@@ -24,6 +24,14 @@
 
     <frog-card>
       <q-view url="/data/stories/story-2.json">
+        <q-visualization full title="Ring Chart" hasContent>
+          <q-chart-ring url="/data/religiousness.json"></q-chart-ring>
+        </q-visualization>
+      </q-view>
+    </frog-card>
+
+    <frog-card>
+      <q-view url="/data/stories/story-2.json">
         <q-visualization full title="Multi-line Chart" hasContent>
           <q-chart-line url="/data/face_scans_day.json"></q-chart-line>
         </q-visualization>
@@ -60,6 +68,7 @@
           if (!v.isRendered) v.render();
           if (v.start) v.start();
         };
+        //console.log(v.render);
         if (v.data && v.render) {
           cb();
         } else {
