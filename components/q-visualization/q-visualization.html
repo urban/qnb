@@ -3,6 +3,12 @@
 <polymer-element name="q-visualization" attributes="title hasContent">
   <template>
     <style>
+      *, *:before, *:after {
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+      }
+
       :host {
         display: -webkit-box !important;
         display: -ms-flexbox !important;
@@ -26,6 +32,7 @@
 
       #box {
         flex: 1;
+        padding: 2em;
       }
     </style>
     <header>

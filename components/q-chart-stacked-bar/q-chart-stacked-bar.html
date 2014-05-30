@@ -1,24 +1,17 @@
 <link rel="import" href="/bower_components/polymer/polymer.html">
 <script src="/bower_components/d3/d3.min.js"></script>
-<script src="/bower_components/dimple/dist/dimple.v2.0.0.min.js"></script>
 
-<polymer-element name="q-chart-stacked-bar" extends="q-chart" attributes="url">
+<polymer-element name="q-chart-stacked-bar" extends="q-chart" attributes="url yAxisLabel xAxisLabel recordKey">
   <template>
     <style>
+      *, *:before, *:after {
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+      }
+
       :host {
         display: block;
-      }
-
-      .bar {
-        fill: steelblue;
-      }
-
-      .bar:hover {
-        fill: brown;
-      }
-
-      .axis {
-        font: 10px sans-serif;
       }
 
       .axis path,
@@ -26,6 +19,10 @@
         fill: none;
         stroke: #000;
         shape-rendering: crispEdges;
+      }
+
+      .bar {
+        fill: steelblue;
       }
 
       .x.axis path {
@@ -38,99 +35,123 @@
     (function () {
 
       Polymer('q-chart-stacked-bar', {
-        draw: function () {
-          this.super();
-        },
-        urlChanged: function (oldVal, newVal) {
-          d3.tsv(newVal, this.onLoad);
-        },
-        start: function () {
-
-        },
-        stop: function () {
-
-        },
+        yAxisLabel: null,
+        xAxisLabel: null,
+        recordKey: null,
+        margin: {top: 20, right: 20, bottom: 30, left: 60},
         render: function () {
+          console.log('render!!');
           this.isRendered = true;
-          console.log(this.data);
-          var chart = new dimple.chart(this.chart, this.data);
-          // chart.setBounds(60, 45, 510, 315);
-          chart.addCategoryAxis('x', 'country');
-          chart.addMeasureAxis('y', 'value');
-          chart.addSeries('bracket', dimple.plot.bar);
-          chart.addLegend(200, 10, 380, 20, "right");
-          chart.draw();
+          // 
+          var self = this;
+          var data = this.data.data;
+          var width = this.clientWidth - this.margin.left - this.margin.right;
+          var height = this.clientHeight - this.margin.top - this.margin.bottom;
+
+          this.chart.append("g")
+              .attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")");
+
+          var x = d3.scale.ordinal()
+            .rangeRoundBands([0, width], .1);
+
+          var y = d3.scale.linear()
+            .rangeRound([height, 0]);
+
+          var color = this.colors;
+
+          var xAxis = d3.svg.axis()
+            .scale(x)
+            .orient("bottom");
+
+          var yAxis = d3.svg.axis()
+            .scale(y)
+            .orient("left")
+            .tickFormat(d3.format(".2s"));
+
+          // color.domain(d3.keys(data[0]).filter(function(key) { return key !== "State"; }));
+
+          // data.forEach(function(d) {
+          //   var y0 = 0;
+          //   d.ages = color.domain().map(function(name) { return {name: name, y0: y0, y1: y0 += +d[name]}; });
+          //   d.total = d.ages[d.ages.length - 1].y1;
+          // });
+
+          // data.sort(function(a, b) { return b.total - a.total; });
+          var key = 'By Year';
+          var massagedData = data[this.index][key];
+          var lastUpdate = Date.now();
+
+          var recordKeys = massagedData[0]['data'].map(function (d) {
+            return d[self.recordKey];
+          });
+          console.log(recordKeys);
+          color.domain(recordKeys);
+
+          massagedData.forEach(function (d) {
+            var y0 = 0;
+            d.fields = recordKeys.map(function (name) {
+              return { name: name, y0: y0, y1: y0 += +d[name] }
+            });
+            d.total = d.fields[d.fields.length -1].y1;
+          });
+
+          massagedData.sort(function (a, b) { return b.total - a.total });
+
+          // console.log(massagedData);
+          return;
+
+          x.domain(data.map(function(d) { return d.State; }));
+          y.domain([0, d3.max(data, function(d) { return d.total; })]);
+
+          this.chart.append("g")
+            .attr("class", "x axis")
+            .attr("transform", "translate(0," + height + ")")
+            .call(xAxis);
+
+          this.chart.append("g")
+              .attr("class", "y axis")
+              .call(yAxis)
+            .append("text")
+              .attr("transform", "rotate(-90)")
+              .attr("y", 6)
+              .attr("dy", ".71em")
+              .style("text-anchor", "end")
+              .text("Population");
+
+          var state = this.chart.selectAll(".state")
+              .data(data)
+            .enter().append("g")
+              .attr("class", "g")
+              .attr("transform", function(d) { return "translate(" + x(d.State) + ",0)"; });
+
+          state.selectAll("rect")
+              .data(function(d) { return d.ages; })
+            .enter().append("rect")
+              .attr("width", x.rangeBand())
+              .attr("y", function(d) { return y(d.y1); })
+              .attr("height", function(d) { return y(d.y0) - y(d.y1); })
+              .style("fill", function(d) { return color(d.name); });
+
+          var legend = this.chart.selectAll(".legend")
+              .data(color.domain().slice().reverse())
+            .enter().append("g")
+              .attr("class", "legend")
+              .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+
+          legend.append("rect")
+            .attr("x", width - 18)
+            .attr("width", 18)
+            .attr("height", 18)
+            .style("fill", color);
+
+          legend.append("text")
+            .attr("x", width - 24)
+            .attr("y", 9)
+            .attr("dy", ".35em")
+            .style("text-anchor", "end")
+            .text(function(d) { return d; });
         }
       });
-
-      // Polymer('q-chart-stacked-bar', {
-      //   index: 0,
-      //   render: function () {
-      //     var index = this.index;
-      //     var data = this.data.data;
-      //     var countries = data.map(function (d) {
-      //       return Object.keys(d)[0];
-      //     });
-      //     var years = data[0][countries[0]].map(function (d) {
-      //       return Object.keys(d)[0];
-      //     });
-      //     var remapped = countries.map(function (country, i) {
-      //       var brackets = data[i][country][index][years[index]];
-      //       brackets.forEach(function (d, ii) {
-      //         d.x = ii;
-      //         d.y = d['value'];
-      //       });
-      //       return brackets;
-      //     });
-      //     var brackets = remapped[0].map(function (d) {
-      //         return d['bracket'];
-      //     });
-      //     console.log(brackets);
-      //     console.log(remapped);
-      //     var stacked = d3.layout.stack()(remapped);
-      //     console.log(stacked);
-      //     // 
-      //     var width = this.clientWidth;
-      //     var height = this.clientHeight;
-          
-      //     var colors = d3.scale.ordinal()
-      //       .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"])
-      //       .domain(brackets);
-      //     console.log(colors('26-50'));
-
-      //     var x = d3.scale.ordinal()
-      //       .rangeRoundBands([0, width], 0.1)
-      //       .domain(stacked[0].map(function (d) {
-      //         return d.x;
-      //       }));
-          
-      //     var y = d3.scale.linear()
-      //       .rangeRound([height, 0])
-      //       .domain([0, d3.max(stacked[stacked.length - 1], function (d) {
-      //         return d.y0 + d.y;
-      //       })]);
-
-      //     console.log("x.domain(): " + x.domain())
-      //     console.log("y.domain(): " + y.domain())
-      //     console.log("------------------------------------------------------------------");
-          
-      //     var valgroup = this.chart.selectAll('g.valgroup')
-      //         .data(stacked)
-      //       .enter().append('g')
-      //         .attr('class', 'valgroup')
-      //         .style('fill', function (d, i) {
-      //           return colors(i);
-      //         });
-
-      //     var rect = valgroup.selectAll('rect')
-      //         .data(function (d) { return d; })
-      //       .enter().append('rect')
-      //         .attr('x', function (d) { return x(d.x); })
-      //         .attr('y', function (d) { return -y(d.y0) - y(d.y) * -1; })
-      //         .attr('height', function (d) { return y(d.y); })
-      //         .attr('width', x.rangeBand());
-      //   }
-      // });
 
     })();
   </script>
