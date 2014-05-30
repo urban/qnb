@@ -2,40 +2,39 @@
 "title":"Water Scarcity by Country",
 "data": [
 {"Country":"India",
-"Paper Books Printed": [
+"By Year": [
     {"year":2015, "value":82}, {"year":2017, "value":84}, {"year":2019, "value":85}, 
     {"year":2021, "value":86}, {"year":2023, "value":87}, {"year":2025, "value":88}, 
     {"year":2027, "value":89}, {"year":2029, "value":86}, {"year":2031, "value":85}, 
     {"year":2033, "value":84}, {"year":2035, "value":81}
-    ]
 ]},
 
 {"Country":"Malaysia", 
-"Paper Books Printed": [
+"By Year": [
     {"year":2015, "value":17}, {"year":2017, "value":17}, {"year":2019, "value":17}, {"year":2021, "value":16}, 
     {"year":2023, "value":15}, {"year":2025, "value":14}, {"year":2027, "value":14}, {"year":2029, "value":14}, 
     {"year":2031, "value":14}, {"year":2033, "value":13}, {"year":2035, "value":12}
     ]
-]},
+},
 
 {"Country":"China", 
-"Paper Books Printed": [
+"By Year": [
     {"year":2015, "value":189}, {"year":2017, "value":190}, {"year":2019, "value":187}, {"year":2021, "value":185}, 
     {"year":2023, "value":184}, {"year":2025, "value":180}, {"year":2027, "value":177}, {"year":2029, "value":176}, 
     {"year":2031, "value":175}, {"year":2033, "value":172}, {"year":2035, "value":170}
     ]
-]},
+},
 
 {"Country":"Indonesia", 
-"Paper Books Printed": [
+"By Year":[
     {"year":2015, "value":24}, {"year":2017, "value":26}, {"year":2019, "value":28}, {"year":2021, "value":29}, 
     {"year":2023, "value":30}, {"year":2025, "value":31}, {"year":2027, "value":30}, {"year":2029, "value":31}, 
     {"year":2031, "value":30}, {"year":2033, "value":31}, {"year":2035, "value":31}
     ]
-]},
+},
 
 {"Country":"Russia", 
-"Paper Books Printed": [
+"By Year": [
     {"year":2015, "value":123}, {"year":2017, "value":128}, {"year":2019, "value":136}, {"year":2021, "value":132}, 
     {"year":2023, "value":125}, {"year":2025, "value":118}, {"year":2027, "value":109}, {"year":2029, "value":102}, 
     {"year":2031, "value":98}, {"year":2033, "value":96}, {"year":2035, "value":94}

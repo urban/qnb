@@ -1,0 +1,214 @@
+<link rel="import" href="/bower_components/polymer/polymer.html">
+<script src="/bower_components/d3/d3.min.js"></script>
+<script src="/bower_components/c3/c3.js"></script>
+
+<polymer-element name="q-chart-ring" extends="q-chart" attributes="url dataTopLevel">
+  <template>
+    <style>
+      :host {
+        display: block;
+      } 
+
+      .foreground {
+        fill: #d8ffff;
+        stroke: #333;
+        stroke-width: 1.5px;
+      }
+       
+      .land {
+        fill: #d7c7ad;
+        stroke: #766951;
+      }
+
+      .bar {
+        fill: steelblue;
+      }
+
+      .bar:hover {
+        fill: brown;
+      }
+
+      .axis {
+        font: 10px sans-serif;
+      }
+
+      .axis path,
+      .axis line {
+        fill: none;
+        stroke: #000;
+        shape-rendering: crispEdges;
+      }
+
+      .x.axis path {
+        display: none;
+      }
+
+      #africa {
+        fill:rgb(255, 0, 0);
+      }
+
+    </style>
+    <div id="chart"></div>
+  </template>
+  <script>
+    (function () {
+
+      Polymer('q-chart-ring', {
+        intervalId : null,
+        start: function () {
+          stopTimer
+        },
+        stop: function () {
+          console.log(" trying to stop ")
+          clearInterval(intervalId);
+        },
+        render: function () {
+          var self = this;
+          var countriesData = self.data.data;
+
+        // Setup all the constants
+          var duration = 500;
+          var width = 800
+          var height = 600
+          var radius = Math.floor(Math.min(width/2, height/2) * 0.9);
+          var colors = ["#d62728", "#ff9900", "#004963", "#3497D3"];
+
+          var years = [ "2015", "2017", "2019", "2021", "2023", "2025", "2027", "2029", "2031", "2033", "2035"];  
+          var countries = [];
+
+          //console.log(countriesData);
+          for (var key in countriesData) {
+            if (countriesData.hasOwnProperty(key)) {
+              countries.push(key);
+            }
+          }
+
+          var currentYear = 0;
+          var currentCountry = 0;
+          
+          /////////////////////////////////////////////////////////////////////////////////////////////
+          /////////////////////////////////////////////////////////////////////////////////////////////
+          var updateChart = function(dataset) {
+
+            //console.log(dataset);
+
+            arcs.data(donut(dataset))
+                .enter()
+                .append("path")
+                .attr("stroke", "white")
+                .attr("stroke-width", 2)
+                .attr("fill", function(d, i) { return color(i); })
+                .attr("d", arc);
+
+            arcs.transition()
+              .duration(duration)
+              .attrTween("d", arcTween);
+
+            sliceLabel.data(donut(dataset));
+
+            sliceLabel.transition()
+              .duration(duration)
+              .attr("transform", function(d) { return "translate(" + (arc.centroid(d)) + ")"; })
+              .style("fill-opacity", function(d) {
+                if (d.value === 0) { return 1e-6; }
+                else { return 1; }
+              });
+              
+            sliceLabel.data(donut(dataset)).enter()
+              .append("text")
+              .attr("class", "arcLabel")
+              .attr("transform", function(d) { return "translate(" + (arc.centroid(d)) + ")"; })
+              .attr("text-anchor", "middle")
+              .style("fill-opacity", function(d) {
+                if (d.value === 0) { return 1e-6; }
+                else { return 1; }
+              })
+              .text(function(d) { 
+                return d.data.label;
+              });
+          };
+          /////////////////////////////////////////////////////////////////////////////////////////////
+
+          var color = d3.scale.category20();
+
+          var donut = d3.layout.pie()
+            .sort(null)
+            .value(function(d) { return d.value; });
+
+          var arc = d3.svg.arc()
+            .innerRadius(radius * .4)
+            .outerRadius(radius);
+
+          var svg = d3.select(this.$.chart)
+            .append("svg")
+            .append("svg")
+            .attr("width", width)
+            .attr("height", height);
+
+          var arc_grp = svg.append("g")
+            .attr("class", "arcGrp")
+            .attr("transform", "translate(" + (width / 2) + "," + (height / 2) + ")");
+
+          var label_group = svg.append("g")
+            .attr("class", "lblGroup")
+            .attr("transform", "translate(" + (width / 2) + "," + (height / 2) + ")");
+
+          var arcs = arc_grp.selectAll("path")
+            .data(donut(countriesData[countries[currentCountry]][years[currentYear]]));
+
+          arcs.enter()
+            .append("path")
+            .attr("stroke", "white")
+            .attr("stroke-width", 2)
+            .attr("fill", function(d, i) { return color(i); })
+            .attr("d", arc)
+            .each(function(d) { return this.current = d; });
+
+          var sliceLabel = label_group.selectAll("text")
+            .data(donut(countriesData[countries[currentCountry]][years[currentYear]]));
+
+          sliceLabel.enter()
+            .append("text")
+            .attr("class", "arcLabel")
+            .attr("transform", function(d) { return "translate(" + (arc.centroid(d)) + ")"; })
+            .attr("text-anchor", "middle")
+            .style("fill-opacity", function(d) {
+              if (d.value === 0) { return 1e-6; }
+              else { return 1; }
+            })
+            .text(function(d) { return d.data.label; });
+
+            //Update the data
+            this.start = (function () 
+            {
+              intervalId = setInterval(function() 
+              {
+                
+                if(currentYear < years.length) {
+                  currentYear+=1;
+                } else {
+                  currentYear = 0;
+                  currentCountry+=1;
+                }
+
+                if(currentCountry > countries.length) {
+                  currentCountry = 0;
+                }
+
+                return updateChart(countriesData[countries[currentCountry]][years[currentYear]]);
+
+              }, 1000);
+            }).bind(this);
+
+            // Tween Function
+            var arcTween = function(a) {
+              var i = d3.interpolate(this.current, a);
+              this.current = i(0);
+              return function(t) { return arc(i(t)); };
+            };
+
+        }
+      })
+    })();
+  </script>
+</polymer-element>

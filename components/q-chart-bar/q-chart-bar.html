@@ -37,28 +37,56 @@
     (function () {
 
       Polymer('q-chart-bar', {
-        update: function () {
-          var data = this.data.data;
+         start: function () {
+          
+        },
+        stop: function () {
+
+        },
+        render: function () {
+          var self = this;
+          var data = self.data.data;
           var w = this.clientWidth / data.length;
           var h = this.clientHeight;
+
+          var max = d3.max(data, function(d) {
+            return d.value;
+          });
+
+          console.log(max);
             
           var xScale = d3.scale.linear()
               .domain([0, 1])
               .range([0, w]);
             
           var yScale = d3.scale.linear()
-             .domain([0, 100])
+             .domain([0, max])
              .rangeRound([0, h]);
 
           this.chart.selectAll("rect")
              .data(data)
              .enter().append("rect")
-             .attr("x", function(d, i) { return xScale(i) - .5; })
+             .attr("x", function(d, i) { console.log(xScale(i)); return xScale(i) - .5; })
              .attr("y", function(d) { return h - .5; })
              .attr("width", w)
              .transition().delay(function (d,i){ return i * 300;}).duration(300)
              .attr("height", function(d) { return yScale(d.value); })
-             .attr("y", function(d) { return h - yScale(d.value) - .5; });
+             .attr("y", function(d) { return h - yScale(d.value) - .5; })
+             .attr("fill", "#00f");
+
+          this.chart.selectAll("text")
+             .data(data)
+             .enter()
+             .append("text")
+             .text(function(d) {
+                  return d.value + "m";
+             }).attr("x", function(d, i) {
+                  return xScale(i) - .5;
+             })
+             .attr("y", function(d) {
+                  return h - yScale(d.value) + 15;
+             })
+             .attr("fill", "#fff");
         }
       });
 
