@@ -27,9 +27,9 @@
         shape-rendering: crispEdges;
       }
 
-      .x.axis path {
+      /*.x.axis path {
         display: none;
-      }
+      }*/
     </style>
     <svg id="chart"></svg>
   </template>
@@ -39,73 +39,34 @@
       Polymer('q-chart-grouped-bar', {
         yAxisLabel:null,
         xAxisLabel:null,
-         start: function () {
-          
+        start: function () {
         },
         stop: function () {
-
         },
-        render: function () {
+        cleanData: function() {
           var self = this;
-          var data = self.data.data;
+          var data = this.data.data;
 
-          console.log( this.clientWidth, this.clientHeight );
-
-          // this.clientWidth = 600; /// TODO THIS NEEDS TO BE SET?
-          // this.clientHeight = 300;
-
-          var w = this.clientWidth / data.length;
-          var h = this.clientHeight;
-
-          var x0 = d3.scale.ordinal()
-              .rangeRoundBands([0, this.clientWidth], .1);
-              // .range([this.clientWidth, 0]);
-
-          var x1 = d3.scale.ordinal();
-
-          var y = d3.scale.linear()
-              .range([this.clientHeight, 0]);
-
-          var color = d3.scale.ordinal()
-              .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
-
-          var xAxis = d3.svg.axis()
-              .scale(x0)
-              .orient("bottom");
-
-          var yAxis = d3.svg.axis()
-              .scale(y)
-              .orient("left")
-              .tickFormat(d3.format(".2s"));
-
-          var svg = d3.select(this.$.chart)
-              .attr("width", this.clientWidth)
-              .attr("height", this.clientHeight)
-            .append("g")
-              .attr("transform", "translate(0,0)");
-
-          var countries = [];
-          for( var i = 0; i < data.length; i++ )
-          {
-            countries.push(data[i].Country);
+          this.countries = [];
+          for( var i = 0; i < data.length; i++ ) {
+            this.countries.push(data[i].Country);
           }
-          var years = [ "2015", "2017", "2019", "2021", "2023", "2025", "2027", "2029", "2031", "2033", "2035"]
-
+          this.years = [ "2015", "2017", "2019", "2021", "2023", "2025", "2027", "2029", "2031", "2033", "2035"]
 
           // I'm doing this because a lot of the data isn't in a format that d3 wants, and I
           // don't feel like redoing all the JSON files
           ///////////////////////////////////////////////////////////////////////////////////////////
-          var massagedData = [];
+          this.massagedData = [];
           var firstStageMassaging = {};
-          for( var i = 0; i < years.length; i++ )
+          for( var i = 0; i < self.years.length; i++ )
           {
-             firstStageMassaging[years[i]] = [];
+             firstStageMassaging[self.years[i]] = [];
           }
-          // first step : years all together 
+          // first step : years all together
           for( var i = 0; i < data.length; i++ )
           {
             var countryName = data[i].Country;
-            
+
             for( var j = 0; j < data[i]["By Year"].length; j++ )
             {
               var year = data[i]["By Year"][j].year;
@@ -125,10 +86,10 @@
                 finalRecord[prop2] = firstStageMassaging[prop][j][prop2];
               }
             }
-            massagedData.push(finalRecord);
+            this.massagedData.push(finalRecord);
           }
 
-          massagedData.forEach(function(d) {
+          this.massagedData.forEach(function(d) {
             d.countries = [];
             for( var prop in d ) {
               if(prop != "year" && prop != "countries") {
@@ -137,18 +98,39 @@
               }
             }
           });
+        },
+        init: function() {
+          var self = this;
 
+          self.margin = {top: 20, right: 100, bottom: 50, left: 50};
+          self.width = self.clientWidth - self.margin.left - self.margin.right;
+          self.height = self.clientHeight - self.margin.top - self.margin.bottom;
 
-          ///////////////////////////////////////////////////////////////////////////////////////////
-          //////////////////////////////////////////////////////////////////////////////////////////
+          self.x0 = d3.scale.ordinal()
+              .domain(_.map(self.massagedData, function(d) { return d.year;} ))
+              .rangeRoundBands([0, self.width], .1);
 
-          x0.domain(massagedData.map(function(d) { 
-            return d.year; 
-          }));
-          
-          x1.domain(countries).rangeRoundBands([0, x0.rangeBand()]);
+          self.x1 = d3.scale.ordinal()
+              .domain(this.countries)
+              .rangeRoundBands([0, self.x0.rangeBand()]);
 
-          y.domain([0, d3.max(massagedData, function(d) { 
+          self.y = d3.scale.linear()
+              .range([self.height, 0]);
+
+          self.color = d3.scale.ordinal()
+              .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+
+          self.xAxis = d3.svg.axis()
+              .scale(self.x0)
+              .orient("bottom")
+              .ticks(d3.time.year, 1);
+
+          self.yAxis = d3.svg.axis()
+              .scale(self.y)
+              .orient("left")
+              .tickFormat(d3.format(".2s"));
+
+          self.y.domain([0, d3.max(this.massagedData, function(d) {
             var max = 0;
             for( var prop in d ) {
               if(prop != "year") {
@@ -157,19 +139,24 @@
             }
             return max;
           })]);
+        },
+        initChart: function() {
+          var self = this;
 
-          ////////////////////////////////////////////////////////////////////////////////////////
-          // drawing the chart
-          ////////////////////////////////////////////////////////////////////////////////////////
+          var g = d3.select(self.$.chart)
+              .attr("width", self.width + self.margin.left + self.margin.right)
+              .attr("height", self.height + self.margin.top + self.margin.bottom)
+            .append("g")
+              .attr("transform", "translate(" + self.margin.left + "," + self.margin.top + ")");
 
-          svg.append("g")
+          g.append("g")
               .attr("class", "x axis")
-              .attr("transform", "translate(0," + this.clientHeight + ")")
-              .call(xAxis);
+              .attr("transform", "translate(0," + this.height + ")")
+              .call(self.xAxis);
 
-          svg.append("g")
+          g.append("g")
               .attr("class", "y axis")
-              .call(yAxis)
+              .call(self.yAxis)
             .append("text")
               .attr("transform", "rotate(-90)")
               .attr("y", 6)
@@ -177,56 +164,66 @@
               .style("text-anchor", "end")
               .text(self.yAxisLabel);
 
-          var year = svg.selectAll(".year")
-              .data(massagedData)
-            .enter().append("g")
-              .attr("class", "g")
-              .attr("transform", function(d) { 
-                return "translate(" + x0(d.year) + ",0)"; 
+          return g;
+        },
+        render: function () {
+          var self = this;
+          var data = self.data.data;
 
+          this.cleanData();
+          this.init();
+          var g = this.initChart();
+
+          var years = g.selectAll(".year")
+              .data(this.massagedData)
+            .enter().append("g")
+              .classed("year", true)
+              .attr("transform", function(d) {
+                return "translate(" + self.x0(d.year) + ", 0)";
               });
 
-          year.selectAll("rect")
-              .data(function(d) { 
-                return d.countries; 
+          years.selectAll("rect")
+              .data(function(d) {
+                return d.countries;
               })
             .enter().append("rect")
-              .attr("width", x1.rangeBand())
-              .attr("x", function(d) { 
-                console.log(d.name);
-                return x1( d.name); 
+              .attr("width", self.x1.rangeBand())
+              .attr("x", function(d) {
+                return self.x1(d.name);
               })
-              .attr("y", function(d) { 
-                return 300 - d.value; 
+              .attr("y", function(d) {
+                return self.y(d.value);
               })
-              .attr("height", function(d) { return d.value; })
-              //.attr("height", function(d) { return d.value; })
-              .style("fill", function(d) { return color(d.name); });
+              .style("fill", function(d) { return self.color(d.name); })
+              .attr("height", 0)
+              .transition()
+              .duration(500)
+              .delay(function(d, i, j) { return (j * 5 + i) * 500; })
+              .attr("height", function(d) { return self.height - self.y(d.value); })
 
           ////////////////////////////////////////////////////////////////////////////////////////
           // drawing the legend
           ////////////////////////////////////////////////////////////////////////////////////////
+          // var legend = g.selectAll(".legend")
+          //     .data(self.countries.slice().reverse())
+          //   .enter().append("g")
+          //     .attr("class", "legend")
+          //     .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
 
-          var legend = svg.selectAll(".legend")
-              .data(countries.slice().reverse())
-            .enter().append("g")
-              .attr("class", "legend")
-              .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+          // legend.append("rect")
+          //     .attr("x", self.width - 18)
+          //     .attr("width", 18)
+          //     .attr("height", 18)
+          //     .style("fill", self.color);
 
-          legend.append("rect")
-              .attr("x", this.clientWidth - 18)
-              .attr("width", 18)
-              .attr("height", 18)
-              .style("fill", color);
-
-          legend.append("text")
-              .attr("x", this.clientWidth - 24)
-              .attr("y", 9)
-              .attr("dy", ".35em")
-              .style("text-anchor", "end")
-              .text(function(d) { 
-                return d; 
-              });
+          // legend.append("text")
+          //     .attr("x", self.width - 24)
+          //     .attr("y", 9)
+          //     .attr("dy", ".35em")
+          //     .style("text-anchor", "end")
+          //     .text(function(d) {
+          //       return d;
+          //     });
         }
       });
 
