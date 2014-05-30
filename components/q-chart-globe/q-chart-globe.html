@@ -60,6 +60,8 @@
         dataTopLevel: null,
         isRendered: false,
         stopTimer: false,
+        intervalId: null,
+
         ready: function () {
           this.onLoad = this.load.bind(this);
           this.onLoadWorld = this.loadWorld.bind(this);
@@ -82,10 +84,12 @@
         },
         stop: function () {
           this.stopTimer = true;
+          console.log("this.intervalId", this.intervalId);
+          clearInterval(this.intervalId);
         },
         render: function () {
           var self = this;
-          var diameter = 320,
+          var diameter = self.clientWidth / 2,
             radius = diameter/2,
             velocity = .02,
             then = Date.now();
@@ -124,11 +128,11 @@
                         if(self.data[i]["By Year"][j]["year"] == currentYear) {
                           var hue = d3.scale.linear().domain([-4,10]).range([0,360]);
 
-                          // console.log( hue(self.data[i]["By Year"][j]["value"]));
                           return d3.rgb(
-                            d3.hsl(
-                              hue(self.data[i]["By Year"][j]["value"])
-                              , 0.5, 0.5)).toString();
+                              d3.hsl(
+                                hue(self.data[i]["By Year"][j]["value"])
+                                , 0.5, 0.5)
+                              ).toString();
                         }
                     }
                 }
@@ -138,14 +142,13 @@
 
           var countries = topojson.feature(self.dataWorld, self.dataWorld.objects.countries);
 
-          var asia = {type: "FeatureCollection", name: "Asia", color: "#ffbb78", id:"Asia", features: countries.features.filter(function(d) { return d.properties.continent=="Asia"; })};
-          var africa = {type: "FeatureCollection", name: "Africa", id:"Africa", features: countries.features.filter(function(d) { return d.properties.continent=="Africa"; })};
-          var europe = {type: "FeatureCollection", name: "Europe", color: "#ff7f0e", id:"Europe", features: countries.features.filter(function(d) { return d.properties.continent=="Europe"; })};
-          var na = {type: "FeatureCollection", name: "North America", color: "#1f77b4", id:"NA", features: countries.features.filter(function(d) { return d.properties.continent=="North America"; })};
-          var sa = {type: "FeatureCollection", name: "South America", color: "#d62728", id:"SA", features: countries.features.filter(function(d) { return d.properties.continent=="South America"; })};
+          var asia = {type: "FeatureCollection", name: "Asia", color: getCurrentColor("Asia"), id:"Asia", features: countries.features.filter(function(d) { return d.properties.continent=="Asia"; })};
+          var africa = {type: "FeatureCollection", name: "Africa", color: getCurrentColor("Africa"), id:"Africa", features: countries.features.filter(function(d) { return d.properties.continent=="Africa"; })};
+          var europe = {type: "FeatureCollection", name: "Europe", color: getCurrentColor("Europe"), id:"Europe", features: countries.features.filter(function(d) { return d.properties.continent=="Europe"; })};
+          var na = {type: "FeatureCollection", name: "North America", color: getCurrentColor("NA"), id:"NA", features: countries.features.filter(function(d) { return d.properties.continent=="North America"; })};
+          var sa = {type: "FeatureCollection", name: "South America", color: getCurrentColor("SA"), id:"SA", features: countries.features.filter(function(d) { return d.properties.continent=="South America"; })};
 
-          var oceania = {type: "FeatureCollection", name: "Oceania", color: "#aec7e8", id:"Oceania", features: countries.features.filter(function(d) { return d.properties.continent=="Oceania"; })};
-
+          var oceania = {type: "FeatureCollection", name: "Oceania", color: getCurrentColor("Oceania"), id:"Oceania", features: countries.features.filter(function(d) { return d.properties.continent=="Oceania"; })};
 
           var continents = [asia,africa,europe,na,sa,oceania];
           var continent = svg.selectAll(".continent").data(continents);
@@ -156,18 +159,40 @@
             .attr("d", path)
             .attr("id", function(d,i) { return d.id; })
             .style("fill", function(d,i) { return d.color; });
+
+          // make a legend
+          // var legend = svg.selectAll(".legend")
+          //     .data(countries.slice().reverse())
+          //   .enter().append("g")
+          //     .attr("class", "legend")
+          //     .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+
+          // legend.append("rect")
+          //     .attr("x", this.clientWidth - 18)
+          //     .attr("width", 18)
+          //     .attr("height", 18)
+          //     .style("fill", color);
+
+          // legend.append("text")
+          //     .attr("x", this.clientWidth - 24)
+          //     .attr("y", 9)
+          //     .attr("dy", ".35em")
+          //     .style("text-anchor", "end")
+          //     .text(function(d) { 
+          //       return d; 
+          //     });
          
-          // 
+          // isRendered
           this.isRendered = true;
           // HACK to keep context of local vars
           this.start = (function () {
-            d3.timer(function() {
+            self.intervalId = setInterval(function() {
               var angle = velocity * (Date.now() - then);
               projection.rotate([angle,0,0]);
               svg.selectAll("path")
                 .attr("d", path.projection(projection));
 
-              if(Date.now() - lastYearUpdate > 1000)
+              if(Date.now() - lastYearUpdate > 2000)
               {
                 svg.select('#Africa').style({
                   fill: getCurrentColor("Africa")
@@ -192,15 +217,14 @@
                 currentYear = years[yearIndex];
 
                 yearIndex++;
-                if(yearIndex > 11)
+                if(yearIndex > 10)
                 {
                   yearIndex = 0;
                 }
 
                 lastYearUpdate = Date.now();
               }
-              return self.stopTimer;
-            });
+            }, 10);
 
           }).bind(this);
         }

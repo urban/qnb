@@ -20,12 +20,35 @@
 </head>
 <body unresolved>
 
+    <frog-card>
+      <q-view url="/data/stories/story-2.json">
+        <q-visualization full title="Deforestation Worldwide" hasContent>
+          <q-chart-globe url="/data/deforestation.json" dataTopLevel="Continent"></q-chart-globe>
+        </q-visualization>
+      </q-view>
+    </frog-card>
+
   <frog-deck id="deck" transition="fade">
+    <frog-card>
+      <q-view url="/data/stories/story-2.json">
+        <q-visualization full title="Length at Current Job" hasContent>
+          <q-chart-gb-rotating url="/data/length_at_current_job.json" yAxisLabel="Years" recordKey="field"></q-chart-gb-rotating>
+        </q-visualization>
+      </q-view>
+    </frog-card>
 
     <frog-card>
       <q-view url="/data/stories/story-2.json">
-        <q-visualization full title="Traffic Fatalities" hasContent>
-          <q-chart-grouped-bar url="/data/books.json" yAxisLabel="Per 10,000"></q-chart-grouped-bar>
+        <q-visualization full title="Hours Homework" hasContent>
+          <q-chart-gb-rotating url="/data/hours_homework.json" yAxisLabel="Hours" recordKey="age"></q-chart-gb-rotating>
+        </q-visualization>
+      </q-view>
+    </frog-card>
+
+    <frog-card>
+      <q-view class="orange" url="/data/stories/story-2.json">
+        <q-visualization full title="Streamed Movies Worldwide" hasContent>
+          <q-chart-bar url="/data/streamed_movies.json"></q-chart-bar>
         </q-visualization>
       </q-view>
     </frog-card>
@@ -40,22 +63,14 @@
 
     <frog-card>
       <q-view url="/data/stories/story-2.json">
-        <q-visualization full title="Streamed Movies Worldwide" hasContent>
-          <q-chart-bar url="/data/streamed_movies.json"></q-chart-bar>
+        <q-visualization full title="Traffic Fatalities" hasContent>
+          <q-chart-grouped-bar url="/data/books.json" yAxisLabel="Per 10,000"></q-chart-grouped-bar>
         </q-visualization>
       </q-view>
     </frog-card>
 
     <frog-card>
-      <q-view url="/data/stories/story-1.json">
-        <q-visualization full title="Stacked Bar Chart" hasContent>
-          <q-chart-stacked-bar url="/data/surgeries-lifetime.test.tsv"></q-chart-stacked-bar>
-        </q-visualization>
-      </q-view>
-    </frog-card>
-
-    <frog-card>
-      <q-view url="/data/stories/story-2.json">
+      <q-view class="yellow" url="/data/stories/story-2.json">
         <q-visualization full title="Ring Chart" hasContent>
           <q-chart-ring url="/data/religiousness.json"></q-chart-ring>
         </q-visualization>
@@ -63,9 +78,9 @@
     </frog-card>
 
     <frog-card>
-      <q-view url="/data/stories/story-2.json">
-        <q-visualization full title="World Map of Awfulness" hasContent>
-          <q-chart-globe url="/data/deforestation.json" dataTopLevel="Continent"></q-chart-globe>
+      <q-view class="green" url="/data/stories/story-1.json">
+        <q-visualization full title="Stacked Bar Chart" hasContent>
+          <q-chart-stacked-bar url="/data/surgeries-lifetime.test.tsv"></q-chart-stacked-bar>
         </q-visualization>
       </q-view>
     </frog-card>
@@ -98,7 +113,9 @@
       visualizations.array().forEach(function (v) {
         var cb = function () {
           if (!v.isRendered) v.render();
-          if (v.start) v.start();
+          if (v.start) {
+            v.start();
+          }
         };
         //console.log(v.render);
         if (v.data && v.render) {
