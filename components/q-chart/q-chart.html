@@ -5,16 +5,30 @@
   <script>
     (function () {
 
+      // blue, yellow, green, orange, black
+      var defaultColors = ['#2c88dc', '#fdd81b', '#3eb307', '#ef6d09', '#111'];
+      // black, black, black, black, white
+      var defaultFontColors = ['#000', '#000', '#000', '#000', '#fff'];
+      
+      var colorFn = d3.scale.ordinal()
+        .range(defaultColors);
+      var fontColorsFn = d3.scale.ordinal()
+        .range(defaultFontColors);
+
       Polymer('q-chart', {
         url: null,
         data: null,
         chart: null,
         isRendered: false,
+        colors: colorFn,
+        fontColors: fontColorsFn,
         ready: function () {
           this.onLoad = (function (err, res) {
             this.data = res;
             this.asyncFire('load', res);
           }).bind(this);
+        },
+        domReady: function () {
           this.draw();
         },
         urlChanged: function (oldVal, newVal) {
