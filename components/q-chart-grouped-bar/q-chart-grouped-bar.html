@@ -7,7 +7,7 @@
       :host {
         display: block;
       }
-/*
+
       .bar {
         fill: steelblue;
       }
@@ -37,10 +37,9 @@
     (function () {
 
       Polymer('q-chart-grouped-bar', {
-        yAxisLabel: null,
-        xAxisLabel: null,
+        yAxisLabel:null,
+        xAxisLabel:null,
         start: function () {
-
         },
         stop: function () {
         },
@@ -118,8 +117,7 @@
           self.y = d3.scale.linear()
               .range([self.height, 0]);
 
-          self.color = d3.scale.ordinal()
-              .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+          self.color = self.colors;
 
           self.xAxis = d3.svg.axis()
               .scale(self.x0)
