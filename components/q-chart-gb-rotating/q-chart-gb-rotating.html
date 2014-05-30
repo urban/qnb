@@ -7,7 +7,7 @@
       :host {
         display: block;
       }
-
+/*
       .bar {
         fill: steelblue;
       }
@@ -29,7 +29,7 @@
 
       .x.axis path {
         display: none;
-      }
+      }*/
     </style>
     <svg id="chart"></svg>
   </template>
@@ -75,9 +75,8 @@ and then years. and flip through countries showing each as a grouped barchart
 
           var y = d3.scale.linear()
               .range([300, 0]);
-
-          var color = d3.scale.ordinal()
-              .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+              
+          var colors = this.colors;
 
           var xAxis = d3.svg.axis()
               .scale(x0);
@@ -231,7 +230,7 @@ and then years. and flip through countries showing each as a grouped barchart
               .attr("x", this.clientWidth - 18)
               .attr("width", 18)
               .attr("height", 18)
-              .style("fill", color);
+              .style("fill", colors);
 
           legend.append("text")
               .attr("x", this.clientWidth - 24)

@@ -8,7 +8,7 @@
         display: block;
       }
 
-      .bar {
+/*      .bar {
         fill: steelblue;
       }
 
@@ -29,7 +29,7 @@
 
       .x.axis path {
         display: none;
-      }
+      }*/
     </style>
     <svg id="chart"></svg>
   </template>
@@ -48,12 +48,12 @@
           var data = self.data.data;
           var w = this.clientWidth / data.length;
           var h = this.clientHeight;
+          var colors = this.colors;
+          var fontColors = this.fontColors;
 
           var max = d3.max(data, function(d) {
             return d.value;
           });
-
-          console.log(max);
             
           var xScale = d3.scale.linear()
               .domain([0, 1])
@@ -72,7 +72,7 @@
              .transition().delay(function (d,i){ return i * 300;}).duration(300)
              .attr("height", function(d) { return yScale(d.value); })
              .attr("y", function(d) { return h - yScale(d.value) - .5; })
-             .attr("fill", "#00f");
+             .attr("fill", function (d, i) { return colors(0); });
 
           this.chart.selectAll("text")
              .data(data)
@@ -86,7 +86,10 @@
              .attr("y", function(d) {
                   return h - yScale(d.value) + 15;
              })
-             .attr("fill", "#fff");
+             .attr("fill", function (d, i) { return fontColors(0); })
+             .attr('opacity', '0')
+             .transition().delay(function (d,i){ return i * 300 + 300;}).duration(300)
+             .attr('opacity', '1');
         }
       });
 

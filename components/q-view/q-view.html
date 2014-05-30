@@ -3,6 +3,11 @@
 <polymer-element name="q-view" attributes="url">
   <template>
     <style>
+      *, *:before, *:after {
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+      }
 
       :host {
         display: -webkit-box !important;
@@ -15,33 +20,50 @@
         width: 100%;
       }
 
-      *, *:before, *:after {
-        -moz-box-sizing: border-box;
-        -webkit-box-sizing: border-box;
-        box-sizing: border-box;
-      }
-
       h1 {
+        font: 2em/1.4375em "Georgia",serif;
         font-style: italic;
         font-weight: normal;
+        margin-bottom: 0
       }
 
       h3 {
         border-bottom: 1px solid #fff;
-        font-weight: normal;
+        font-family: "BentonSans","Arial",sans-serif;
+        font-size: 1.2em;
+        font-weight: bold;
         margin-top: 0;
         padding-bottom: 0.4rem;
+        text-transform: uppercase;
       }
 
       aside {
-        background-color: #f4f4f4;
+        background-color: #2c88dc;
+        color: #fff;
+        font: normal 1em/1.625em "Georgia",serif;
         flex: 0 1 auto;
         order: 1;
         width: 33.333%;
       }
 
+      :host(.green) aside {
+        background-color: #3eb307;
+      }
+
+      :host(.orange) aside {
+        background-color: #ef6d09;
+      }
+
+      :host(.yellow) aside {
+        background-color: #fdd81b;
+        color: #111;
+      }
+      :host(.yellow) section > header {
+        border-bottom-color: #111;
+      }
+
       aside > header {
-        background-color: #999;
+        background-color: #111;
         color: #fff;
         height: 33.333%;
         padding: 2rem;
@@ -52,7 +74,13 @@
       }
 
       section > header {
-        border-bottom: 1px solid #000;
+        border-bottom: 1px solid #fff;
+        font-family: "BentonSans","Arial",sans-serif;
+        font-weight: bold;
+      }
+
+      section > header strong:first-child {
+        text-transform: uppercase;
       }
 
       .pull-right {
