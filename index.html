@@ -21,6 +21,21 @@
 <body unresolved>
 
   <frog-deck id="deck" transition="fade">
+    <frog-card>
+      <q-view url="/data/stories/story-2.json">
+        <q-visualization full title="Hours Homework" hasContent>
+          <q-chart-gb-rotating url="/data/length_at_current_job.json" yAxisLabel="Hours" recordKey="field"></q-chart-gb-rotating>
+        </q-visualization>
+      </q-view>
+    </frog-card>
+
+    <frog-card>
+      <q-view url="/data/stories/story-2.json">
+        <q-visualization full title="Hours Homework" hasContent>
+          <q-chart-gb-rotating url="/data/hours_homework.json" yAxisLabel="Hours" recordKey="age"></q-chart-gb-rotating>
+        </q-visualization>
+      </q-view>
+    </frog-card>
 
     <frog-card>
       <q-view url="/data/stories/story-2.json">
@@ -98,7 +113,9 @@
       visualizations.array().forEach(function (v) {
         var cb = function () {
           if (!v.isRendered) v.render();
-          if (v.start) v.start();
+          if (v.start) {
+            v.start();
+          }
         };
         //console.log(v.render);
         if (v.data && v.render) {

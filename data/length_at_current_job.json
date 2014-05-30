@@ -1,104 +1,68 @@
 {
 "title":"Length of Time at Current Employer",
 "data": [
-{"Country":"India" ,
-"Engineering": [
-    {"year":2015, "value":6}, {"year":2017, "value":5}, {"year":2019, "value":5}, {"year":2021, "value":5}, {"year":2023, "value":4}, {"year":2025, "value":4}, {"year":2027, "value":6}, {"year":2029, "value":5}, {"year":2031, "value":5}, {"year":2033, "value":4}, {"year":2035, "value":5}
-    ], 
-"Education" : [
-    {"year":2015, "value":12}, {"year":2017, "value":12}, {"year":2019, "value":12}, {"year":2021, "value":11}, {"year":2023, "value":10}, {"year":2025, "value":9}, {"year":2027, "value":9}, {"year":2029, "value":8}, {"year":2031, "value":7}, {"year":2033, "value":7}, {"year":2035, "value":6}
-    ],
+{"Country":"India",
+"By Year":[
+    {"year":"2015", "data":[{"field":"Engineering", "value":6}, {"field":"Education", "value":12}, {"field":"Manufacturing", "value":9}, {"field":"Government", "value":13}, {"field":"Service", "value":6}, {"field":"Finance", "value":4}]},
+    {"year":"2017", "data":[{"field":"Engineering", "value":5}, {"field":"Education", "value":11},{"field":"Manufacturing", "value":8}, {"field":"Government", "value":13}, {"field":"Service", "value":6}, {"field":"Finance", "value":6}]},
+    {"year":"2018", "data":[{"field":"Engineering", "value":5}, {"field":"Education", "value":10}, {"field":"Manufacturing", "value":8}, {"field":"Government", "value":12}, {"field":"Service", "value":5}, {"field":"Finance", "value":6}]},
+    {"year":"2019", "data":[{"field":"Engineering", "value":4}, {"field":"Education", "value":10},  {"field":"Manufacturing", "value":7}, {"field":"Government", "value":12}, {"field":"Service", "value":4}, {"field":"Finance", "value":6}]},
+    {"year":"2021", "data":[{"field":"Engineering", "value":5}, {"field":"Education", "value":10}, {"field":"Manufacturing", "value":7}, {"field":"Government", "value":11}, {"field":"Service", "value":4}, {"field":"Finance", "value":6}]},
+    {"year":"2023", "data":[{"field":"Engineering", "value":4}, {"field":"Education", "value":9}, {"field":"Manufacturing", "value":7}, {"field":"Government", "value":11}, {"field":"Service", "value":4}, {"field":"Finance", "value":6}]},
+    {"year":"2025", "data":[{"field":"Engineering", "value":4}, {"field":"Education", "value":9},{"field":"Manufacturing", "value":6}, {"field":"Government", "value":11}, {"field":"Service", "value":4}, {"field":"Finance", "value":6}]},
+    {"year":"2027", "data":[{"field":"Engineering", "value":5}, {"field":"Education", "value":9},  {"field":"Manufacturing", "value":6}, {"field":"Government", "value":11}, {"field":"Service", "value":4}, {"field":"Finance", "value":6}]},
+    {"year":"2029", "data":[{"field":"Engineering", "value":4}, {"field":"Education", "value":9}, {"field":"Manufacturing", "value":5}, {"field":"Government", "value":10}, {"field":"Service", "value":3}, {"field":"Finance", "value":6}]},
+    {"year":"2031", "data":[{"field":"Engineering", "value":4}, {"field":"Education", "value":9}, {"field":"Manufacturing", "value":5}, {"field":"Government", "value":10}, {"field":"Service", "value":3}, {"field":"Finance", "value":6}]},
+    {"year":"2033", "data":[{"field":"Engineering", "value":3}, {"field":"Education", "value":8}, {"field":"Manufacturing", "value":5}, {"field":"Government", "value":10}, {"field":"Service", "value":2}, {"field":"Finance", "value":6}]},
+    {"year":"2035", "data":[{"field":"Engineering", "value":4}, {"field":"Education", "value":9},{"field":"Manufacturing", "value":6}, {"field":"Government", "value":9}, {"field":"Service", "value":3}, {"field":"Finance", "value":6}]}
+]},
 
-"Manufacturing" : [
-    {"year":2015, "value":9}, {"year":2017, "value":8}, {"year":2019, "value":8}, {"year":2021, "value":7}, {"year":2023, "value":6}, {"year":2025, "value":5}, {"year":2027, "value":5}, {"year":2029, "value":5}, {"year":2031, "value":4}, {"year":2033, "value":4}, {"year":2035, "value":4}
-    ],
+{"Country":"China",
+"By Year":[
+    {"year":"2015", "data":[{"field":"Engineering", "value":6}, {"field":"Education", "value":6}, {"field":"Manufacturing", "value":6}, {"field":"Government", "value":6}, {"field":"Service", "value":6}, {"field":"Finance", "value":6}]},
+    {"year":"2017", "data":[{"field":"Engineering", "value":5}, {"field":"Education", "value":6}, {"field":"Manufacturing", "value":6}, {"field":"Government", "value":6}, {"field":"Service", "value":6}, {"field":"Finance", "value":6}]},
+    {"year":"2018", "data":[{"field":"Engineering", "value":5}, {"field":"Education", "value":6}, {"field":"Manufacturing", "value":6}, {"field":"Government", "value":6}, {"field":"Service", "value":6}, {"field":"Finance", "value":5}]},
+    {"year":"2019", "data":[{"field":"Engineering", "value":4}, {"field":"Education", "value":6}, {"field":"Manufacturing", "value":6}, {"field":"Government", "value":6}, {"field":"Service", "value":6}, {"field":"Finance", "value":6}]},
+    {"year":"2021", "data":[{"field":"Engineering", "value":5}, {"field":"Education", "value":6}, {"field":"Manufacturing", "value":6}, {"field":"Government", "value":6}, {"field":"Service", "value":6}, {"field":"Finance", "value":5}]},
+    {"year":"2023", "data":[{"field":"Engineering", "value":5}, {"field":"Education", "value":6}, {"field":"Manufacturing", "value":6}, {"field":"Government", "value":6}, {"field":"Service", "value":6}, {"field":"Finance", "value":5}]},
+    {"year":"2025", "data":[{"field":"Engineering", "value":5}, {"field":"Education", "value":6}, {"field":"Manufacturing", "value":6}, {"field":"Government", "value":6}, {"field":"Service", "value":6}, {"field":"Finance", "value":4}]},
+    {"year":"2027", "data":[{"field":"Engineering", "value":4}, {"field":"Education", "value":6}, {"field":"Manufacturing", "value":6}, {"field":"Government", "value":6}, {"field":"Service", "value":6}, {"field":"Finance", "value":5}]},
+    {"year":"2029", "data":[{"field":"Engineering", "value":4}, {"field":"Education", "value":6}, {"field":"Manufacturing", "value":6}, {"field":"Government", "value":6}, {"field":"Service", "value":6}, {"field":"Finance", "value":6}]},
+    {"year":"2031", "data":[{"field":"Engineering", "value":4}, {"field":"Education", "value":6}, {"field":"Manufacturing", "value":6}, {"field":"Government", "value":6}, {"field":"Service", "value":6}, {"field":"Finance", "value":5}]},
+    {"year":"2033", "data":[{"field":"Engineering", "value":3}, {"field":"Education", "value":6}, {"field":"Manufacturing", "value":6}, {"field":"Government", "value":6}, {"field":"Service", "value":6}, {"field":"Finance", "value":6}]},
+    {"year":"2035", "data":[{"field":"Engineering", "value":3}, {"field":"Education", "value":6}, {"field":"Manufacturing", "value":6}, {"field":"Government", "value":6}, {"field":"Service", "value":6}, {"field":"Finance", "value":7}]}
+]},
 
-"Government" : [
-    {"year":2015, "value":13}, {"year":2017, "value":12}, {"year":2019, "value":11}, {"year":2021, "value":11}, {"year":2023, "value":10}, {"year":2025, "value":9}, {"year":2027, "value":9}, {"year":2029, "value":9}, {"year":2031, "value":9}, {"year":2033, "value":9}, {"year":2035, "value":8}
-    ],
+{"Country":"Brazil",
+"By Year":[
+    {"year":"2015", "data":[{"field":"Engineering", "value":9}, {"field":"Education", "value":11},   {"field":"Manufacturing", "value":8},{"field":"Government", "value":6}, {"field":"Service", "value":8}, {"field":"Finance", "value":11}]},
+    {"year":"2017", "data":[{"field":"Engineering", "value":8}, {"field":"Education", "value":11},  {"field":"Manufacturing", "value":7}, {"field":"Government", "value":6}, {"field":"Service", "value":7}, {"field":"Finance", "value":10}]},
+    {"year":"2018", "data":[{"field":"Engineering", "value":8}, {"field":"Education", "value":10}, {"field":"Manufacturing", "value":7}, {"field":"Government", "value":6}, {"field":"Service", "value":7}, {"field":"Finance", "value":9}]},
+    {"year":"2019", "data":[{"field":"Engineering", "value":8}, {"field":"Education", "value":10}, {"field":"Manufacturing", "value":7}, {"field":"Government", "value":6}, {"field":"Service", "value":7}, {"field":"Finance", "value":9}]},
+    {"year":"2021", "data":[{"field":"Engineering", "value":8}, {"field":"Education", "value":9},  {"field":"Manufacturing", "value":6}, {"field":"Government", "value":6}, {"field":"Service", "value":7}, {"field":"Finance", "value":8}]},
+    {"year":"2023", "data":[{"field":"Engineering", "value":7}, {"field":"Education", "value":8}, {"field":"Manufacturing", "value":6}, {"field":"Government", "value":6}, {"field":"Service", "value":6}, {"field":"Finance", "value":8}]},
+    {"year":"2025", "data":[{"field":"Engineering", "value":7}, {"field":"Education", "value":8},  {"field":"Manufacturing", "value":6}, {"field":"Government", "value":6}, {"field":"Service", "value":6}, {"field":"Finance", "value":8}]},
+    {"year":"2027", "data":[{"field":"Engineering", "value":7}, {"field":"Education", "value":8}, {"field":"Manufacturing", "value":5}, {"field":"Government", "value":6}, {"field":"Service", "value":6}, {"field":"Finance", "value":9}]},
+    {"year":"2029", "data":[{"field":"Engineering", "value":7}, {"field":"Education", "value":7},  {"field":"Manufacturing", "value":5}, {"field":"Government", "value":6}, {"field":"Service", "value":5}, {"field":"Finance", "value":10}]},
+    {"year":"2031", "data":[{"field":"Engineering", "value":7}, {"field":"Education", "value":7},  {"field":"Manufacturing", "value":5}, {"field":"Government", "value":6}, {"field":"Service", "value":5}, {"field":"Finance", "value":11}]},
+    {"year":"2033", "data":[{"field":"Engineering", "value":6}, {"field":"Education", "value":6},  {"field":"Manufacturing", "value":6}, {"field":"Government", "value":6}, {"field":"Service", "value":5}, {"field":"Finance", "value":11}]},
+    {"year":"2035", "data":[{"field":"Engineering", "value":6}, {"field":"Education", "value":6}, {"field":"Manufacturing", "value":6}, {"field":"Government", "value":6}, {"field":"Service", "value":4}, {"field":"Finance", "value":12}]}
+]},
 
-"Service" : [
-    {"year":2015, "value":7}, {"year":2017, "value":7}, {"year":2019, "value":6}, {"year":2021, "value":6}, {"year":2023, "value":6}, {"year":2025, "value":5}, {"year":2027, "value":6}, {"year":2029, "value":5}, {"year":2031, "value":5}, {"year":2033, "value":5}, {"year":2035, "value":4}
-    ],
-
-"Finance" : [
-    {"year":2015, "value":4}, {"year":2017, "value":4}, {"year":2019, "value":4}, {"year":2021, "value":5}, {"year":2023, "value":4}, {"year":2025, "value":5}, {"year":2027, "value":5}, {"year":2029, "value":6}, {"year":2031, "value":6}, {"year":2033, "value":6}, {"year":2035, "value":7}
-    ]
-},
-
-{"Country":"China" ,
-"Engineering": [
-    {"year":2015, "value":6}, {"year":2017, "value":5}, {"year":2019, "value":5}, {"year":2021, "value":5}, {"year":2023, "value":5}, {"year":2025, "value":4}, {"year":2027, "value":6}, {"year":2029, "value":5}, {"year":2031, "value":5}, {"year":2033, "value":4}, {"year":2035, "value":5}
-    ], 
-"Education" : [
-    {"year":2015, "value":12}, {"year":2017, "value":12}, {"year":2019, "value":12}, {"year":2021, "value":11}, {"year":2023, "value":10}, {"year":2025, "value":9}, {"year":2027, "value":9}, {"year":2029, "value":8}, {"year":2031, "value":7}, {"year":2033, "value":7}, {"year":2035, "value":6}
-    ],
-
-"Manufacturing" : [
-    {"year":2015, "value":5}, {"year":2017, "value":6}, {"year":2019, "value":6}, {"year":2021, "value":5}, {"year":2023, "value":4}, {"year":2025, "value":4}, {"year":2027, "value":5}, {"year":2029, "value":5}, {"year":2031, "value":4}, {"year":2033, "value":4}, {"year":2035, "value":4}
-    ],
-
-"Government" : [
-    {"year":2015, "value":13}, {"year":2017, "value":12}, {"year":2019, "value":11}, {"year":2021, "value":11}, {"year":2023, "value":10}, {"year":2025, "value":9}, {"year":2027, "value":9}, {"year":2029, "value":9}, {"year":2031, "value":9}, {"year":2033, "value":9}, {"year":2035, "value":9}
-    ],
-
-"Service" : [
-    {"year":2015, "value":5}, {"year":2017, "value":5}, {"year":2019, "value":4}, {"year":2021, "value":4}, {"year":2023, "value":4}, {"year":2025, "value":4}, {"year":2027, "value":4}, {"year":2029, "value":4}, {"year":2031, "value":4}, {"year":2033, "value":4}, {"year":2035, "value":4}
-    ],
-
-"Finance" : [
-    {"year":2015, "value":8}, {"year":2017, "value":7}, {"year":2019, "value":7}, {"year":2021, "value":6}, {"year":2023, "value":6}, {"year":2025, "value":6}, {"year":2027, "value":5}, {"year":2029, "value":6}, {"year":2031, "value":6}, {"year":2033, "value":6}, {"year":2035, "value":6}
-    ]
-},
-
-{"Country":"Brazil" ,
-"Engineering": [
-    {"year":2015, "value":12}, {"year":2017, "value":11}, {"year":2019, "value":10}, {"year":2021, "value":10}, {"year":2023, "value":10}, {"year":2025, "value":9}, {"year":2027, "value":8}, {"year":2029, "value":7}, {"year":2031, "value":6}, {"year":2033, "value":6}, {"year":2035, "value":7}
-    ], 
-"Education" : [
-    {"year":2015, "value":12}, {"year":2017, "value":12}, {"year":2019, "value":12}, {"year":2021, "value":11}, {"year":2023, "value":10}, {"year":2025, "value":9}, {"year":2027, "value":9}, {"year":2029, "value":8}, {"year":2031, "value":7}, {"year":2033, "value":7}, {"year":2035, "value":6}
-    ],
-
-"Manufacturing" : [
-    {"year":2015, "value":7}, {"year":2017, "value":7}, {"year":2019, "value":8}, {"year":2021, "value":7}, {"year":2023, "value":6}, {"year":2025, "value":5}, {"year":2027, "value":5}, {"year":2029, "value":5}, {"year":2031, "value":4}, {"year":2033, "value":4}, {"year":2035, "value":4}
-    ],
-
-"Government" : [
-    {"year":2015, "value":13}, {"year":2017, "value":12}, {"year":2019, "value":11}, {"year":2021, "value":11}, {"year":2023, "value":10}, {"year":2025, "value":9}, {"year":2027, "value":9}, {"year":2029, "value":9}, {"year":2031, "value":9}, {"year":2033, "value":9}, {"year":2035, "value":8}
-    ],
-
-"Service" : [
-    {"year":2015, "value":8}, {"year":2017, "value":7}, {"year":2019, "value":7}, {"year":2021, "value":7}, {"year":2023, "value":6}, {"year":2025, "value":6}, {"year":2027, "value":6}, {"year":2029, "value":5}, {"year":2031, "value":5}, {"year":2033, "value":5}, {"year":2035, "value":4}
-    ],
-
-"Finance" : [
-    {"year":2015, "value":4}, {"year":2017, "value":4}, {"year":2019, "value":4}, {"year":2021, "value":5}, {"year":2023, "value":4}, {"year":2025, "value":5}, {"year":2027, "value":5}, {"year":2029, "value":6}, {"year":2031, "value":6}, {"year":2033, "value":6}, {"year":2035, "value":7}
-    ]
-},
-
-{"Country":"USA" ,
-"Engineering": [
-    {"year":2015, "value":6}, {"year":2017, "value":5}, {"year":2019, "value":5}, {"year":2021, "value":5}, {"year":2023, "value":4}, {"year":2025, "value":4}, {"year":2027, "value":6}, {"year":2029, "value":5}, {"year":2031, "value":5}, {"year":2033, "value":4}, {"year":2035, "value":5}
-    ], 
-"Education" : [
-    {"year":2015, "value":7}, {"year":2017, "value":7}, {"year":2019, "value":6}, {"year":2021, "value":8}, {"year":2023, "value":6}, {"year":2025, "value":7}, {"year":2027, "value":6}, {"year":2029, "value":6}, {"year":2031, "value":5}, {"year":2033, "value":6}, {"year":2035, "value":5}
-    ],
-
-"Manufacturing" : [
-    {"year":2015, "value":4}, {"year":2017, "value":5}, {"year":2019, "value":4}, {"year":2021, "value":3}, {"year":2023, "value":4}, {"year":2025, "value":4}, {"year":2027, "value":4}, {"year":2029, "value":4}, {"year":2031, "value":4}, {"year":2033, "value":4}, {"year":2035, "value":4}
-    ],
-
-"Government" : [
-    {"year":2015, "value":8}, {"year":2017, "value":7}, {"year":2019, "value":8}, {"year":2021, "value":7}, {"year":2023, "value":8}, {"year":2025, "value":7}, {"year":2027, "value":7}, {"year":2029, "value":7}, {"year":2031, "value":7}, {"year":2033, "value":7}, {"year":2035, "value":6}
-    ],
-
-"Service" : [
-    {"year":2015, "value":5}, {"year":2017, "value":5}, {"year":2019, "value":5}, {"year":2021, "value":4}, {"year":2023, "value":4}, {"year":2025, "value":3}, {"year":2027, "value":3}, {"year":2029, "value":3}, {"year":2031, "value":3}, {"year":2033, "value":3}, {"year":2035, "value":3}
-    ],
-
-"Finance" : [
-    {"year":2015, "value":4}, {"year":2017, "value":4}, {"year":2019, "value":4}, {"year":2021, "value":4}, {"year":2023, "value":4}, {"year":2025, "value":3}, {"year":2027, "value":3}, {"year":2029, "value":4}, {"year":2031, "value":5}, {"year":2033, "value":4}, {"year":2035, "value":5}
-    ]
-}
+{"Country":"USA",
+"By Year":[
+    {"year":"2015", "data":[{"field":"Engineering", "value":7}, {"field":"Education", "value":10}, {"field":"Manufacturing", "value":4}, {"field":"Government", "value":11}, {"field":"Service", "value":6}, {"field":"Finance", "value":5}]},
+    {"year":"2017", "data":[{"field":"Engineering", "value":6}, {"field":"Education", "value":10}, {"field":"Manufacturing", "value":4}, {"field":"Government", "value":10}, {"field":"Service", "value":6}, {"field":"Finance", "value":6}]},
+    {"year":"2018", "data":[{"field":"Engineering", "value":6}, {"field":"Education", "value":9}, {"field":"Manufacturing", "value":4}, {"field":"Government", "value":10}, {"field":"Service", "value":6}, {"field":"Finance", "value":7}]},
+    {"year":"2019", "data":[{"field":"Engineering", "value":6}, {"field":"Education", "value":9}, {"field":"Manufacturing", "value":4}, {"field":"Government", "value":10}, {"field":"Service", "value":6}, {"field":"Finance", "value":7}]},
+    {"year":"2021", "data":[{"field":"Engineering", "value":6}, {"field":"Education", "value":9}, {"field":"Manufacturing", "value":4}, {"field":"Government", "value":9}, {"field":"Service", "value":6}, {"field":"Finance", "value":8}]},
+    {"year":"2023", "data":[{"field":"Engineering", "value":7}, {"field":"Education", "value":9}, {"field":"Manufacturing", "value":3}, {"field":"Government", "value":9}, {"field":"Service", "value":6}, {"field":"Finance", "value":8}]},
+    {"year":"2025", "data":[{"field":"Engineering", "value":6}, {"field":"Education", "value":8}, {"field":"Manufacturing", "value":3}, {"field":"Government", "value":8}, {"field":"Service", "value":6}, {"field":"Finance", "value":8}]},
+    {"year":"2027", "data":[{"field":"Engineering", "value":5}, {"field":"Education", "value":8}, {"field":"Manufacturing", "value":3}, {"field":"Government", "value":9}, {"field":"Service", "value":6}, {"field":"Finance", "value":9}]},
+    {"year":"2029", "data":[{"field":"Engineering", "value":5}, {"field":"Education", "value":8}, {"field":"Manufacturing", "value":3}, {"field":"Government", "value":6}, {"field":"Service", "value":6}, {"field":"Finance", "value":9}]},
+    {"year":"2031", "data":[{"field":"Engineering", "value":6}, {"field":"Education", "value":8}, {"field":"Manufacturing", "value":3}, {"field":"Government", "value":5}, {"field":"Service", "value":6}, {"field":"Finance", "value":8}]},
+    {"year":"2033", "data":[{"field":"Engineering", "value":5}, {"field":"Education", "value":7}, {"field":"Manufacturing", "value":3}, {"field":"Government", "value":5}, {"field":"Service", "value":6}, {"field":"Finance", "value":8}]},
+    {"year":"2035", "data":[{"field":"Engineering", "value":4}, {"field":"Education", "value":6}, {"field":"Manufacturing", "value":3}, {"field":"Government", "value":5}, {"field":"Service", "value":6}, {"field":"Finance", "value":9}]}
+]}
 ]
 }

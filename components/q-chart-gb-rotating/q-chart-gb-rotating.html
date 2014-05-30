@@ -1,7 +1,7 @@
 <link rel="import" href="/bower_components/polymer/polymer.html">
 <script src="/bower_components/d3/d3.min.js"></script>
 
-<polymer-element name="q-chart-gb-rotating" extends="q-chart" attributes="url yAxisLabel xAxisLabel">
+<polymer-element name="q-chart-gb-rotating" extends="q-chart" attributes="url yAxisLabel xAxisLabel recordKey">
   <template>
     <style>
       :host {
@@ -39,6 +39,7 @@
       Polymer('q-chart-gb-rotating', {
         yAxisLabel:null,
         xAxisLabel:null,
+        recordKey:null,
         start: function () {
           
         },
@@ -51,7 +52,7 @@
 ////////////////////////////////////////////////////////////////////////////////////
 /*
 what is this? we have datasets with lots of stuff, 3 levels of data
-and that's just too much. we'll take each country and break it into ages
+and that's just too much. we'll take each country and break it into recordKeys
 and then years. and flip through countries showing each as a grouped barchart
 */
 ////////////////////////////////////////////////////////////////////////////////////
@@ -93,13 +94,7 @@ and then years. and flip through countries showing each as a grouped barchart
             .append("g")
               .attr("transform", "translate(0,0)");
 
-          var countries = [];
-          for( var i = 0; i < data.length; i++ )
-          {
-            countries.push(data[i].Country);
-          }
-          console.log(countries);
-
+          var dataIndex = 0;
           var years = [ "2015", "2017", "2019", "2021", "2023", "2025", "2027", "2029", "2031", "2033", "2035"]
 
           ///////////////////////////////////////////////////////////////////////////////////////////
@@ -141,18 +136,21 @@ and then years. and flip through countries showing each as a grouped barchart
           }
 
           massagedData.forEach(function(d) {
-            d.ages = [];
+            d.recordKeys = [];
             for( var prop in d ) {
-              if(prop != "year" && prop != "ages") {
+              if(prop != "year" && prop != "recordKeys") {
                 var p = {name:prop, value:d[prop]};
                 d.countries.push(p);
               }
             }
           });*/
-          
-          var ages = ["0-18", "19-40", "41-60", "61+"];
-          massagedData = data[0]["By Year"];
-
+          massagedData = data[dataIndex]["By Year"];
+          console.log(massagedData);
+          var recordKeys = [];
+          for( var i = 0; i < massagedData[0].data.length; i++ )
+          {
+            recordKeys.push(massagedData[0].data[i][self.recordKey]);
+          }
 
           ///////////////////////////////////////////////////////////////////////////////////////////
           //////////////////////////////////////////////////////////////////////////////////////////
@@ -161,7 +159,7 @@ and then years. and flip through countries showing each as a grouped barchart
             return d.year;
           }));
           
-          x1.domain(ages).rangeRoundBands([0, x0.rangeBand()]);
+          x1.domain(recordKeys).rangeRoundBands([0, x0.rangeBand()]);
 
           y.domain([0, d3.max(massagedData, function(d) { 
 
@@ -191,7 +189,7 @@ and then years. and flip through countries showing each as a grouped barchart
               .attr("y", 6)
               .attr("dy", ".71em")
               .style("text-anchor", "end")
-              .text("Per 10,000");
+              .text(self.yAxisLabel);
 
           var year = svg.selectAll(".year")
               .data(massagedData)
@@ -204,27 +202,27 @@ and then years. and flip through countries showing each as a grouped barchart
 
           year.selectAll("rect")
               .data(function(d) { 
-                console.log(" line 204 ", d);
                 return d.data; 
               })
             .enter().append("rect")
               .attr("width", x1.rangeBand())
               .attr("x", function(d) { 
-                return x1( d.age); 
+                return x1( d[self.recordKey] ); 
               })
               .attr("y", function(d) { 
-                return 300 - d.value; 
+                //return self.clientHeight - y(d.value);
+                return 300;
               })
-              .attr("height", function(d) { return d.value; })
+              .attr("height", function(d) { return y(d.value);})
               //.attr("height", function(d) { return d.value; })
-              .style("fill", function(d) { return color(d.age); });
+              .style("fill", function(d) { return color(d[self.recordKey]); });
 
           ////////////////////////////////////////////////////////////////////////////////////////
           // drawing the legend
           ////////////////////////////////////////////////////////////////////////////////////////
 
           var legend = svg.selectAll(".legend")
-              .data(ages.slice().reverse())
+              .data(recordKeys.slice())
             .enter().append("g")
               .attr("class", "legend")
               .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
@@ -245,9 +243,44 @@ and then years. and flip through countries showing each as a grouped barchart
               });
           this.start = (function () {
             d3.timer(function() {
-              if(Date.now() - lastUpdate > 1000)
+              if(Date.now() - lastUpdate > 2000)
               {
-                massagedData = data[1]["By Year"];
+                dataIndex++;
+                if(dataIndex > data.length-1)
+                {
+                  dataIndex = 0;
+                }
+
+                massagedData = data[dataIndex]["By Year"];
+                
+
+                //////////////////////////////////////////////////
+                 // var year = svg.selectAll(".year")
+                 //    .data(massagedData)
+                 //  .enter().append("g")
+                 //    .attr("class", "g")
+                 //    .attr("transform", function(d) { 
+                 //      return "translate(" + x0(d.year) + ",0)"; 
+                 //  });
+                
+                //console.log(svg.selectAll("rect"));
+                svg.selectAll("rect")
+                    .data(function(d) { 
+                      return d.data; 
+                    })
+                  .enter().append("rect")
+                    .attr("width", x1.rangeBand())
+                    .attr("x", function(d) { 
+                      return x1( d[self.recordKey]); 
+                    })
+                    .attr("y", function(d) { 
+                      return self.clientHeight - y(d.value); 
+                    })
+                    .attr("height", function(d) { return self.clientHeight - y(d.value); })
+                    //.attr("height", function(d) { return d.value; })
+                    .style("fill", function(d) { return color(d[self.recordKey]); });
+              //////////////////////////////////////////////////////////
+
                 lastUpdate = Date.now();
               }
               return self.stopTimer;
