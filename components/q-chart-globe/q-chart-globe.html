@@ -43,11 +43,63 @@
         display: none;
       }
 
-      #africa {
-        fill:rgb(255, 0, 0);
+      #legend {
+          padding: 1.5em 0 0 1.5em;
+      }
+
+      li.key {
+          border-top-width: 15px;
+          border-top-style: solid;
+          font-size: .75em;
+          width: 10%;
+          padding-left: 0;
+          padding-right: 0;
+      }
+      .legend {
+        width:20px;
+        height:20px;
+        padding-top: 4px;
+        padding-left: 6px;
+      }
+      .neg3 {
+        background-color: #f00;
+      }
+      .neg2 {
+        background-color: #b20;
+      }
+      .neg1 {
+        background-color: #950;
+      }
+      .zero {
+        background-color: #860;
+      }
+      .pos1 {
+        background-color: #590;
+      }
+      .pos2 {
+        background-color: #3c0;
+      }
+      .pos3 {
+        background-color: #0f0;
+      }
+      h3 { padding-bottom: 0px;}
+      .list-inline > li {
+        display: table-cell;
       }
 
     </style>
+    <div id="legend">
+      <h3>Change in forestation for year <span id="currentYearTitle">2014</span></h3>
+      <ul class="list-inline">
+          <li class="legend neg3">-3</li>
+          <li class="legend neg2">-2</li>
+          <li class="legend neg1">-1</li>
+          <li class="legend zero">-0</li>
+          <li class="legend pos1">1</li>
+          <li class="legend pos2">2</li>
+          <li class="legend pos3">3</li>
+      </ul>
+    </div>
     <svg id="chart"></svg>
   </template>
   <script>
@@ -91,7 +143,7 @@
           var self = this;
           var diameter = self.clientWidth / 2,
             radius = diameter/2,
-            velocity = .02,
+            velocity = .03,
             then = Date.now();
 
           var years = [ "2015", "2017", "2019", "2021", "2023", "2025", "2027", "2029", "2031", "2033", "2035"]
@@ -119,6 +171,10 @@
               .attr("d", path);
 
           var currentYear = "2015";
+          self.$.currentYearTitle.innerHTML = currentYear;
+
+          var legendColor = d3.scale.linear().domain([-3, 0, 3]).range(["red", "green"]);
+          var legendValues = [-3, -2, -1, 0, 1, 2, 3];
 
           function getCurrentColor( name )
           {
@@ -126,13 +182,7 @@
                 if(self.data[i][self.dataTopLevel] == name) {
                     for( var j = 0; j < self.data[i]["By Year"].length; j++) {
                         if(self.data[i]["By Year"][j]["year"] == currentYear) {
-                          var hue = d3.scale.linear().domain([-4,10]).range([0,360]);
-
-                          return d3.rgb(
-                              d3.hsl(
-                                hue(self.data[i]["By Year"][j]["value"])
-                                , 0.5, 0.5)
-                              ).toString();
+                          return legendColor(self.data[i]["By Year"][j]["value"]);
                         }
                     }
                 }
@@ -145,8 +195,8 @@
           var asia = {type: "FeatureCollection", name: "Asia", color: getCurrentColor("Asia"), id:"Asia", features: countries.features.filter(function(d) { return d.properties.continent=="Asia"; })};
           var africa = {type: "FeatureCollection", name: "Africa", color: getCurrentColor("Africa"), id:"Africa", features: countries.features.filter(function(d) { return d.properties.continent=="Africa"; })};
           var europe = {type: "FeatureCollection", name: "Europe", color: getCurrentColor("Europe"), id:"Europe", features: countries.features.filter(function(d) { return d.properties.continent=="Europe"; })};
-          var na = {type: "FeatureCollection", name: "North America", color: getCurrentColor("NA"), id:"NA", features: countries.features.filter(function(d) { return d.properties.continent=="North America"; })};
-          var sa = {type: "FeatureCollection", name: "South America", color: getCurrentColor("SA"), id:"SA", features: countries.features.filter(function(d) { return d.properties.continent=="South America"; })};
+          var na = {type: "FeatureCollection", name: "North America", color: getCurrentColor("North America"), id:"NA", features: countries.features.filter(function(d) { return d.properties.continent=="North America"; })};
+          var sa = {type: "FeatureCollection", name: "South America", color: getCurrentColor("South America"), id:"SA", features: countries.features.filter(function(d) { return d.properties.continent=="South America"; })};
 
           var oceania = {type: "FeatureCollection", name: "Oceania", color: getCurrentColor("Oceania"), id:"Oceania", features: countries.features.filter(function(d) { return d.properties.continent=="Oceania"; })};
 
@@ -159,28 +209,6 @@
             .attr("d", path)
             .attr("id", function(d,i) { return d.id; })
             .style("fill", function(d,i) { return d.color; });
-
-          // make a legend
-          // var legend = svg.selectAll(".legend")
-          //     .data(countries.slice().reverse())
-          //   .enter().append("g")
-          //     .attr("class", "legend")
-          //     .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
-
-          // legend.append("rect")
-          //     .attr("x", this.clientWidth - 18)
-          //     .attr("width", 18)
-          //     .attr("height", 18)
-          //     .style("fill", color);
-
-          // legend.append("text")
-          //     .attr("x", this.clientWidth - 24)
-          //     .attr("y", 9)
-          //     .attr("dy", ".35em")
-          //     .style("text-anchor", "end")
-          //     .text(function(d) { 
-          //       return d; 
-          //     });
          
           // isRendered
           this.isRendered = true;
@@ -192,7 +220,7 @@
               svg.selectAll("path")
                 .attr("d", path.projection(projection));
 
-              if(Date.now() - lastYearUpdate > 2000)
+              if(Date.now() - lastYearUpdate > 3000)
               {
                 svg.select('#Africa').style({
                   fill: getCurrentColor("Africa")
@@ -215,6 +243,8 @@
                 });
 
                 currentYear = years[yearIndex];
+
+                self.$.currentYearTitle.innerHTML = currentYear;
 
                 yearIndex++;
                 if(yearIndex > 10)

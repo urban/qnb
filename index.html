@@ -20,19 +20,21 @@
 </head>
 <body unresolved>
 
-    <frog-card>
-      <q-view url="/data/stories/story-2.json">
-        <q-visualization full title="Deforestation Worldwide" hasContent>
-          <q-chart-globe url="/data/deforestation.json" dataTopLevel="Continent"></q-chart-globe>
-        </q-visualization>
-      </q-view>
-    </frog-card>
-
   <frog-deck id="deck" transition="fade">
+
+
     <frog-card>
       <q-view url="/data/stories/story-2.json">
         <q-visualization full title="Length at Current Job" hasContent>
           <q-chart-gb-rotating url="/data/length_at_current_job.json" yAxisLabel="Years" recordKey="field"></q-chart-gb-rotating>
+        </q-visualization>
+      </q-view>
+    </frog-card>
+
+    <frog-card>
+      <q-view url="/data/stories/story-2.json">
+        <q-visualization full title="World Map of Awfulness" hasContent>
+          <q-chart-globe url="/data/deforestation.json" dataTopLevel="Continent"></q-chart-globe>
         </q-visualization>
       </q-view>
     </frog-card>

@@ -38,6 +38,14 @@
     {"year":2023, "value":0.0}, {"year":2025, "value":0.0}, {"year":2027, "value":0.0}, {"year":2029, "value":0.0}, 
     {"year":2031, "value":0.1}, {"year":2033, "value":0.1}, {"year":2035, "value":0.1}
     ]
+},
+
+{"Continent":"Oceania",
+"By Year": [
+    {"year":2015, "value":0.1}, {"year":2017, "value":0.2}, {"year":2019, "value":0.1}, {"year":2021, "value":0.1}, 
+    {"year":2023, "value":0.0}, {"year":2025, "value":0.0}, {"year":2027, "value":0.0}, {"year":2029, "value":0.0}, 
+    {"year":2031, "value":0.1}, {"year":2033, "value":0.1}, {"year":2035, "value":0.1}
+    ]
 }
 ]
 }

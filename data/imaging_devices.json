@@ -1,18 +1,19 @@
 {
 "title":"Surgeries by Country and Income Bracket",
 
-data: {
-    "India": [
-        "2015": [{"bracket":0-25, "value":1}, {"bracket":26-50, "value":2}, {"bracket":51-75, "value":3}, {"bracket":76-100, "value":9}], 
-        "2017": [{"bracket":0-25, "value":2}, {"bracket":26-50, "value":4}, {"bracket":51-75, "value":5}, {"bracket":76-100, "value":7}], 
-        "2019": [{"bracket":0-25, "value":4}, {"bracket":26-50, "value":8}, {"bracket":51-75, "value":7}, {"bracket":76-100, "value":19}], 
-        "2021": [{"bracket":0-25, "value":7}, {"bracket":26-50, "value":9}, {"bracket":51-75, "value":8}, {"bracket":76-100, "value":19}], 
-        "2023": [{"bracket":0-25, "value":8}, {"bracket":26-50, "value":10}, {"bracket":51-75, "value":9}, {"bracket":76-100, "value":20}], 
-        "2025": [{"bracket":0-25, "value":7}, {"bracket":26-50, "value":12}, {"bracket":51-75, "value":10}, {"bracket":76-100, "value":20}], 
-        "2027": [{"bracket":0-25, "value":8}, {"bracket":26-50, "value":13}, {"bracket":51-75, "value":8}, {"bracket":76-100, "value":20}], 
-        "2029": [{"bracket":0-25, "value":9}, {"bracket":26-50, "value":15}, {"bracket":51-75, "value":19}, {"bracket":76-100, "value":20}], 
-        "2031": [{"bracket":0-25, "value":10}, {"bracket":26-50, "value":17}, {"bracket":51-75, "value":21}, {"bracket":76-100, "value":20}], 
-        "2033": [{"bracket":0-25, "value":13}, {"bracket":26-50, "value":22}, {"bracket":51-75, "value":25}, {"bracket":76-100, "value":22}], 
-        "2035": [{"bracket":0-25, "value":14}, {"bracket":26-50, "value":26}, {"bracket":51-75, "value":26}, {"bracket":76-100, "value":23}]
+"data": {
+    "Country":"India",
+    "By Year": [
+        {"year":"2015", "data": [{"bracket":0-25, "value":1}, {"bracket":26-50, "value":2}, {"bracket":51-75, "value":3}, {"bracket":76-100, "value":9}]}, 
+        {"year":"2017", "data": [{"bracket":0-25, "value":2}, {"bracket":26-50, "value":4}, {"bracket":51-75, "value":5}, {"bracket":76-100, "value":7}]}, 
+        {"year":"2019", "data": [{"bracket":0-25, "value":4}, {"bracket":26-50, "value":8}, {"bracket":51-75, "value":7}, {"bracket":76-100, "value":19}]}, 
+        {"year":"2021", "data": [{"bracket":0-25, "value":7}, {"bracket":26-50, "value":9}, {"bracket":51-75, "value":8}, {"bracket":76-100, "value":19}]}, 
+        {"year":"2023", "data": [{"bracket":0-25, "value":8}, {"bracket":26-50, "value":10}, {"bracket":51-75, "value":9}, {"bracket":76-100, "value":20}]}, 
+        {"year":"2025", "data": [{"bracket":0-25, "value":7}, {"bracket":26-50, "value":12}, {"bracket":51-75, "value":10}, {"bracket":76-100, "value":20}]}, 
+        {"year":"2027", "data": [{"bracket":0-25, "value":8}, {"bracket":26-50, "value":13}, {"bracket":51-75, "value":8}, {"bracket":76-100, "value":20}]}, 
+        {"year":"2029", "data": [{"bracket":0-25, "value":9}, {"bracket":26-50, "value":15}, {"bracket":51-75, "value":19}, {"bracket":76-100, "value":20}]}, 
+        {"year":"2031", "data": [{"bracket":0-25, "value":10}, {"bracket":26-50, "value":17}, {"bracket":51-75, "value":21}, {"bracket":76-100, "value":20}]}, 
+        {"year":"2033", "data": [{"bracket":0-25, "value":13}, {"bracket":26-50, "value":22}, {"bracket":51-75, "value":25}, {"bracket":76-100, "value":22}]}, 
+        {"year":"2035", "data": [{"bracket":0-25, "value":14}, {"bracket":26-50, "value":26}, {"bracket":51-75, "value":26}, {"bracket":76-100, "value":23}]}
     ]
 }
