@@ -8,14 +8,6 @@
         display: block;
       }
 
-      .bar {
-        fill: steelblue;
-      }
-
-      .bar:hover {
-        fill: brown;
-      }
-
       .axis {
         font: 10px sans-serif;
       }
@@ -26,10 +18,6 @@
         stroke: #000;
         shape-rendering: crispEdges;
       }
-
-      /*.x.axis path {
-        display: none;
-      }*/
     </style>
     <svg id="chart"></svg>
   </template>
@@ -102,7 +90,7 @@
         init: function() {
           var self = this;
 
-          self.margin = {top: 20, right: 100, bottom: 50, left: 50};
+          self.margin = {top: 0, right: 100, bottom: 30, left: 50};
           self.width = self.clientWidth - self.margin.left - self.margin.right;
           self.height = self.clientHeight - self.margin.top - self.margin.bottom;
 
@@ -148,11 +136,13 @@
             .append("g")
               .attr("transform", "translate(" + self.margin.left + "," + self.margin.top + ")");
 
+          //draw x axis
           g.append("g")
               .attr("class", "x axis")
               .attr("transform", "translate(0," + this.height + ")")
               .call(self.xAxis);
 
+          //draw y axis
           g.append("g")
               .attr("class", "y axis")
               .call(self.yAxis)
@@ -162,6 +152,29 @@
               .attr("dy", ".71em")
               .style("text-anchor", "end")
               .text(self.yAxisLabel);
+
+
+          //draw legend
+          var legend = g.selectAll(".legend")
+              .data(self.countries.slice().reverse())
+            .enter().append("g")
+              .attr("class", "legend")
+              .attr("transform", function(d, i) { return "translate(0," + i * 25 + ")"; });
+
+          legend.append("rect")
+              .attr("x", (self.width + self.margin.right) - 18)
+              .attr("width", 18)
+              .attr("height", 18)
+              .style("fill", self.color);
+
+          legend.append("text")
+              .attr("x", (self.width + self.margin.right) - 24)
+              .attr("y", 9)
+              .attr("dy", ".35em")
+              .style("text-anchor", "end")
+              .text(function(d) {
+                return d;
+              });
 
           return g;
         },
@@ -199,30 +212,6 @@
               .duration(500)
               .delay(function(d, i, j) { return (j * 5 + i) * 500; })
               .attr("height", function(d) { return self.height - self.y(d.value); })
-
-          ////////////////////////////////////////////////////////////////////////////////////////
-          // drawing the legend
-          ////////////////////////////////////////////////////////////////////////////////////////
-          // var legend = g.selectAll(".legend")
-          //     .data(self.countries.slice().reverse())
-          //   .enter().append("g")
-          //     .attr("class", "legend")
-          //     .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
-
-          // legend.append("rect")
-          //     .attr("x", self.width - 18)
-          //     .attr("width", 18)
-          //     .attr("height", 18)
-          //     .style("fill", self.color);
-
-          // legend.append("text")
-          //     .attr("x", self.width - 24)
-          //     .attr("y", 9)
-          //     .attr("dy", ".35em")
-          //     .style("text-anchor", "end")
-          //     .text(function(d) {
-          //       return d;
-          //     });
         }
       });
 
