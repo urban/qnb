@@ -7,48 +7,9 @@
     <style>
       :host {
         display: block;
-      } 
-
-      .foreground {
-        fill: #d8ffff;
-        stroke: #333;
-        stroke-width: 1.5px;
       }
-       
-      .land {
-        fill: #d7c7ad;
-        stroke: #766951;
-      }
-
-      .bar {
-        fill: steelblue;
-      }
-
-      .bar:hover {
-        fill: brown;
-      }
-
-      .axis {
-        font: 10px sans-serif;
-      }
-
-      .axis path,
-      .axis line {
-        fill: none;
-        stroke: #000;
-        shape-rendering: crispEdges;
-      }
-
-      .x.axis path {
-        display: none;
-      }
-
-      #africa {
-        fill:rgb(255, 0, 0);
-      }
-
     </style>
-    <div id="chart"></div>
+    <svg id="chart"></svg>
   </template>
   <script>
     (function () {
@@ -66,17 +27,16 @@
           var self = this;
           var countriesData = self.data.data;
 
-        // Setup all the constants
+          // Setup all the constants
           var duration = 500;
-          var width = 800
-          var height = 600
+          var width = this.clientWidth;
+          var height = this.clientHeight;
           var radius = Math.floor(Math.min(width/2, height/2) * 0.9);
-          var colors = ["#d62728", "#ff9900", "#004963", "#3497D3"];
+          var colors = this.colors;
 
           var years = [ "2015", "2017", "2019", "2021", "2023", "2025", "2027", "2029", "2031", "2033", "2035"];  
           var countries = [];
 
-          //console.log(countriesData);
           for (var key in countriesData) {
             if (countriesData.hasOwnProperty(key)) {
               countries.push(key);
@@ -97,7 +57,7 @@
                 .append("path")
                 .attr("stroke", "white")
                 .attr("stroke-width", 2)
-                .attr("fill", function(d, i) { return color(i); })
+                .attr("fill", function(d, i) { return colors(i); })
                 .attr("d", arc);
 
             arcs.transition()
@@ -129,8 +89,6 @@
           };
           /////////////////////////////////////////////////////////////////////////////////////////////
 
-          var color = d3.scale.category20();
-
           var donut = d3.layout.pie()
             .sort(null)
             .value(function(d) { return d.value; });
@@ -160,7 +118,7 @@
             .append("path")
             .attr("stroke", "white")
             .attr("stroke-width", 2)
-            .attr("fill", function(d, i) { return color(i); })
+            .attr("fill", function(d, i) { return colors(i); })
             .attr("d", arc)
             .each(function(d) { return this.current = d; });
 

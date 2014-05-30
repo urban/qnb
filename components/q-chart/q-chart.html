@@ -5,16 +5,24 @@
   <script>
     (function () {
 
+      // blue yellow green orange
+      var defaultColors = ['#2c88dc', '#fdd81b', '#3eb307', '#ef6d09'];
+      var colorFn = d3.scale.ordinal()
+            .range(defaultColors)
+
       Polymer('q-chart', {
         url: null,
         data: null,
         chart: null,
         isRendered: false,
+        colors: colorFn,
         ready: function () {
           this.onLoad = (function (err, res) {
             this.data = res;
             this.asyncFire('load', res);
           }).bind(this);
+        },
+        domReady: function () {
           this.draw();
         },
         urlChanged: function (oldVal, newVal) {
