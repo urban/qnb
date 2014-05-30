@@ -25,7 +25,8 @@
     "frog-deck": "https://gitus.frogdesign.com/scm/webcomp/frog-deck.git",
     "d3": "https://github.com/mbostock/d3.git",
     "c3": "https://github.com/masayuki0812/c3.git",
-    "dimple": "https://github.com/PMSI-AlignAlytics/dimple.git"
+    "dimple": "https://github.com/PMSI-AlignAlytics/dimple.git",
+    "lodash": "~2.4.1"
   },
   "resolutions": {
     "polymer": "master",
