@@ -60,7 +60,7 @@
         },
         stop: function () {
           console.log(" trying to stop ")
-          clearInterval(intervalId);
+          clearInterval(this.intervalId);
         },
         render: function () {
           var self = this;
@@ -181,7 +181,7 @@
             //Update the data
             this.start = (function () 
             {
-              intervalId = setInterval(function() 
+              self.intervalId = setInterval(function() 
               {
                 
                 if(currentYear < years.length) {

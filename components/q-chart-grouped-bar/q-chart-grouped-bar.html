@@ -1,7 +1,7 @@
 <link rel="import" href="/bower_components/polymer/polymer.html">
 <script src="/bower_components/d3/d3.min.js"></script>
 
-<polymer-element name="q-chart-grouped-bar" extends="q-chart" attributes="url">
+<polymer-element name="q-chart-grouped-bar" extends="q-chart" attributes="url xAxisLabel yAxisLabel">
   <template>
     <style>
       :host {
@@ -37,6 +37,8 @@
     (function () {
 
       Polymer('q-chart-grouped-bar', {
+        yAxisLabel:null,
+        xAxisLabel:null,
          start: function () {
           
         },
@@ -47,25 +49,28 @@
           var self = this;
           var data = self.data.data;
 
-          this.clientWidth = 600; /// TODO THIS NEEDS TO BE SET?
-          this.clientHeight = 300;
+          console.log( this.clientWidth, this.clientHeight );
+
+          // this.clientWidth = 600; /// TODO THIS NEEDS TO BE SET?
+          // this.clientHeight = 300;
 
           var w = this.clientWidth / data.length;
           var h = this.clientHeight;
 
           var x0 = d3.scale.ordinal()
               .rangeRoundBands([0, this.clientWidth], .1);
+              // .range([this.clientWidth, 0]);
 
           var x1 = d3.scale.ordinal();
 
           var y = d3.scale.linear()
-              .range([300, 0]);
+              .range([this.clientHeight, 0]);
 
           var color = d3.scale.ordinal()
               .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
 
           var xAxis = d3.svg.axis()
-              .scale(x0);
+              .scale(x0)
               .orient("bottom");
 
           var yAxis = d3.svg.axis()
@@ -74,8 +79,8 @@
               .tickFormat(d3.format(".2s"));
 
           var svg = d3.select(this.$.chart)
-              .attr("width", 1080)
-              .attr("height", 360)
+              .attr("width", this.clientWidth)
+              .attr("height", this.clientHeight)
             .append("g")
               .attr("transform", "translate(0,0)");
 
@@ -170,7 +175,7 @@
               .attr("y", 6)
               .attr("dy", ".71em")
               .style("text-anchor", "end")
-              .text("Per 10,000");
+              .text(self.yAxisLabel);
 
           var year = svg.selectAll(".year")
               .data(massagedData)
