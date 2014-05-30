@@ -60,6 +60,8 @@
         dataTopLevel: null,
         isRendered: false,
         stopTimer: false,
+        intervalId: null,
+
         ready: function () {
           this.onLoad = this.load.bind(this);
           this.onLoadWorld = this.loadWorld.bind(this);
@@ -82,6 +84,8 @@
         },
         stop: function () {
           this.stopTimer = true;
+          console.log("this.intervalId", this.intervalId);
+          clearInterval(this.intervalId);
         },
         render: function () {
           var self = this;
@@ -160,11 +164,9 @@
           this.isRendered = true;
           // HACK to keep context of local vars
           this.start = (function () {
+            self.intervalId = setInterval(function() {
 
-            console.log( "globe trying to start rotation ");
-            setInterval(function() {
-
-              console.log(" globe d3 timer method ");
+              console.log(" globe interval ");
 
               var angle = velocity * (Date.now() - then);
               projection.rotate([angle,0,0]);
@@ -196,7 +198,7 @@
                 currentYear = years[yearIndex];
 
                 yearIndex++;
-                if(yearIndex > 11)
+                if(yearIndex > 10)
                 {
                   yearIndex = 0;
                 }
