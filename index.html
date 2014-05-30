@@ -20,6 +20,14 @@
 </head>
 <body unresolved>
 
+    <frog-card>
+      <q-view url="/data/stories/story-2.json">
+        <q-visualization full title="Deforestation Worldwide" hasContent>
+          <q-chart-globe url="/data/deforestation.json" dataTopLevel="Continent"></q-chart-globe>
+        </q-visualization>
+      </q-view>
+    </frog-card>
+
   <frog-deck id="deck" transition="fade">
     <frog-card>
       <q-view url="/data/stories/story-2.json">
@@ -73,14 +81,6 @@
       <q-view class="green" url="/data/stories/story-1.json">
         <q-visualization full title="Stacked Bar Chart" hasContent>
           <q-chart-stacked-bar url="/data/surgeries-lifetime.test.tsv"></q-chart-stacked-bar>
-        </q-visualization>
-      </q-view>
-    </frog-card>
-
-    <frog-card>
-      <q-view url="/data/stories/story-2.json">
-        <q-visualization full title="World Map of Awfulness" hasContent>
-          <q-chart-globe url="/data/deforestation.json" dataTopLevel="Continent"></q-chart-globe>
         </q-visualization>
       </q-view>
     </frog-card>

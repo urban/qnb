@@ -62,19 +62,14 @@ and then years. and flip through countries showing each as a grouped barchart
           var self = this;
           var data = self.data.data;
 
-          this.clientWidth = 600; /// TODO THIS NEEDS TO BE SET?
-          this.clientHeight = 300;
-
-          var w = this.clientWidth / data.length;
-          var h = this.clientHeight;
-
           var x0 = d3.scale.ordinal()
-              .rangeRoundBands([0, this.clientWidth], .1);
+              .rangeRoundBands([0, self.clientWidth], .1);
 
           var x1 = d3.scale.ordinal();
 
           var y = d3.scale.linear()
-              .range([300, 0]);
+              //.range([300, 0]);
+              .range([0, 300]);
               
           var color = this.colors;
 
@@ -102,49 +97,8 @@ and then years. and flip through countries showing each as a grouped barchart
           ///////////////////////////////////////////////////////////////////////////////////////////
           var massagedData = [];
           var lastUpdate = Date.now();
-          /*var firstStageMassaging = {};
-          for( var i = 0; i < years.length; i++ )
-          {
-             firstStageMassaging[years[i]] = [];
-          }
-          // first step : years all together 
-          for( var i = 0; i < data.length; i++ )
-          {
-            var countryName = data[i].Country;
-            
-            for( var j = 0; j < data[i]["By Year"].length; j++ )
-            {
-              var year = data[i]["By Year"][j].year;
-              var record = {};
-              record[data[i].Country] = data[i]["By Year"][j].value;
-              firstStageMassaging[year].push(record);
-            }
-          }
 
-          for( var prop in firstStageMassaging )
-          {
-            var finalRecord = { year:prop };
-            for(var j = 0; j < firstStageMassaging[prop].length; j++ )
-            {
-              for(var prop2 in firstStageMassaging[prop][j])
-              {
-                finalRecord[prop2] = firstStageMassaging[prop][j][prop2];
-              }
-            }
-            massagedData.push(finalRecord);
-          }
-
-          massagedData.forEach(function(d) {
-            d.recordKeys = [];
-            for( var prop in d ) {
-              if(prop != "year" && prop != "recordKeys") {
-                var p = {name:prop, value:d[prop]};
-                d.countries.push(p);
-              }
-            }
-          });*/
           massagedData = data[dataIndex]["By Year"];
-          console.log(massagedData);
           var recordKeys = [];
           for( var i = 0; i < massagedData[0].data.length; i++ )
           {
@@ -257,7 +211,6 @@ and then years. and flip through countries showing each as a grouped barchart
               //////////////////////////////////////////////////////////
               // update the chart?
               //////////////////////////////////////////////////////////
-              console.log(year);
               year
                 .data(massagedData);
                 
