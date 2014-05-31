@@ -12,76 +12,227 @@
 
   <frog-deck id="deck" transition="fade">
 
-    <frog-card>
+    <frog-card delay="1000">
       <q-view class="green" url="/data/stories/story-1.json">
-        <q-visualization full title="Stacked Bar Chart" hasContent>
-          <q-chart-stacked-bar url="/data/length_at_current_job.json" recordKey="field" yAxisLabel="Years"></q-chart-stacked-bar>
+        <q-visualization title="Water usage per person. Amount of water recycled by percentage">
+          <!--  -->
+        </q-visualization>
+        <q-visualization title="# of job changes in workers life by country / by industry">
+          <!--  -->
+        </q-visualization>
+        <q-visualization flex title="Birthrate by urbanized index (i.e. how urban a family is)">
+          <!--  -->
         </q-visualization>
       </q-view>
     </frog-card>
 
-    <frog-card>
+    <frog-card delay="500">
       <q-view url="/data/stories/story-2.json">
-        <q-visualization full title="Traffic Fatalities" hasContent>
-          <q-chart-grouped-bar url="/data/books.json" yAxisLabel="Per 10,000"></q-chart-grouped-bar>
+        <q-visualization flex title="Average commute to workplace in KM">
+          <!--  -->
+        </q-visualization>
+        <q-visualization flex title="% of workers who travel to a defined workplace">
+          <!--  -->
+        </q-visualization>
+      </q-view>
+    </frog-card>
+
+    <frog-card delay="2000">
+      <q-view url="/data/stories/story-3.json">
+        <q-visualization flex title="Number of species extinct per year.">
+          <!--  -->
+        </q-visualization>
+        <q-visualization flex title="Days of average salary to purchase 1 chicken for consumption by country.">
+          <!--  -->
         </q-visualization>
       </q-view>
     </frog-card>
 
     <frog-card>
-      <q-view url="/data/stories/story-2.json">
-        <q-visualization full title="Deforestation Worldwide" hasContent>
-          <q-chart-globe url="/data/deforestation.json" dataTopLevel="Continent"></q-chart-globe>
+      <q-view url="/data/stories/story-4.json">
+        <q-visualization flex title="Amount of currency fluctuation per day (increasing fluidity in money markets)">
+          <!--  -->
+        </q-visualization>
+        <q-visualization title="Home ownership rates by country.">
+          <!--  -->
+        </q-visualization>
+        <q-visualization title="# of moves in life by country/region">
+          <!--  -->
         </q-visualization>
       </q-view>
     </frog-card>
 
     <frog-card>
-      <q-view url="/data/stories/story-2.json">
-        <q-visualization full title="Length at Current Job" hasContent>
-          <q-chart-gb-rotating url="/data/length_at_current_job.json" yAxisLabel="Years" recordKey="field"></q-chart-gb-rotating>
+      <q-view url="/data/stories/story-5.json">
+        <q-visualization title="Reported cases of Food-borne Illness /year (salmonella, e. coli)">
+          <!--  -->
+        </q-visualization>
+        <q-visualization title="Raw Food Exports from India to EU">
+          <!--  -->
+        </q-visualization>
+        <q-visualization flex title="Refrigerator sales in India">
+          <!--  -->
         </q-visualization>
       </q-view>
     </frog-card>
 
     <frog-card>
-      <q-view url="/data/stories/story-2.json">
-        <q-visualization full title="Hours Homework" hasContent>
-          <q-chart-gb-rotating url="/data/hours_homework.json" yAxisLabel="Hours" recordKey="age"></q-chart-gb-rotating>
+      <q-view class="orange" url="/data/stories/story-6.json">
+        <q-visualization flex title="# of major/minor surgeries in lifetime by age/country/wealth">
+          <!--  -->
+        </q-visualization>
+        <q-visualization title="incidence of asthma by country over time">
+          <!--  -->
+        </q-visualization>
+        <q-visualization title="Wildfires per 1000 square km.">
+          <!--  -->
         </q-visualization>
       </q-view>
     </frog-card>
 
     <frog-card>
-      <q-view class="orange" url="/data/stories/story-2.json">
-        <q-visualization full title="Streamed Movies Worldwide" hasContent>
-          <q-chart-bar url="/data/streamed_movies.json"></q-chart-bar>
+      <q-view url="/data/stories/story-6.json">
+        <q-visualization full title="# of times face scanning software recognizes & processes a face per day by major city historical">
+          <!--  -->
         </q-visualization>
       </q-view>
     </frog-card>
 
     <frog-card>
-      <q-view url="/data/stories/story-2.json">
-        <q-visualization full title="Traffic Fatalities" hasContent>
-          <q-chart-gb-rotating url="/data/average_hours_screentime.json" yAxisLabel="Per 10,000"></q-chart-gb-rotating>
+      <q-view class="yellow" url="/data/stories/story-8.json">
+        <q-visualization flex title="Consumption of synthetic meat by country">
+          <!--  -->
         </q-visualization>
-      </q-view>
-    </frog-card>
-
-
-
-    <frog-card>
-      <q-view class="yellow" url="/data/stories/story-2.json">
-        <q-visualization full title="Ring Chart" hasContent>
-          <q-chart-ring url="/data/religiousness.json"></q-chart-ring>
+        <q-visualization flex title="Automated cars on the road by country">
+          <!--  -->
         </q-visualization>
       </q-view>
     </frog-card>
 
     <frog-card>
-      <q-view url="/data/stories/story-2.json">
-        <q-visualization full title="Streamed Movies Worldwide" hasContent>
-          <q-chart-bar url="/data/streamed_movies.json"></q-chart-bar>
+      <q-view url="/data/stories/story-9.json">
+        <q-visualization full title="Subcuanesous health implants by country">
+          <!--  -->
+        </q-visualization>
+      </q-view>
+    </frog-card>
+
+    <frog-card>
+      <q-view url="/data/stories/story-10.json">
+        <q-visualization full title="Price of one song on a streaming service by country by year">
+          <!--  -->
+        </q-visualization>
+      </q-view>
+    </frog-card>
+
+    <frog-card>
+      <q-view url="/data/stories/story-11.json">
+        <q-visualization flex title="Hours of screen time per day by age">
+          <!--  -->
+        </q-visualization>
+        <q-visualization flex title="Number of paper books printed per year by country.">
+          <!--  -->
+        </q-visualization>
+      </q-view>
+    </frog-card>
+
+    <frog-card>
+      <q-view url="/data/stories/story-12.json">
+        <q-visualization flex title="Use of anxiety medications by country/age [angziaty, grouped bar chart rotating]">
+          <!--  -->
+        </q-visualization>
+        <q-visualization flex title="average # of drones overhead at given time in major cities over time">
+          <!--  -->
+        </q-visualization>
+      </q-view>
+    </frog-card>
+
+    <frog-card>
+      <q-view url="/data/stories/story-13.json">
+        <q-visualization full title="Imaging devices per household by income bracket by country">
+          <!--  -->
+        </q-visualization>
+      </q-view>
+    </frog-card>
+
+    <frog-card>
+      <q-view url="/data/stories/story-14.json">
+        <q-visualization flex title="Debt per person by country/ income bracket">
+          <!--  -->
+        </q-visualization>
+        <q-visualization flex title="worldwide number of views/clicks for which the person viewing/clicking was paid to click/view">
+          <!--  -->
+        </q-visualization>
+      </q-view>
+    </frog-card>
+
+    <frog-card>
+      <q-view url="/data/stories/story-15.json">
+        <q-visualization flex title="Processing power of device purchased w/ 1 day salary per country">
+          <!--  -->
+        </q-visualization>
+        <q-visualization flex title="streaming movies watched per year">
+          <!--  -->
+        </q-visualization>
+      </q-view>
+    </frog-card>
+
+    <frog-card>
+      <q-view url="/data/stories/story-16.json">
+        <q-visualization flex title="# of languages Siri understands">
+          <!--  -->
+        </q-visualization>
+        <q-visualization title="Religiousness (none, moderate, very) by country by age group (decrease in moderate, large rise very)">
+          <!--  -->
+        </q-visualization>
+        <q-visualization title="Age Dependency Ratio">
+          <!--  -->
+        </q-visualization>
+      </q-view>
+    </frog-card>
+
+    <frog-card>
+      <q-view url="/data/stories/story-17.json">
+        <q-visualization full title="Online dating service usage">
+          <!--  -->
+        </q-visualization>
+      </q-view>
+    </frog-card>
+
+    <frog-card>
+      <q-view url="/data/stories/story-18.json">
+        <q-visualization flex title="Road accidents per 1000 people per country">
+          <!--  -->
+        </q-visualization>
+        <q-visualization flex title="# of visits to Starbucks per person by country">
+          <!--  -->
+        </q-visualization>
+      </q-view>
+    </frog-card>
+
+    <frog-card>
+      <q-view url="/data/stories/story-19.json">
+        <q-visualization full title="# of Coca-Colas consumed">
+          <!--  -->
+        </q-visualization>
+      </q-view>
+    </frog-card>
+
+    <frog-card>
+      <q-view url="/data/stories/story-20.json">
+        <q-visualization flex title="# of Wikipedia edits per minute">
+          <!--  -->
+        </q-visualization>
+        <q-visualization flex title="Average hours of homework done by school-children by country and by age.">
+          <!--  -->
+        </q-visualization>
+      </q-view>
+    </frog-card>
+
+    <frog-card>
+      <q-view url="/data/stories/story-21.json">
+        <q-visualization flex title="??????">
+          <!--  -->
         </q-visualization>
       </q-view>
     </frog-card>
@@ -89,6 +240,12 @@
   </frog-deck>
 
   <script src="main.js"></script>
-
+  <script>
+    // listen for presentation ready event
+    document.addEventListener('ready', function (e) {
+      // kick off presentation
+      window.presentation.start();
+    }, false);
+  </script>
 </body>
 </html>

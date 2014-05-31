@@ -1,6 +1,6 @@
 <link rel="import" href="/bower_components/polymer/polymer.html">
 
-<polymer-element name="q-visualization" attributes="title hasContent">
+<polymer-element name="q-visualization" attributes="title" noscript>
   <template>
     <style>
       *, *:before, *:after {
@@ -38,18 +38,6 @@
     <header>
       <h1>{{title}}</h1>
     </header>
-    <template if="{{!hasContent}}">
-      <frog-thumbnail id="box"></frog-thumbnail>
-    </template>
-    <template if="{{hasContent}}">
-      <content></content>
-    </template>
+    <content></content>
   </template>
-  <script>
-    (function () {
-      Polymer('q-visualization', {
-        hasContent: false
-      })
-    })();
-  </script>
 </polymer-element>
