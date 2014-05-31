@@ -39,12 +39,14 @@
       Polymer('q-chart-bar', {
         label:null,
          start: function () {
-          
+
         },
         stop: function () {
 
         },
         render: function () {
+          this.isRendered = true;
+
           var self = this;
           var data = self.data.data;
           var w = this.clientWidth / data.length;
@@ -55,11 +57,11 @@
           var max = d3.max(data, function(d) {
             return d.value;
           });
-            
+
           var xScale = d3.scale.linear()
               .domain([0, 1])
               .range([0, w]);
-            
+
           var yScale = d3.scale.linear()
              .domain([0, max])
              .rangeRound([0, h]);
