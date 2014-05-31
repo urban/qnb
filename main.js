@@ -16,13 +16,11 @@
     var visualizations = card.querySelectorAll('q-visualization > *');
     visualizations.array().forEach(function (v) {
       var cb = function () {
-        console.log(v.isRendered);
         if (!v.isRendered) v.render();
         if (v.start) {
           v.start();
         }
       };
-      // console.log(v.render);
       if (v.data && v.render) {
         cb();
       } else {
@@ -43,7 +41,7 @@
   };
 
   function start() {
-    timer = window.setInterval(next, 5000);
+    timer = window.setInterval(next, slideDelay);
   };
 
   function stop() {
@@ -61,5 +59,6 @@
   // initial render
   window.addEventListener('WebComponentsReady', function(e) {
     selectVisualizations(cards[0]);
+    // start();
   });
 })();
