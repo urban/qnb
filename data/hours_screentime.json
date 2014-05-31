@@ -1,0 +1,80 @@
+{
+"title":"Average Hours Screentime Per Day",
+
+"data": [
+    {"Country":"India",
+        "By Year" : [
+            {"year":"2015", "data": [{"age":"0-18", "value":7}, {"age":"19-40", "value":8}, {"age":"41-60", "value":3}, {"age":"61+", "value":2}]}, 
+            {"year":"2017", "data": [{"age":"0-18", "value":8}, {"age":"19-40", "value":9}, {"age":"41-60", "value":5}, {"age":"61+", "value":3}]}, 
+            {"year":"2019", "data": [{"age":"0-18", "value":12}, {"age":"19-40", "value":11}, {"age":"41-60", "value":7}, {"age":"61+", "value":5}]}, 
+            {"year":"2021", "data": [{"age":"0-18", "value":12}, {"age":"19-40", "value":12}, {"age":"41-60", "value":8}, {"age":"61+", "value":6}]}, 
+            {"year":"2023", "data": [{"age":"0-18", "value":13}, {"age":"19-40", "value":11}, {"age":"41-60", "value":9}, {"age":"61+", "value":10}]}, 
+            {"year":"2025", "data": [{"age":"0-18", "value":12}, {"age":"19-40", "value":12}, {"age":"41-60", "value":10}, {"age":"61+", "value":10}]}, 
+            {"year":"2027", "data": [{"age":"0-18", "value":12}, {"age":"19-40", "value":13}, {"age":"41-60", "value":8}, {"age":"61+", "value":10}]}, 
+            {"year":"2029", "data": [{"age":"0-18", "value":13}, {"age":"19-40", "value":13}, {"age":"41-60", "value":9}, {"age":"61+", "value":10}]}, 
+            {"year":"2031", "data": [{"age":"0-18", "value":12}, {"age":"19-40", "value":14}, {"age":"41-60", "value":11}, {"age":"61+", "value":10}]}, 
+            {"year":"2033", "data": [{"age":"0-18", "value":12}, {"age":"19-40", "value":13}, {"age":"41-60", "value":15}, {"age":"61+", "value":12}]}, 
+            {"year":"2035", "data": [{"age":"0-18", "value":12}, {"age":"19-40", "value":14}, {"age":"41-60", "value":14}, {"age":"61+", "value":13}]}
+        ]},
+
+    {"Country":"China",
+        "By Year" : [
+            {"year":"2015", "data": [{"age":"0-18", "value":6}, {"age":"19-40", "value":12}, {"age":"41-60", "value":7}, {"age":"61+", "value":3}]}, 
+            {"year":"2017", "data": [{"age":"0-18", "value":8}, {"age":"19-40", "value":12}, {"age":"41-60", "value":6}, {"age":"61+", "value":3}]}, 
+            {"year":"2019", "data": [{"age":"0-18", "value":10}, {"age":"19-40", "value":13}, {"age":"41-60", "value":7}, {"age":"61+", "value":5}]}, 
+            {"year":"2021", "data": [{"age":"0-18", "value":11}, {"age":"19-40", "value":14}, {"age":"41-60", "value":9}, {"age":"61+", "value":6}]}, 
+            {"year":"2023", "data": [{"age":"0-18", "value":12}, {"age":"19-40", "value":14}, {"age":"41-60", "value":10}, {"age":"61+", "value":10}]}, 
+            {"year":"2025", "data": [{"age":"0-18", "value":13}, {"age":"19-40", "value":15}, {"age":"41-60", "value":11}, {"age":"61+", "value":10}]}, 
+            {"year":"2027", "data": [{"age":"0-18", "value":12}, {"age":"19-40", "value":15}, {"age":"41-60", "value":12}, {"age":"61+", "value":10}]}, 
+            {"year":"2029", "data": [{"age":"0-18", "value":13}, {"age":"19-40", "value":15}, {"age":"41-60", "value":15}, {"age":"61+", "value":10}]}, 
+            {"year":"2031", "data": [{"age":"0-18", "value":12}, {"age":"19-40", "value":15}, {"age":"41-60", "value":15}, {"age":"61+", "value":10}]}, 
+            {"year":"2033", "data": [{"age":"0-18", "value":12}, {"age":"19-40", "value":15}, {"age":"41-60", "value":15}, {"age":"61+", "value":12}]}, 
+            {"year":"2035", "data": [{"age":"0-18", "value":12}, {"age":"19-40", "value":14}, {"age":"41-60", "value":14}, {"age":"61+", "value":13}]}
+        ]},
+
+    {"Country":"Brazil",
+        "By Year" : [
+            {"year":"2015", "data": [{"age":"0-18", "value":5}, {"age":"19-40", "value":8}, {"age":"41-60", "value":7}, {"age":"61+", "value":9}]}, 
+            {"year":"2017", "data": [{"age":"0-18", "value":6}, {"age":"19-40", "value":9}, {"age":"41-60", "value":9}, {"age":"61+", "value":10}]}, 
+            {"year":"2019", "data": [{"age":"0-18", "value":8}, {"age":"19-40", "value":11}, {"age":"41-60", "value":10}, {"age":"61+", "value":11}]}, 
+            {"year":"2021", "data": [{"age":"0-18", "value":9}, {"age":"19-40", "value":11}, {"age":"41-60", "value":9}, {"age":"61+", "value":11}]}, 
+            {"year":"2023", "data": [{"age":"0-18", "value":12}, {"age":"19-40", "value":10}, {"age":"41-60", "value":9}, {"age":"61+", "value":11}]}, 
+            {"year":"2025", "data": [{"age":"0-18", "value":11}, {"age":"19-40", "value":10}, {"age":"41-60", "value":9}, {"age":"61+", "value":10}]}, 
+            {"year":"2027", "data": [{"age":"0-18", "value":11}, {"age":"19-40", "value":11}, {"age":"41-60", "value":8}, {"age":"61+", "value":10}]}, 
+            {"year":"2029", "data": [{"age":"0-18", "value":10}, {"age":"19-40", "value":12}, {"age":"41-60", "value":9}, {"age":"61+", "value":10}]}, 
+            {"year":"2031", "data": [{"age":"0-18", "value":10}, {"age":"19-40", "value":11}, {"age":"41-60", "value":11}, {"age":"61+", "value":10}]}, 
+            {"year":"2033", "data": [{"age":"0-18", "value":10}, {"age":"19-40", "value":11}, {"age":"41-60", "value":12}, {"age":"61+", "value":11}]}, 
+            {"year":"2035", "data": [{"age":"0-18", "value":10}, {"age":"19-40", "value":10}, {"age":"41-60", "value":11}, {"age":"61+", "value":11}]}
+        ]},
+
+    {"Country":"Indonesia",
+        "By Year" : [
+            {"year":"2015", "data": [{"age":"0-18", "value":7}, {"age":"19-40", "value":8}, {"age":"41-60", "value":3}, {"age":"61+", "value":2}]}, 
+            {"year":"2017", "data": [{"age":"0-18", "value":8}, {"age":"19-40", "value":9}, {"age":"41-60", "value":5}, {"age":"61+", "value":3}]}, 
+            {"year":"2019", "data": [{"age":"0-18", "value":12}, {"age":"19-40", "value":11}, {"age":"41-60", "value":7}, {"age":"61+", "value":5}]}, 
+            {"year":"2021", "data": [{"age":"0-18", "value":12}, {"age":"19-40", "value":12}, {"age":"41-60", "value":8}, {"age":"61+", "value":6}]}, 
+            {"year":"2023", "data": [{"age":"0-18", "value":13}, {"age":"19-40", "value":12}, {"age":"41-60", "value":9}, {"age":"61+", "value":10}]}, 
+            {"year":"2025", "data": [{"age":"0-18", "value":12}, {"age":"19-40", "value":12}, {"age":"41-60", "value":10}, {"age":"61+", "value":10}]}, 
+            {"year":"2027", "data": [{"age":"0-18", "value":12}, {"age":"19-40", "value":12}, {"age":"41-60", "value":8}, {"age":"61+", "value":10}]}, 
+            {"year":"2029", "data": [{"age":"0-18", "value":13}, {"age":"19-40", "value":13}, {"age":"41-60", "value":9}, {"age":"61+", "value":10}]}, 
+            {"year":"2031", "data": [{"age":"0-18", "value":12}, {"age":"19-40", "value":14}, {"age":"41-60", "value":11}, {"age":"61+", "value":10}]}, 
+            {"year":"2033", "data": [{"age":"0-18", "value":12}, {"age":"19-40", "value":15}, {"age":"41-60", "value":15}, {"age":"61+", "value":12}]}, 
+            {"year":"2035", "data": [{"age":"0-18", "value":12}, {"age":"19-40", "value":15}, {"age":"41-60", "value":14}, {"age":"61+", "value":13}]}
+        ]},
+
+     {"Country":"USA",
+         "By Year" : [
+             {"year":"2015", "data": [{"age":"0-18", "value":7}, {"age":"19-40", "value":10}, {"age":"41-60", "value":7}, {"age":"61+", "value":9}]}, 
+             {"year":"2017", "data": [{"age":"0-18", "value":8}, {"age":"19-40", "value":10}, {"age":"41-60", "value":8}, {"age":"61+", "value":12}]}, 
+             {"year":"2019", "data": [{"age":"0-18", "value":12}, {"age":"19-40", "value":11}, {"age":"41-60", "value":9}, {"age":"61+", "value":12}]}, 
+             {"year":"2021", "data": [{"age":"0-18", "value":12}, {"age":"19-40", "value":12}, {"age":"41-60", "value":12}, {"age":"61+", "value":14}]}, 
+             {"year":"2023", "data": [{"age":"0-18", "value":13}, {"age":"19-40", "value":12}, {"age":"41-60", "value":13}, {"age":"61+", "value":14}]}, 
+             {"year":"2025", "data": [{"age":"0-18", "value":12}, {"age":"19-40", "value":12}, {"age":"41-60", "value":14}, {"age":"61+", "value":14}]}, 
+             {"year":"2027", "data": [{"age":"0-18", "value":12}, {"age":"19-40", "value":14}, {"age":"41-60", "value":14}, {"age":"61+", "value":15}]}, 
+             {"year":"2029", "data": [{"age":"0-18", "value":13}, {"age":"19-40", "value":14}, {"age":"41-60", "value":14}, {"age":"61+", "value":15}]}, 
+             {"year":"2031", "data": [{"age":"0-18", "value":12}, {"age":"19-40", "value":14}, {"age":"41-60", "value":14}, {"age":"61+", "value":14}]}, 
+             {"year":"2033", "data": [{"age":"0-18", "value":12}, {"age":"19-40", "value":14}, {"age":"41-60", "value":14}, {"age":"61+", "value":14}]}, 
+             {"year":"2035", "data": [{"age":"0-18", "value":12}, {"age":"19-40", "value":14}, {"age":"41-60", "value":14}, {"age":"61+", "value":15}]}
+         ]}
+    ]
+}
