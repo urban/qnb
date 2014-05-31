@@ -1,18 +1,18 @@
 {
-"title":"Household Debt As Pct of Income By Income Bracket",
-
-"data": {
+  "title":"Household Debt As Pct of Income By Income Bracket",
+  "data": {
     "India": {
-        "2015": [{"bracket":0-25, "value":35}, {"bracket":26-50, "value":50}, {"bracket":51-75, "value":66}, {"bracket":76-100, "value":64}], 
-        "2017": [{"bracket":0-25, "value":32}, {"bracket":26-50, "value":54}, {"bracket":51-75, "value":85}, {"bracket":76-100, "value":84}], 
-        "2019": [{"bracket":0-25, "value":48}, {"bracket":26-50, "value":58}, {"bracket":51-75, "value":87}, {"bracket":76-100, "value":79}], 
-        "2021": [{"bracket":0-25, "value":58}, {"bracket":26-50, "value":69}, {"bracket":51-75, "value":98}, {"bracket":76-100, "value":82}], 
-        "2023": [{"bracket":0-25, "value":69}, {"bracket":26-50, "value":81}, {"bracket":51-75, "value":109}, {"bracket":76-100, "value":84}], 
-        "2025": [{"bracket":0-25, "value":80}, {"bracket":26-50, "value":92}, {"bracket":51-75, "value":103}, {"bracket":76-100, "value":86}], 
-        "2027": [{"bracket":0-25, "value":85}, {"bracket":26-50, "value":103}, {"bracket":51-75, "value":85}, {"bracket":76-100, "value":89}], 
-        "2029": [{"bracket":0-25, "value":96}, {"bracket":26-50, "value":105}, {"bracket":51-75, "value":109}, {"bracket":76-100, "value":92}], 
-        "2031": [{"bracket":0-25, "value":103}, {"bracket":26-50, "value":128}, {"bracket":51-75, "value":121}, {"bracket":76-100, "value":102}], 
-        "2033": [{"bracket":0-25, "value":98}, {"bracket":26-50, "value":122}, {"bracket":51-75, "value":115}, {"bracket":76-100, "value":105}], 
-        "2035": [{"bracket":0-25, "value":88}, {"bracket":26-50, "value":96}, {"bracket":51-75, "value":106}, {"bracket":76-100, "value":109}]
+      "2015": [{"bracket":"0-25", "value":35}, {"bracket":"26-50", "value":50}, {"bracket":"51-75", "value":66}, {"bracket":"76-100", "value":64}],
+      "2017": [{"bracket":"0-25", "value":32}, {"bracket":"26-50", "value":54}, {"bracket":"51-75", "value":85}, {"bracket":"76-100", "value":84}],
+      "2019": [{"bracket":"0-25", "value":48}, {"bracket":"26-50", "value":58}, {"bracket":"51-75", "value":87}, {"bracket":"76-100", "value":79}],
+      "2021": [{"bracket":"0-25", "value":58}, {"bracket":"26-50", "value":69}, {"bracket":"51-75", "value":98}, {"bracket":"76-100", "value":82}],
+      "2023": [{"bracket":"0-25", "value":69}, {"bracket":"26-50", "value":81}, {"bracket":"51-75", "value":109}, {"bracket":"76-100", "value":84}],
+      "2025": [{"bracket":"0-25", "value":80}, {"bracket":"26-50", "value":92}, {"bracket":"51-75", "value":103}, {"bracket":"76-100", "value":86}],
+      "2027": [{"bracket":"0-25", "value":85}, {"bracket":"26-50", "value":103}, {"bracket":"51-75", "value":85}, {"bracket":"76-100", "value":89}],
+      "2029": [{"bracket":"0-25", "value":96}, {"bracket":"26-50", "value":105}, {"bracket":"51-75", "value":109}, {"bracket":"76-100", "value":92}],
+      "2031": [{"bracket":"0-25", "value":103}, {"bracket":"26-50", "value":128}, {"bracket":"51-75", "value":121}, {"bracket":"76-100", "value":102}],
+      "2033": [{"bracket":"0-25", "value":98}, {"bracket":"26-50", "value":122}, {"bracket":"51-75", "value":115}, {"bracket":"76-100", "value":105}],
+      "2035": [{"bracket":"0-25", "value":88}, {"bracket":"26-50", "value":96}, {"bracket":"51-75", "value":106}, {"bracket":"76-100", "value":109}]
     }
+  }
 }
