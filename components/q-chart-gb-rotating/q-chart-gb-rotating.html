@@ -57,7 +57,7 @@ and then years. and flip through countries showing each as a grouped barchart
           var x1 = d3.scale.ordinal();
 
           var y = d3.scale.linear()
-              .range([0, height]);
+              .range([height, 0]);
 
           var color = this.colors;
 
@@ -152,7 +152,7 @@ and then years. and flip through countries showing each as a grouped barchart
               .attr("y", function(d) {
                 return height - y(d.value);
               })
-              .attr("height", function(d) { return y(d.value);})
+              .attr("height", function(d) { return y(d.value); })
               .style("fill", function(d) { return color(d[self.recordKey]); });
 
           ////////////////////////////////////////////////////////////////////////////////////////
