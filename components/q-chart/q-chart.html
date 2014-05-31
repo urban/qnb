@@ -9,7 +9,7 @@
       var defaultColors = ['#2c88dc', '#fdd81b', '#3eb307', '#ef6d09', '#111'];
       // black, black, black, black, white
       var defaultFontColors = ['#000', '#000', '#000', '#000', '#fff'];
-      
+
       var colorFn = d3.scale.ordinal()
         .range(defaultColors);
       var fontColorsFn = d3.scale.ordinal()
@@ -28,7 +28,7 @@
         index: 0,
         ready: function () {
           this.onLoad = (function (err, res) {
-            if (err) console.error(err);
+            if (err) console.error(err, this);
             this.data = res;
             this.asyncFire('load', res);
           }).bind(this);
