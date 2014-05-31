@@ -143,9 +143,9 @@ and then years. and flip through countries showing each as a grouped barchart
                 return x1( d[self.recordKey] );
               })
               .attr("y", function(d) {
-                return height - y(d.value);
+                return y(d.value);
               })
-              .attr("height", function(d) { return y(d.value); })
+              .attr("height", function(d) { return height - y(d.value); })
               .style("fill", function(d) { return color(d[self.recordKey]); });
 
           ////////////////////////////////////////////////////////////////////////////////////////
