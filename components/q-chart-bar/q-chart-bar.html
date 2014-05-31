@@ -7,29 +7,6 @@
       :host {
         display: block;
       }
-
-/*      .bar {
-        fill: steelblue;
-      }
-
-      .bar:hover {
-        fill: brown;
-      }
-
-      .axis {
-        font: 10px sans-serif;
-      }
-
-      .axis path,
-      .axis line {
-        fill: none;
-        stroke: #000;
-        shape-rendering: crispEdges;
-      }
-
-      .x.axis path {
-        display: none;
-      }*/
     </style>
     <svg id="chart"></svg>
   </template>
@@ -38,61 +15,85 @@
 
       Polymer('q-chart-bar', {
         label:null,
-         start: function () {
+        start: function () {
 
         },
         stop: function () {
+
+        },
+        init: function () {
+          var self = this;
+
+          this.margin = {top: 50, right: 50, bottom: 50, left: 50};
+          this.width = this.clientWidth - this.margin.left - this.margin.right;
+          this.height = this.clientHeight - this.margin.top - this.margin.bottom;
+
+          this.x = d3.scale.ordinal()
+              .domain(_.map(self.data.data, function(d) { return d.year; }))
+              .rangeRoundBands([0, self.width], .3);
+
+          this.y = d3.scale.linear()
+              .domain([0, d3.max(self.data.data, function(d) { return d.value; })])
+              .range([self.height, 0]);
+
+          this.xAxis = d3.svg.axis()
+              .scale(self.x)
+              .orient("bottom");
+
+          this.yAxis = d3.svg.axis()
+              .scale(self.y)
+              .orient("left");
+
+        },
+        initChart: function() {
+          var self = this;
+
+          this.g = d3.select(this.$.chart)
+              .attr("width", this.width + this.margin.left + this.margin.right)
+              .attr("height", this.height + this.margin.top + this.margin.bottom)
+            .append("g")
+              .attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")");
+
+          //draw x axis
+          this.g.append("g")
+              .attr("class", "x axis")
+              .attr("transform", "translate(0," + this.height + ")")
+              .call(self.xAxis);
+
+          //draw y axis
+          this.g.append("g")
+              .attr("class", "y axis")
+              .call(self.yAxis)
+            .append("text")
+              .attr("transform", "rotate(-90)")
+              .attr("y", 6)
+              .attr("dy", ".71em")
+              .style("text-anchor", "end")
+              .text(self.yAxisLabel);
 
         },
         render: function () {
           this.isRendered = true;
 
           var self = this;
-          var data = self.data.data;
-          var w = this.clientWidth / data.length;
-          var h = this.clientHeight;
-          var colors = this.colors;
-          var fontColors = this.fontColors;
 
-          var max = d3.max(data, function(d) {
-            return d.value;
-          });
+          this.init();
+          this.initChart();
 
-          var xScale = d3.scale.linear()
-              .domain([0, 1])
-              .range([0, w]);
-
-          var yScale = d3.scale.linear()
-             .domain([0, max])
-             .rangeRound([0, h]);
-
-          this.chart.selectAll("rect")
-             .data(data)
-             .enter().append("rect")
-             .attr("x", function(d, i) { console.log(xScale(i)); return xScale(i) - .5; })
-             .attr("y", function(d) { return h - .5; })
-             .attr("width", w)
-             .transition().delay(function (d,i){ return i * 300;}).duration(300)
-             .attr("height", function(d) { return yScale(d.value); })
-             .attr("y", function(d) { return h - yScale(d.value) - .5; })
-             .attr("fill", function (d, i) { return colors(0); });
-
-          this.chart.selectAll("text")
-             .data(data)
-             .enter()
-             .append("text")
-             .text(function(d) {
-                  return d.value + self.label;
-             }).attr("x", function(d, i) {
-                  return xScale(i) - .5;
-             })
-             .attr("y", function(d) {
-                  return h - yScale(d.value) + 15;
-             })
-             .attr("fill", function (d, i) { return fontColors(0); })
-             .attr('opacity', '0')
-             .transition().delay(function (d,i){ return i * 300 + 300;}).duration(300)
-             .attr('opacity', '1');
+          this.g.selectAll(".bar")
+              .data(self.data.data)
+            .enter().append("rect")
+              .classed("bar", true)
+              .attr("x", function(d) { return self.x(d.year); })
+              .attr("width", self.x.rangeBand())
+              .attr("y", function(d) { return self.height; })
+              .attr("height", 0)
+              .attr("fill", self.colors(0))
+              .transition()
+              .duration(300)
+              .delay(function(d, i) { return i * 300; })
+              .attr("height", function(d) { return self.height - self.y(d.value); })
+              .attr("y", function(d) { return self.y(d.value); });
         }
       });
 
