@@ -1,0 +1,20 @@
+{
+"title":"Gini Coefficient",
+"data": [
+    {"Country":"Worldwide" ,
+    "By Year": [
+        {"year":2015, "data":[{ "country":"India", "value":38}, { "country":"China", "value":46}, { "country":"Brazil", "value":62}, { "country":"Indonesia", "value":41}, { "country":"USA", "value":46}]},
+        {"year":2017, "data":[{ "country":"India", "value":39}, { "country":"China", "value":45},{ "country":"Brazil", "value":63}, { "country":"Indonesia", "value":42},{ "country":"USA", "value":47}]},
+        {"year":2019, "data":[{ "country":"India", "value":39}, { "country":"China", "value":47},{ "country":"Brazil", "value":62}, { "country":"Indonesia", "value":44},{ "country":"USA", "value":48}]},
+        {"year":2021, "data":[{ "country":"India","value":40}, { "country":"China", "value":49},{ "country":"Brazil", "value":61}, { "country":"Indonesia", "value":47},{ "country":"USA", "value":48}]},
+        {"year":2023, "data":[{ "country":"India","value":41}, { "country":"China", "value":51},{ "country":"Brazil", "value":60}, { "country":"Indonesia", "value":51},{ "country":"USA", "value":49}]},
+        {"year":2025, "data":[{ "country":"India","value":41}, { "country":"China", "value":50},{ "country":"Brazil", "value":60}, { "country":"Indonesia", "value":52},{ "country":"USA", "value":51}]},
+        {"year":2027, "data":[{ "country":"India","value":43}, { "country":"China", "value":52},{ "country":"Brazil", "value":59}, { "country":"Indonesia", "value":46},{ "country":"USA", "value":52}]},
+        {"year":2029, "data":[{ "country":"India","value":44}, { "country":"China", "value":53},{ "country":"Brazil", "value":60}, { "country":"Indonesia", "value":45},{ "country":"USA", "value":53}]},
+        {"year":2031, "data":[{ "country":"India","value":46}, { "country":"China", "value":54},{ "country":"Brazil", "value":62}, { "country":"Indonesia", "value":43},{ "country":"USA", "value":55}]},
+        {"year":2033, "data":[{ "country":"India","value":48}, { "country":"China", "value":56},{ "country":"Brazil", "value":64}, { "country":"Indonesia", "value":42},{ "country":"USA", "value":59}]},
+        {"year":2035, "data":[{ "country":"India","value":48}, { "country":"China", "value":56},{ "country":"Brazil", "value":66}, { "country":"Indonesia", "value":41},{ "country":"USA", "value":61}]}
+        ]
+    }
+]
+}
