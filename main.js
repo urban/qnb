@@ -1,6 +1,7 @@
-(function () {
+(function (context) {
 
   var timer;
+  var delayDefault = 5000;
   var deck = document.querySelector('#deck');
   var cards = deck.querySelectorAll('frog-card');
 
@@ -41,11 +42,16 @@
   };
 
   function start() {
-    timer = window.setInterval(next, slideDelay);
+    var delay = +cards[deck.selected].getAttribute('delay') || delayDefault;
+    console.log('next slide in : ', delay);
+    timer = window.setTimeout(function () {
+        next();
+        start();
+      }, delay);
   };
 
   function stop() {
-    window.clearInterval(timer);
+    window.clearTimeout(timer);
   };
 
   function toggle() {
@@ -59,6 +65,14 @@
   // initial render
   window.addEventListener('WebComponentsReady', function(e) {
     selectVisualizations(cards[0]);
-    // start();
+    var readyEvent = new Event('ready');
+    document.dispatchEvent(readyEvent);
   });
-})();
+
+  // exports
+  context.presentation = {
+    start: start,
+    stop: stop,
+    toggle: toggle
+  }
+})(this);

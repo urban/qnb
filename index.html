@@ -12,7 +12,7 @@
 
   <frog-deck id="deck" transition="fade">
 
-    <frog-card>
+    <frog-card delay="1000">
       <q-view class="green" url="/data/stories/story-1.json">
         <q-visualization title="Water usage per person. Amount of water recycled by percentage">
           <!--  -->
@@ -26,7 +26,7 @@
       </q-view>
     </frog-card>
 
-    <frog-card>
+    <frog-card delay="500">
       <q-view url="/data/stories/story-2.json">
         <q-visualization flex title="Average commute to workplace in KM">
           <!--  -->
@@ -37,7 +37,7 @@
       </q-view>
     </frog-card>
 
-    <frog-card>
+    <frog-card delay="2000">
       <q-view url="/data/stories/story-3.json">
         <q-visualization flex title="Number of species extinct per year.">
           <!--  -->
@@ -240,6 +240,12 @@
   </frog-deck>
 
   <script src="main.js"></script>
-
+  <script>
+    // listen for presentation ready event
+    document.addEventListener('ready', function (e) {
+      // kick off presentation
+      window.presentation.start();
+    }, false);
+  </script>
 </body>
 </html>
