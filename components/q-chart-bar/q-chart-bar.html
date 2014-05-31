@@ -1,7 +1,7 @@
 <link rel="import" href="/bower_components/polymer/polymer.html">
 <script src="/bower_components/d3/d3.min.js"></script>
 
-<polymer-element name="q-chart-bar" extends="q-chart" attributes="url">
+<polymer-element name="q-chart-bar" extends="q-chart" attributes="url label">
   <template>
     <style>
       :host {
@@ -37,6 +37,7 @@
     (function () {
 
       Polymer('q-chart-bar', {
+        label:null,
          start: function () {
           
         },
@@ -79,7 +80,7 @@
              .enter()
              .append("text")
              .text(function(d) {
-                  return d.value + "m";
+                  return d.value + self.label;
              }).attr("x", function(d, i) {
                   return xScale(i) - .5;
              })

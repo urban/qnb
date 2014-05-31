@@ -68,15 +68,6 @@
             .orient("left")
             .tickFormat(d3.format(".2s"));
 
-          // color.domain(d3.keys(data[0]).filter(function(key) { return key !== "State"; }));
-
-          // data.forEach(function(d) {
-          //   var y0 = 0;
-          //   d.ages = color.domain().map(function(name) { return {name: name, y0: y0, y1: y0 += +d[name]}; });
-          //   d.total = d.ages[d.ages.length - 1].y1;
-          // });
-
-          // data.sort(function(a, b) { return b.total - a.total; });
           var key = 'By Year';
           var massagedData = data[this.index][key];
           var lastUpdate = Date.now();
@@ -88,20 +79,22 @@
           color.domain(recordKeys);
 
           massagedData.forEach(function (d) {
+
             var y0 = 0;
-            d.fields = recordKeys.map(function (name) {
-              return { name: name, y0: y0, y1: y0 += +d[name] }
+            d.fields = d.data.map(function (name) {
+              //console.log(name, y0); 
+              return { name: name, y0: y0, y1: y0 += name.value }
             });
             d.total = d.fields[d.fields.length -1].y1;
           });
 
-          massagedData.sort(function (a, b) { return b.total - a.total });
+          //massagedData.sort(function (a, b) { return b.total - a.total });
 
-          // console.log(massagedData);
-          return;
-
-          x.domain(data.map(function(d) { return d.State; }));
-          y.domain([0, d3.max(data, function(d) { return d.total; })]);
+          x.domain(massagedData.map(function(d) { 
+            console.log("line1 06", d); 
+            return d.year; 
+          }));
+          y.domain([0, d3.max(massagedData, function(d) { return d.total; })]);
 
           this.chart.append("g")
             .attr("class", "x axis")
@@ -119,18 +112,28 @@
               .text("Population");
 
           var state = this.chart.selectAll(".state")
-              .data(data)
+              .data(massagedData)
             .enter().append("g")
               .attr("class", "g")
-              .attr("transform", function(d) { return "translate(" + x(d.State) + ",0)"; });
+              .attr("transform", function(d) { 
+                return "translate(" + x(d.year) + ",0)"; 
+              });
 
           state.selectAll("rect")
-              .data(function(d) { return d.ages; })
+              .data(function(d) { 
+                console.log(" line 127 ", d);
+                return d.fields; 
+              })
             .enter().append("rect")
               .attr("width", x.rangeBand())
               .attr("y", function(d) { return y(d.y1); })
-              .attr("height", function(d) { return y(d.y0) - y(d.y1); })
-              .style("fill", function(d) { return color(d.name); });
+              .attr("height", function(d) { 
+                return y(d.y0) - y(d.y1); 
+              })
+              .style("fill", function(d) { 
+                console.log(d);
+                return color(d.name[self.recordKey]); 
+              });
 
           var legend = this.chart.selectAll(".legend")
               .data(color.domain().slice().reverse())

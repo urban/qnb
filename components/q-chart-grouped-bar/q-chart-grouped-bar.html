@@ -1,7 +1,7 @@
 <link rel="import" href="/bower_components/polymer/polymer.html">
 <script src="/bower_components/d3/d3.min.js"></script>
 
-<polymer-element name="q-chart-grouped-bar" extends="q-chart" attributes="url xAxisLabel yAxisLabel">
+<polymer-element name="q-chart-grouped-bar" extends="q-chart" attributes="url xAxisLabel yAxisLabel recordKey">
   <template>
     <style>
       :host {
@@ -27,6 +27,7 @@
       Polymer('q-chart-grouped-bar', {
         yAxisLabel:null,
         xAxisLabel:null,
+        recordKey:null,
         start: function () {
         },
         stop: function () {
@@ -35,9 +36,9 @@
           var self = this;
           var data = this.data.data;
 
-          this.countries = [];
+          this.recordKeys = [];
           for( var i = 0; i < data.length; i++ ) {
-            this.countries.push(data[i].Country);
+            this.recordKeys.push(data[i][self.recordKey]);
           }
           this.years = [ "2015", "2017", "2019", "2021", "2023", "2025", "2027", "2029", "2031", "2033", "2035"]
 
@@ -53,13 +54,13 @@
           // first step : years all together
           for( var i = 0; i < data.length; i++ )
           {
-            var countryName = data[i].Country;
+            var countryName = data[i][self.recordKey];
 
             for( var j = 0; j < data[i]["By Year"].length; j++ )
             {
               var year = data[i]["By Year"][j].year;
               var record = {};
-              record[data[i].Country] = data[i]["By Year"][j].value;
+              record[data[i][self.recordKey]] = data[i]["By Year"][j].value;
               firstStageMassaging[year].push(record);
             }
           }
@@ -78,11 +79,11 @@
           }
 
           this.massagedData.forEach(function(d) {
-            d.countries = [];
+            d.recordKeys = [];
             for( var prop in d ) {
-              if(prop != "year" && prop != "countries") {
+              if(prop != "year" && prop != "recordKeys") {
                 var p = {name:prop, value:d[prop]};
-                d.countries.push(p);
+                d.recordKeys.push(p);
               }
             }
           });
@@ -99,7 +100,7 @@
               .rangeRoundBands([0, self.width], .1);
 
           self.x1 = d3.scale.ordinal()
-              .domain(this.countries)
+              .domain(this.recordKeys)
               .rangeRoundBands([0, self.x0.rangeBand()]);
 
           self.y = d3.scale.linear()
@@ -156,7 +157,7 @@
 
           //draw legend
           var legend = g.selectAll(".legend")
-              .data(self.countries.slice().reverse())
+              .data(self.recordKeys.slice().reverse())
             .enter().append("g")
               .attr("class", "legend")
               .attr("transform", function(d, i) { return "translate(0," + i * 25 + ")"; });
@@ -196,7 +197,7 @@
 
           years.selectAll("rect")
               .data(function(d) {
-                return d.countries;
+                return d.recordKeys;
               })
             .enter().append("rect")
               .attr("width", self.x1.rangeBand())
@@ -209,8 +210,8 @@
               .style("fill", function(d) { return self.color(d.name); })
               .attr("height", 0)
               .transition()
-              .duration(500)
-              .delay(function(d, i, j) { return (j * 5 + i) * 500; })
+              .duration(200)
+              .delay(function(d, i, j) { return (j * 5 + i) * 100; })
               .attr("height", function(d) { return self.height - self.y(d.value); })
         }
       });
