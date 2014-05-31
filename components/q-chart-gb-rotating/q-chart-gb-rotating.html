@@ -35,6 +35,7 @@
           clearInterval(this.intervalId);
         },
         render: function () {
+          this.isRendered = true;
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
 /*
@@ -102,15 +103,7 @@ and then years. and flip through countries showing each as a grouped barchart
 
           x1.domain(recordKeys).rangeRoundBands([0, x0.rangeBand()]);
 
-          y.domain([0, d3.max(massagedData, function(d) {
-            var max = 0;
-            max = d3.max(d.data, function(dd) {
-              for(var prop in dd) {
-                return dd.value;
-              }
-            });
-            return max;
-          })]);
+          y.domain([0, d3.max( _.flatten(_.flatten(_.flatten(data, "By Year"), "data"), "value") )]);
 
           ////////////////////////////////////////////////////////////////////////////////////////
           // drawing the chart
