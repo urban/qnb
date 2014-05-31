@@ -1,36 +1,20 @@
 {
-"title":"Percentage of Population with Asthma",
+"title":"Population with Asthma in Millions",
 "data": [
-{"Country":"India" ,
-"By Year": [
-    {"year":2015, "value":9}, {"year":2017, "value":11}, {"year":2019, "value":11}, {"year":2021, "value":12}, 
-    {"year":2023, "value":14}, {"year":2025, "value":15}, {"year":2027, "value":19}, {"year":2029, "value":18}, 
-    {"year":2031, "value":18}, {"year":2033, "value":18}, {"year":2035, "value":19}
-    ]
-},
-
-{"Country":"China" ,
-"By Year": [
-    {"year":2015, "value":2}, {"year":2017, "value":3}, {"year":2019, "value":5}, {"year":2021, "value":12}, 
-    {"year":2023, "value":13}, {"year":2025, "value":14}, {"year":2027, "value":15}, {"year":2029, "value":16}, 
-    {"year":2031, "value":17}, {"year":2033, "value":16}, {"year":2035, "value":15}
-    ]
-},
-
-{"Country":"Brazil" ,
-"By Year": [
-    {"year":2015, "value":28}, {"year":2017, "value":29}, {"year":2019, "value":30}, {"year":2021, "value":29}, 
-    {"year":2023, "value":27}, {"year":2025, "value":32}, {"year":2027, "value":34}, {"year":2029, "value":35}, 
-    {"year":2031, "value":36}, {"year":2033, "value":35}, {"year":2035, "value":33}
-    ]
-},
-
-{"Country":"USA" ,
-"By Year": [
-    {"year":2015, "value":17}, {"year":2017, "value":16}, {"year":2019, "value":18}, {"year":2021, "value":19}, 
-    {"year":2023, "value":22}, {"year":2025, "value":24}, {"year":2027, "value":24}, {"year":2029, "value":22}, 
-    {"year":2031, "value":21}, {"year":2033, "value":20}, {"year":2035, "value":18}
-    ]
-}
+    {"Country":"India" ,
+    "By Year": [
+        {"year":2015, "data":[{ "country":"India", "value":80}, { "country":"China", "value":60}, { "country":"Brazil", "value":60}, { "country":"Indonesia", "value":20}, { "country":"USA", "value":16}]},
+        {"year":2017, "data":[{ "country":"India", "value":80}, { "country":"China", "value":90},{ "country":"Brazil", "value":68}, { "country":"Indonesia", "value":24},{ "country":"USA", "value":18}]},
+        {"year":2019, "data":[{ "country":"India", "value":90}, { "country":"China", "value":110},{ "country":"Brazil", "value":72}, { "country":"Indonesia", "value":36},{ "country":"USA", "value":21}]},
+        {"year":2021, "data":[{ "country":"India","value":90}, { "country":"China", "value":120},{ "country":"Brazil", "value":76}, { "country":"Indonesia", "value":47},{ "country":"USA", "value":22}]},
+        {"year":2023, "data":[{ "country":"India","value":100}, { "country":"China", "value":140},{ "country":"Brazil", "value":80}, { "country":"Indonesia", "value":51},{ "country":"USA", "value":24}]},
+        {"year":2025, "data":[{ "country":"India","value":100}, { "country":"China", "value":140},{ "country":"Brazil", "value":83}, { "country":"Indonesia", "value":64},{ "country":"USA", "value":26}]},
+        {"year":2027, "data":[{ "country":"India","value":110}, { "country":"China", "value":150},{ "country":"Brazil", "value":86}, { "country":"Indonesia", "value":71},{ "country":"USA", "value":28}]},
+        {"year":2029, "data":[{ "country":"India","value":110}, { "country":"China", "value":190},{ "country":"Brazil", "value":91}, { "country":"Indonesia", "value":74},{ "country":"USA", "value":35}]},
+        {"year":2031, "data":[{ "country":"India","value":110}, { "country":"China", "value":200},{ "country":"Brazil", "value":92}, { "country":"Indonesia", "value":79},{ "country":"USA", "value":55}]},
+        {"year":2033, "data":[{ "country":"India","value":120}, { "country":"China", "value":190},{ "country":"Brazil", "value":94}, { "country":"Indonesia", "value":80},{ "country":"USA", "value":60}]},
+        {"year":2035, "data":[{ "country":"India","value":140}, { "country":"China", "value":170},{ "country":"Brazil", "value":109}, { "country":"Indonesia", "value":91},{ "country":"USA", "value":65}]}
+        ]
+    }
 ]
 }

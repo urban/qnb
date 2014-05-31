@@ -14,7 +14,7 @@
 
     <frog-card delay="10000">
       <q-view flex class="green" url="/data/stories/story-1.json">
-        <q-visualization title="Water usage per person." hasContent>
+        <q-visualization flex title="Water usage per person." hasContent>
           <q-chart-grouped-bar url="/data/water_usage_pp.json" yAxisLabel="Liters Per Day" recordKey="Country"></q-chart-grouped-bar>
         </q-visualization>
         <q-visualization flex title="Birthrate by Urban Density" hasContent>
@@ -51,7 +51,7 @@
         <q-visualization flex title="Amount of currency fluctuation per day (increasing fluidity in money markets)">
           <q-chart-grouped-bar url="/data/currency_fluctuation.json" yAxisLabel="Pct Value" recordKey="Currency"></q-chart-grouped-bar>
         </q-visualization>
-        <q-visualization title="Home ownership rates by country." hasContent>
+        <q-visualization flex title="Home ownership rates by country." hasContent>
           <q-chart-grouped-bar url="/data/home_ownership.json" yAxisLabel="Pct" recordKey="Country"></q-chart-grouped-bar>
         </q-visualization>
       </q-view>
@@ -59,7 +59,7 @@
 
     <frog-card delay="10000">
       <q-view url="/data/stories/story-5.json">
-        <q-visualization title="Reported cases of Food-borne Illness /year (salmonella, e. coli)">
+        <q-visualization flex title="Reported cases of Food-borne Illness /year (salmonella, e. coli)">
           <q-chart-grouped-bar url="/data/food_poisoning_deaths.json" yAxisLabel="Deaths" recordKey="Country"></q-chart-grouped-bar>
         </q-visualization>
         <q-visualization flex title="Number of species extinct per year.">
@@ -70,22 +70,22 @@
 
     <frog-card delay="20000">
       <q-view class="orange" url="/data/stories/story-6.json">
-        <q-visualization flex title="# of major/minor surgeries in lifetime by age/country/wealth">
+        <q-visualization full title="# of major/minor surgeries in lifetime by age/country/wealth">
           <q-chart-gb-rotating url="/data/surgeries_lifetime.json" yAxisLabel="Years" recordKey="bracket"></q-chart-gb-rotating>
         </q-visualization>
-        <!-- <q-visualization title="incidence of asthma by country over time">
-
-        </q-visualization>
-        <q-visualization title="Wildfires per 1000 square km.">
-
+        <!--<q-visualization title="Wildfires per 1000 square km.">
+          
         </q-visualization> -->
       </q-view>
     </frog-card>
 
     <frog-card delay="10000">
       <q-view url="/data/stories/story-6.json">
-        <q-visualization full title="# of times face scanning software recognizes & processes a face per day by major city historical">
+        <q-visualization flex title="# of times face scanning software recognizes & processes a face per day by major city historical">
           <q-chart-line url="/data/face_scans_day.json" recordKey="City"></q-chart-line>
+        </q-visualization>
+        <q-visualization flex title="Humans in Low Earth Orbit">
+          <q-chart-bar url="/data/humans_in_low_earth.json" yAxisLabel="Years"></q-chart-bar>
         </q-visualization>
       </q-view>
     </frog-card>
@@ -93,7 +93,7 @@
     <frog-card delay="10000">
       <q-view class="yellow" url="/data/stories/story-8.json">
         <q-visualization flex title="Consumption of synthetic meat by country">
-          <q-chart-stacked-bar url="/data/consumption_artificial_meat.json" recordKey="Country"></q-chart-stacked-bar>
+          <q-chart-stacked-bar url="/data/consumption_artificial_meat.json" recordKey="country"></q-chart-stacked-bar>
         </q-visualization>
         <q-visualization flex title="Automated cars on the road by country">
           <q-chart-grouped-bar url="/data/automated_cars.json" recordKey="Country"></q-chart-grouped-bar>
@@ -106,13 +106,19 @@
         <q-visualization full title="Subcutanesous health implants by country">
           <q-chart-line url="/data/subcutaneous_health_implants.json" recordKey="Country"></q-chart-line>
         </q-visualization>
+        <q-visualization full title="Subcutanesous health implants by country">
+          <q-chart-grouped-bar url="/data/water_scarcity.json" recordKey="Country"></q-chart-line>
+        </q-visualization>
       </q-view>
     </frog-card>
 
     <frog-card delay="10000">
       <q-view url="/data/stories/story-10.json">
-        <q-visualization full title="Price of one song on a streaming service by country by year">
+        <q-visualization full title="Something about media and payment??">
           <!--  -->
+        </q-visualization>
+        <q-visualization flex title="Two Income Households">
+          <q-chart-line url="/data/families_both_parents_work.json" yAxisLabel="Devices" recordKey="Country"></q-chart-stacked-bar>
         </q-visualization>
       </q-view>
     </frog-card>
@@ -131,18 +137,21 @@
     <frog-card delay="10000">
       <q-view url="/data/stories/story-12.json">
         <q-visualization flex title="Use of anxiety medications by country/age">
-          <q-chart-stacked-bar url="/data/anxiety_medication.json" yAxisLabel="Years" recordKey="bracket"></q-chart-stacked-bar>
+          <q-chart-gb-rotating url="/data/anxiety_medication.json" yAxisLabel="Years" recordKey="bracket"></q-chart-gb-rotating>
         </q-visualization>
-        <q-visualization flex title="average # of drones overhead at given time in major cities over time">
-          <!--  -->
+        <q-visualization flex title="Gini Coefficient">
+          <q-chart-line url="/data/gini_coefficient.json" yAxisLabel="Years" recordKey="country"></q-chart-line>
         </q-visualization>
       </q-view>
     </frog-card>
 
     <frog-card delay="10000">
       <q-view url="/data/stories/story-13.json">
-        <q-visualization full title="Imaging devices per household by income bracket by country">
+        <q-visualization flex title="Imaging devices per household by income bracket by country">
           <q-chart-stacked-bar url="/data/imaging_devices.json" yAxisLabel="Devices" recordKey="bracket"></q-chart-stacked-bar>
+        </q-visualization>
+        <q-visualization title="Asthma in Millions">
+          <q-chart-stacked-bar url="/data/asthma.json" yAxisLabel="Years" recordKey="country"></q-chart-stacked-bar>
         </q-visualization>
       </q-view>
     </frog-card>
@@ -153,7 +162,7 @@
           <q-chart-stacked-bar url="/data/household_debt.json" recordKey="bracket" yAxisLabel="Pct of Yearly Income"></q-chart-stacked-bar>
         </q-visualization>
         <q-visualization flex title="worldwide number of views/clicks for which the person viewing/clicking was paid to click/view">
-          <!--  -->
+          <q-chart-bar url="/data/paid_clicks.json" yAxisLabel="Devices" label="m"></q-chart-bar>
         </q-visualization>
       </q-view>
     </frog-card>
@@ -202,15 +211,19 @@
     <frog-card delay="10000">
       <q-view url="/data/stories/story-19.json">
         <q-visualization full title="# of Coca-Colas consumed">
-          <q-chart-stacked url="/data/coca_cola.json" recordKey="Country"></q-chart-stacked>
+          <q-chart-grouped-bar url="/data/coca_cola.json" recordKey="Country"></q-chart-grouped-bar>
         </q-visualization>
       </q-view>
     </frog-card>
 
     <frog-card delay="15000">
       <q-view url="/data/stories/story-20.json">
-        <q-visualization full title="Average hours of homework done by school-children by country and by age.">
+        <q-visualization flex title="Average hours of homework done by school-children by country and by age.">
           <q-chart-gb-rotating url="/data/hours_homework.json" yAxisLabel="Hours" recordKey="age"></q-chart-gb-rotating>
+        </q-visualization>
+
+        <q-visualization flex title="Average hours of homework done by school-children by country and by age.">
+          <q-chart-bar url="/data/software_graded_assignments.json" yAxisLabel="Hours" recordKey="m"></q-chart-bar>
         </q-visualization>
       </q-view>
     </frog-card>

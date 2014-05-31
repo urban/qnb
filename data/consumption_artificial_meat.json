@@ -1,20 +1,20 @@
 {
 "title":"Synthetic Meat Consumption in Tonnes",
 "data": [
-{"Country":"Worldwide",
+	{"Country":"Worldwide",
         "By Year" : [
-{"year":"2015", "data":[{"country":"India","value":0}, {"country":"China","value":0}, {"country":"Brazil","value":0}, {"country":"Indonesia","value":0}]},
-{"year":"2017", "data":[{"country":"India","value":0}, {"country":"China","value":100}, {"country":"Brazil","value":0}, {"country":"Indonesia","value":0}]},
-{"year":"2019", "data":[{"country":"India","value":0}, {"country":"China","value":300}, {"country":"Brazil","value":0}, {"country":"Indonesia","value":0}]},
-{"year":"2021", "data":[{"country":"India","value":300}, {"country":"China","value":9000}, {"country":"Brazil","value":0}, {"country":"Indonesia","value":0}]},
-{"year":"2023", "data":[{"country":"India","value":7000}, {"country":"China","value":17000}, {"country":"Brazil","value":20}, {"country":"Indonesia","value":8000}]},
-{"year":"2025", "data":[{"country":"India","value":58000}, {"country":"China","value":234000}, {"country":"Brazil","value":60}, {"country":"Indonesia","value":9000}]},
-{"year":"2027", "data":[{"country":"India","value":98000}, {"country":"China","value":342000}, {"country":"Brazil","value":260}, {"country":"Indonesia","value":10000}]},
-{"year":"2029", "data":[{"country":"India","value":128000}, {"country":"China","value":452000}, {"country":"Brazil","value":460}, {"country":"Indonesia","value":15000}]},
-{"year":"2031", "data":[{"country":"India","value":698000}, {"country":"China","value":633000}, {"country":"Brazil","value":360}, {"country":"Indonesia","value":62000}]},
-{"year":"2033", "data":[{"country":"India","value":825000}, {"country":"China","value":589000}, {"country":"Brazil","value":860}, {"country":"Indonesia","value":79000}]},
-{"year":"2035", "data":[{"country":"India","value":2698000}, {"country":"China","value":689000}, {"country":"Brazil","value":760}, {"country":"Indonesia","value":89000}]}
-]
-}
+			{"year":"2015", "data":[{"country":"India","value":0}, {"country":"China","value":0}, {"country":"Brazil","value":0}, {"country":"Indonesia","value":0}]},
+			{"year":"2017", "data":[{"country":"India","value":0}, {"country":"China","value":100}, {"country":"Brazil","value":0}, {"country":"Indonesia","value":0}]},
+			{"year":"2019", "data":[{"country":"India","value":0}, {"country":"China","value":300}, {"country":"Brazil","value":0}, {"country":"Indonesia","value":0}]},
+			{"year":"2021", "data":[{"country":"India","value":300}, {"country":"China","value":9000}, {"country":"Brazil","value":0}, {"country":"Indonesia","value":0}]},
+			{"year":"2023", "data":[{"country":"India","value":7000}, {"country":"China","value":17000}, {"country":"Brazil","value":20}, {"country":"Indonesia","value":8000}]},
+			{"year":"2025", "data":[{"country":"India","value":58000}, {"country":"China","value":234000}, {"country":"Brazil","value":60}, {"country":"Indonesia","value":9000}]},
+			{"year":"2027", "data":[{"country":"India","value":98000}, {"country":"China","value":342000}, {"country":"Brazil","value":260}, {"country":"Indonesia","value":10000}]},
+			{"year":"2029", "data":[{"country":"India","value":128000}, {"country":"China","value":452000}, {"country":"Brazil","value":460}, {"country":"Indonesia","value":15000}]},
+			{"year":"2031", "data":[{"country":"India","value":698000}, {"country":"China","value":633000}, {"country":"Brazil","value":360}, {"country":"Indonesia","value":62000}]},
+			{"year":"2033", "data":[{"country":"India","value":825000}, {"country":"China","value":589000}, {"country":"Brazil","value":860}, {"country":"Indonesia","value":79000}]},
+			{"year":"2035", "data":[{"country":"India","value":2698000}, {"country":"China","value":689000}, {"country":"Brazil","value":760}, {"country":"Indonesia","value":89000}]}
+		]
+	}
 ]
 }
