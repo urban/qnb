@@ -1,20 +1,22 @@
 {
 "title":"Return on Capital and Worldwide Growth Rate",
 "data": [
-    {"Country":"Worldwide",
-        "By Year" : [
-            {"year":"2015", "data":[{"name":"Growth","value":2.1}, {"name":"Return","value":5.2}]},
-            {"year":"2017", "data":[{"name":"Growth","value":1.9}, {"name":"Return","value":5.1}]},
-            {"year":"2019", "data":[{"name":"Growth","value":2.1}, {"name":"Return","value":5.4}]},
-            {"year":"2021", "data":[{"name":"Growth","value":2.0}, {"name":"Return","value":5.6}]},
-            {"year":"2023", "data":[{"name":"Growth","value":1.8}, {"name":"Return","value":4.5}]},
-            {"year":"2025", "data":[{"name":"Growth","value":1.7}, {"name":"Return","value":5.4}]},
-            {"year":"2027", "data":[{"name":"Growth","value":3.5}, {"name":"Return","value":6.1}]},
-            {"year":"2029", "data":[{"name":"Growth","value":2.3}, {"name":"Return","value":6.2}]},
-            {"year":"2031", "data":[{"name":"Growth","value":2.1}, {"name":"Return","value":5.9}]},
-            {"year":"2033", "data":[{"name":"Growth","value":1.9}, {"name":"Return","value":6.1}]},
-            {"year":"2035", "data":[{"name":"Growth","value":2.3}, {"name":"Return","value":6.0}]}
-        ]
-    }
+
+{"Name":"Growth", 
+"By Year": [
+     {"year":2015, "value":2.1}, {"year":2017, "value":1.9}, {"year":2019, "value":2.1}, {"year":2021, "value":2.0}, 
+    {"year":2023, "value":1.8}, {"year":2025, "value":1.7}, {"year":2027, "value":2.9}, {"year":2029, "value":2.3}, 
+    {"year":2031, "value":2.1}, {"year":2033, "value":1.9}, {"year":2035, "value":2.3}
+    ]
+},
+
+{"Name":"Return", 
+"By Year": [
+     {"year":2015, "value":5.2}, {"year":2017, "value":5.1}, {"year":2019, "value":5.4}, {"year":2021, "value":4.5}, 
+    {"year":2023, "value":5.4}, {"year":2025, "value":6.1}, {"year":2027, "value":6.1}, {"year":2029, "value":5.9}, 
+    {"year":2031, "value":6.1}, {"year":2033, "value":6.0}, {"year":2035, "value":5.9}
+    ]
+}
+
 ]
 }
