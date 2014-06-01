@@ -6,17 +6,62 @@
     <style>
       :host {
         display: block;
+        height: 100%;
+        margin-left: -5rem;
+        position: relative;
       }
 
-      .axis {
-        font: 10px sans-serif;
+      .axis .domain {
+        stroke: none;
+      }
+
+      .axis.y text {
+        font-family: "Georgia", serif;
+        fill: #888;
+      }
+
+      .axis.y .label {
+        font-size: 1.3rem;
+      }
+
+      .axis.y .tick text {
+        text-anchor: end;
+        font-size: 1.2rem;
+        font-weight: bold;
+        font-style: italic;
+      }
+
+      .axis.x text {
+        font-family: "BentonSansExtraCondensed", "Helvetica", "Arial", sans-serif;
+        font-size: 1.4rem;
+        letter-spacing: .05em;
+        font-weight: 500;
+        fill: #333;
+      }
+
+      .axis.y .tick line {
+        stroke-dasharray: 2,2;
+        stroke: #ccc;
+      }
+
+      .axis.x .tick line {
+        stroke: none;
       }
 
       .axis path,
       .axis line {
         fill: none;
-        stroke: #000;
         shape-rendering: crispEdges;
+      }
+
+      .bar {
+        mix-blend-mode: multiply;
+      }
+
+      .legend text {
+        font-family: "BentonSansF", "Helvetica", "Arial", sans-serif;
+        fill: #333;
+        font-size: 1.2rem;
       }
     </style>
     <svg id="chart"></svg>
@@ -35,6 +80,43 @@
         cleanData: function() {
           var self = this;
           var data = this.data.data;
+
+          this.massagedData = [];
+          this.recordKeys = [];
+          this.years = _.uniq(_.pluck(_.flatten(data, "By Year"), "year"));
+
+          var tempDatum,
+              tempKey,
+              tempValue;
+
+          _.each(this.years, function (year, i) {
+            tempDatum = {
+              year: year,
+              recordKeys: []
+            };
+
+            _.each(data, function (d) {
+              tempKey = d[self.recordKey];
+              tempValue = _.find(d["By Year"], {year: year}).value;
+
+              tempDatum[tempKey] = tempValue;
+
+              tempDatum.recordKeys.push({
+                name: tempKey,
+                value: tempValue
+              });
+
+              if (i === 0) self.recordKeys.push(tempKey);
+            });
+
+            self.massagedData.push(tempDatum);
+          });
+        },
+        /*cleanData: function() {
+          var self = this;
+          var data = this.data.data;
+
+          // console.log(data);
 
           this.recordKeys = [];
           for( var i = 0; i < data.length; i++ ) {
@@ -87,46 +169,41 @@
               }
             }
           });
-        },
+        },*/
         init: function() {
           var self = this;
 
-          self.margin = {top: 0, right: 100, bottom: 30, left: 50};
+          this.rem = parseInt($("body").css("font-size"));
+
+          self.margin = {top: 3*this.rem, right: 20*this.rem, bottom: 2.5*this.rem, left: 5*this.rem};
           self.width = self.clientWidth - self.margin.left - self.margin.right;
           self.height = self.clientHeight - self.margin.top - self.margin.bottom;
 
           self.x0 = d3.scale.ordinal()
-              .domain(_.map(self.massagedData, function(d) { return d.year;} ))
-              .rangeRoundBands([0, self.width], .1);
+              .domain(this.years)
+              .rangeRoundBands([0, self.width], .25, 0);
 
           self.x1 = d3.scale.ordinal()
-              .domain(this.recordKeys)
-              .rangeRoundBands([0, self.x0.rangeBand()]);
+              .domain(self.recordKeys)
+              .rangeRoundBands([0, self.x0.rangeBand()], .2, 0);
 
           self.y = d3.scale.linear()
+              .domain([0, d3.max(self.massagedData, function(d) { return d3.max(d.recordKeys, function(d) { return d.value; }); }) * 1.2])
               .range([self.height, 0]);
-
-          self.color = self.colors;
 
           self.xAxis = d3.svg.axis()
               .scale(self.x0)
-              .orient("bottom")
-              .ticks(d3.time.year, 1);
+              .tickSize(0)
+              .tickPadding(self.rem)
+              .orient("bottom");
 
           self.yAxis = d3.svg.axis()
               .scale(self.y)
-              .orient("left")
-              .tickFormat(d3.format(".2s"));
+              .ticks(Math.round(self.height / self.rem / 5))
+              .tickSize(self.width)
+              .orient("right");
 
-          self.y.domain([0, d3.max(this.massagedData, function(d) {
-            var max = 0;
-            for( var prop in d ) {
-              if(prop != "year") {
-                if( d[prop] > max ) { max = d[prop]; }
-              }
-            }
-            return max;
-          })]);
+          self.colors.domain(self.recordKeys);
         },
         initChart: function() {
           var self = this;
@@ -144,38 +221,43 @@
               .call(self.xAxis);
 
           //draw y axis
-          g.append("g")
+          var gy = g.append("g")
               .attr("class", "y axis")
-              .call(self.yAxis)
-            .append("text")
-              .attr("transform", "rotate(-90)")
-              .attr("y", 6)
-              .attr("dy", ".71em")
-              .style("text-anchor", "end")
+              .call(self.yAxis);
+
+          gy.append("text")
+              .classed("label", true)
+              .attr("y", 0)
+              .attr("x", 0)
               .text(self.yAxisLabel);
 
+          gy.select(".tick").selectAll("*")
+              .attr("transform", "translate(0, -" + self.rem/10 + ")");
+
+          gy.selectAll(".tick line")
+              .style("stroke-width", self.rem/10);
+
+          gy.selectAll(".tick").selectAll("text")
+              .attr("x", -self.rem)
+              .style("text-anchor", "end");
 
           //draw legend
           var legend = g.selectAll(".legend")
               .data(self.recordKeys.slice().reverse())
             .enter().append("g")
-              .attr("class", "legend")
-              .attr("transform", function(d, i) { return "translate(0," + i * 25 + ")"; });
+              .classed("legend", true)
+              .attr("transform", function(d, i) { return "translate(" + (self.width + self.rem * 5) + "," + (self.height - (i * self.rem * 2) - self.rem) + ")"; });
 
           legend.append("rect")
-              .attr("x", (self.width + self.margin.right) - 18)
-              .attr("width", 18)
-              .attr("height", 18)
-              .style("fill", self.color);
+              .attr("width", self.rem)
+              .attr("height", self.rem)
+              .style("fill", self.colors);
 
           legend.append("text")
-              .attr("x", (self.width + self.margin.right) - 24)
-              .attr("y", 9)
-              .attr("dy", ".35em")
-              .style("text-anchor", "end")
-              .text(function(d) {
-                return d;
-              });
+              .attr("x", self.rem * 1.8)
+              .style("font-size", "1rem")
+              .attr("dy", "1em")
+              .text(function(d) { return d; });
 
           return g;
         },
@@ -197,24 +279,22 @@
                 return "translate(" + self.x0(d.year) + ", 0)";
               });
 
-          years.selectAll("rect")
-              .data(function(d) {
-                return d.recordKeys;
-              })
+          years.selectAll(".bar")
+              .data(function(d) { return d.recordKeys; })
             .enter().append("rect")
+              .classed("bar", true)
               .attr("width", self.x1.rangeBand())
               .attr("x", function(d) {
                 return self.x1(d.name);
               })
-              .attr("y", function(d) {
-                return self.y(d.value);
-              })
-              .style("fill", function(d) { return self.color(d.name); })
+              .attr("y", self.height)
+              .attr("fill", function(d) { return self.colors(d.name); })
               .attr("height", 0)
               .transition()
-              .duration(200)
-              .delay(function(d, i, j) { return (j * 5 + i) * 100; })
+              .duration(function(d) { return d.value*50;})
+              .delay(function(d, i, j) { return (j * self.recordKeys.length + i) * 100; })
               .attr("height", function(d) { return self.height - self.y(d.value); })
+              .attr("y", function(d) { return self.y(d.value); });
         }
       });
 
