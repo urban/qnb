@@ -1,5 +1,6 @@
 <link rel="import" href="/bower_components/polymer/polymer.html">
 <script src="/bower_components/d3/d3.min.js"></script>
+<script src="http://d3js.org/d3.geo.projection.v0.min.js"></script>
 <script src="http://d3js.org/topojson.v1.min.js"></script>
 
 <polymer-element name="q-chart-globe" extends="q-chart" attributes="url dataTopLevel">
@@ -97,9 +98,37 @@
       }
 
       #legend > ul {
-        /*float: left;*/
         padding: 0;
       }
+
+
+      .stroke {
+  fill: none;
+  stroke: #000;
+  stroke-width: 3px;
+}
+ 
+.fill {
+  fill: #fff;
+}
+ 
+.graticule {
+  fill: none;
+  stroke: #777;
+  stroke-width: .5px;
+  stroke-opacity: .5;
+}
+ 
+.land {
+  fill: #fff;
+}
+ 
+.boundary {
+  fill: none;
+  stroke: #fff;
+  stroke-width: .5px;
+}
+ 
 
     </style>
     <div id="legend">
@@ -155,8 +184,11 @@
           clearInterval(this.intervalId);
         },
         render: function () {
-          this.chart.selectAll("*")
+          if(this.chart)
+          {
+            this.chart.selectAll("*")
               .remove();
+          }
 
           var self = this;
           var diameter = self.clientWidth / 2,
@@ -168,26 +200,59 @@
 
           var lastYearUpdate = Date.now();
           var yearIndex = 0;
+          
+          var width = 960,
+              height = 500;
 
-          var projection = d3.geo.orthographic()
-              .scale(radius - 2)
-              .translate([radius, radius])
-              .clipAngle(90);
-
-          var svg = d3.select(this.$.chart)
-              .attr("width", diameter)
-              .attr("height", diameter);
-
+          console.log(d3.geo);
+           
+          var projection = d3.geo.equirectangular()
+              .scale(150)
+              .translate([width / 2, height / 2])
+              .precision(.1);
+           
           var path = d3.geo.path()
               .projection(projection);
+           
+          var graticule = d3.geo.graticule();
+           
+          var svg = d3.select(self.$.chart).append("svg")
+              .attr("width", width)
+              .attr("height", height);
+           
+          svg.append("defs").append("path")
+              .datum({type: "Sphere"})
+              .attr("id", "sphere")
 
-          var globe = {type: "Sphere"};
-
-          svg.append("path")
-              .datum(globe)
-              .attr("class", "foreground")
               .attr("d", path);
+           
+          svg.append("use")
+              .attr("class", "stroke")
+              .attr("xlink:href", "#sphere");
+           
+          svg.append("use")
+              .attr("class", "fill")
+              .attr("xlink:href", "#sphere");
+           
+          // svg.append("path")
+          //     .datum(graticule)
+          //     .attr("class", "graticule")
+          //     .attr("d", path);
+           
+          
 
+          //d3.json("/mbostock/raw/4090846/world-50m.json", function(error, world) {
+            svg.insert("path", ".graticule")
+                .datum(topojson.feature(self.dataWorld, self.dataWorld.objects.land))
+                .attr("class", "land")
+                .attr("d", path);
+           
+            // svg.insert("path", ".graticule")
+            //     .datum(topojson.mesh(self.dataWorld, self.dataWorld.objects.countries, function(a, b) { return a !== b; }))
+            //     .attr("class", "boundary")
+            //     .attr("d", path);
+          //});
+           
           var currentYear = "2015";
           self.$.currentYearTitle.innerHTML = currentYear;
 
@@ -234,11 +299,11 @@
           this.start = (function () {
             self.intervalId = setInterval(function() {
               var angle = velocity * (Date.now() - then);
-              projection.rotate([angle,0,0]);
-              svg.selectAll("path")
-                .attr("d", path.projection(projection));
+              //projection.rotate([angle,0,0]);
+              //svg.selectAll("path")
+              //  .attr("d", path.projection(projection));
 
-              if(Date.now() - lastYearUpdate > 4000)
+              if(Date.now() - lastYearUpdate > 1000)
               {
                 svg.select('#Africa').style({
                   fill: getCurrentColor("Africa")
@@ -249,7 +314,7 @@
                 });
 
                 svg.select('#Europe').style({
-                  fill: getCurrentColor("Asia")
+                  fill: getCurrentColor("Europe")
                 });
 
                 svg.select('#NA').style({
