@@ -1,9 +1,87 @@
-html, body {
+@font-face {
+  font-family: "BentonSansF";
+  src: url(assets/fonts/BentonSansF-ExtraLight.otf);
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "BentonSansF";
+  src: url(assets/fonts/BentonSansF-Book.otf);
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "BentonSansF";
+  src: url(assets/fonts/BentonSansF-BookItalic.otf);
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "BentonSansF";
+  src: url(assets/fonts/BentonSansF-Medium.otf);
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "BentonSansF";
+  src: url(assets/fonts/BentonSansF-Bold.otf);
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "BentonSansF";
+  src: url(assets/fonts/BentonSansF-BoldItalic.otf);
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "BentonSansExtraCondensed";
+  src: url(assets/fonts/BentonSansComp-Medium.otf);
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "BentonSansExtraCondensed";
+  src: url(assets/fonts/BentonSansComp-Bold.otf);
+  font-weight: 700;
+  font-style: normal;
+}
+
+html,
+body {
   height: 100%;
   width: 100%;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-family: "BentonSansF", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 100%;
+  font-size: 10px;
 }
 
 frog-deck {
   height: 100%;
   width: 100%;
+}
+
+.clearfix:before,
+.clearfix:after {
+  content: "";
+  display: table;
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+.clearfix {
+  zoom: 1;
 }
