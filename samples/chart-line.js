@@ -84,7 +84,7 @@ var lineChart = function() {
 
       clipPath
         .transition()
-        .duration(transitionDuration)
+        .duration(6000)
         .attr("width", clipPathCounter * width / 60);
 
       if (clipPathCounter === 59) {

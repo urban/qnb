@@ -7,7 +7,7 @@
       :host {
         display: block;
         height: 100%;
-        margin-left: -5rem;
+        margin-left: -8rem;
         position: relative;
       }
 
@@ -63,6 +63,15 @@
         fill: #333;
         font-size: 1.2rem;
       }
+
+      .subtitle {
+        font-family: "BentonSansF", "Helvetica", "Arial", sans-serif;
+        font-weight: 700;
+        mix-blend-mode: multiply;
+        fill: #ccc;
+        opacity: .3;
+        text-transform: uppercase;
+      }
     </style>
     <svg id="chart"></svg>
   </template>
@@ -97,7 +106,7 @@ and then years. and flip through countries showing each as a grouped barchart
 
           this.rem = parseInt($("body").css("font-size"));
 
-          self.margin = {top: 3*this.rem, right: 20*this.rem, bottom: 2.5*this.rem, left: 5*this.rem};
+          self.margin = {top: 3*this.rem, right: 20*this.rem, bottom: 2.5*this.rem, left: 8*this.rem};
           self.width = self.clientWidth - self.margin.left - self.margin.right;
           self.height = self.clientHeight - self.margin.top - self.margin.bottom;
 
@@ -122,7 +131,7 @@ and then years. and flip through countries showing each as a grouped barchart
               .orient("right")
               .tickFormat(d3.format(".2s"));
 
-          var svg = d3.select(this.$.chart)
+          var g = d3.select(this.$.chart)
               .attr("width", self.width + self.margin.left + self.margin.right)
               .attr("height", self.height + self.margin.top + self.margin.bottom)
             .append("g")
@@ -138,7 +147,7 @@ and then years. and flip through countries showing each as a grouped barchart
           var massagedData = [];
           var lastUpdate = Date.now();
 
-          console.log(data[dataIndex]);
+          // console.log(data[dataIndex]);
           massagedData = data[dataIndex]["By Year"];
 
 
@@ -160,7 +169,7 @@ and then years. and flip through countries showing each as a grouped barchart
 
           x1.domain(recordKeys).rangeRoundBands([0, x0.rangeBand()], .2, 0);
 
-          y.domain([0, d3.max( _.flatten(_.flatten(_.flatten(data, "By Year"), "data"), "value") )]);
+          y.domain([0, d3.max( _.flatten(_.flatten(_.flatten(data, "By Year"), "data"), "value") ) * (1 + self.yDomainPadding)]);
 
           self.colors.domain(recordKeys);
 
@@ -168,12 +177,12 @@ and then years. and flip through countries showing each as a grouped barchart
           // drawing the chart
           ////////////////////////////////////////////////////////////////////////////////////////
 
-          svg.append("g")
+          g.append("g")
               .attr("class", "x axis")
               .attr("transform", "translate(0," + self.height + ")")
               .call(xAxis);
 
-          var gy = svg.append("g")
+          var gy = g.append("g")
               .attr("class", "y axis")
               .call(yAxis);
 
@@ -193,13 +202,20 @@ and then years. and flip through countries showing each as a grouped barchart
               .attr("x", -self.rem)
               .style("text-anchor", "end");
 
-          var year = svg.selectAll(".year")
+          var subtitle = g.append("text")
+              .classed("subtitle", true)
+              .attr("x", self.width)
+              .attr("y", 0)
+              .attr("dy", self.rem*2.5)
+              .attr("text-anchor", "end")
+              .style("font-size", self.rem * 5);
+
+          var year = g.selectAll(".year")
               .data(massagedData)
             .enter().append("g")
               .attr("class", "g")
               .attr("transform", function(d) {
                 return "translate(" + x0(d.year) + ",0)";
-
               });
 
           year.selectAll(".bar")
@@ -222,7 +238,7 @@ and then years. and flip through countries showing each as a grouped barchart
           // drawing the legend
           ////////////////////////////////////////////////////////////////////////////////////////
 
-          var legend = svg.selectAll(".legend")
+          var legend = g.selectAll(".legend")
               .data(recordKeys.slice().reverse())
             .enter().append("g")
               .attr("class", "legend")
@@ -244,12 +260,16 @@ and then years. and flip through countries showing each as a grouped barchart
           ////////////////////////////////////////////////////////////////////////////////////////
 
           this.start = (function () {
-            self.intervalId = setInterval( function() {
+            var updateChart = function() {
               dataIndex++;
+
               if(dataIndex > data.length-1)
               {
                 dataIndex = 0;
               }
+
+              subtitle.text(data[dataIndex]["Country"]);
+;
 
               massagedData = data[dataIndex]["By Year"];
 
@@ -259,7 +279,7 @@ and then years. and flip through countries showing each as a grouped barchart
               year
                 .data(massagedData)
                 .attr("transform", function(d) {
-                  console.log(d.year);
+                  // console.log(d.year);
                   return "translate(" + x0(d.year) + ",0)";
                 });
 
@@ -275,7 +295,10 @@ and then years. and flip through countries showing each as a grouped barchart
               //////////////////////////////////////////////////////////
 
               lastUpdate = Date.now();
-            }, 3000);
+            };
+            updateChart();
+
+            self.intervalId = setInterval(updateChart, 3000);
           }).bind(this);
         }
       });

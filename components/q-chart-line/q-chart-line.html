@@ -7,7 +7,7 @@
       :host {
         display: block;
         height: 100%;
-        margin-left: -5rem;
+        margin-left: -8rem;
         position: relative;
       }
 
@@ -82,7 +82,7 @@
           }
 
           var lineChart = function() {
-            var margin = {top: 3*self.rem, right: 20*self.rem, bottom: 2.5*self.rem, left: 5*self.rem};
+            var margin = {top: 3*self.rem, right: 20*self.rem, bottom: 2.5*self.rem, left: 8*self.rem};
             var width = self.clientWidth - margin.left - margin.right;
             var height = self.clientHeight - margin.top - margin.bottom;
             var x = d3.scale.linear().nice();
@@ -91,10 +91,7 @@
                 .tickSize(0)
                 .tickPadding(self.rem)
                 .orient("bottom");
-                // .ticks(d3.time.  year, 1)
-                // .tickFormat(d3.time.format("%Y"));
             var yAxis = d3.svg.axis()
-                .ticks(height / self.rem / 4)
                 .tickSize(width)
                 .orient("right");
             var key = null;
@@ -115,8 +112,14 @@
                   // .domain(d3.extent(flattenedData, function(d) { return d.year }))
                   // .rangePoints([0, width], 0);
 
+              var yExtent = d3.extent(flattenedData, function(d) { return d.value});
+              var yMin = (yExtent[0] - (yExtent[1] - yExtent[0])*self.yDomainPadding) > 0 ? yExtent[0] : 0;
+              var yMax = yExtent[1] + ((yExtent[1] - yExtent[0])*self.yDomainPadding);
+
+              console.log(yMin, yMax);
+
               y.range([height, 0])
-                  .domain([0, d3.max(flattenedData, function(d) { return d.value}) * 1.2]);
+                  .domain([yMin, yMax]);
 
               xAxis.scale(x)
                   .tickFormat(d3.format("d"))

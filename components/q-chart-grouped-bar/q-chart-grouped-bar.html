@@ -7,7 +7,7 @@
       :host {
         display: block;
         height: 100%;
-        margin-left: -5rem;
+        margin-left: -8rem;
         position: relative;
       }
 
@@ -173,9 +173,7 @@
         init: function() {
           var self = this;
 
-          this.rem = parseInt($("body").css("font-size"));
-
-          self.margin = {top: 3*this.rem, right: 20*this.rem, bottom: 2.5*this.rem, left: 5*this.rem};
+          self.margin = {top: 3*this.rem, right: 20*this.rem, bottom: 2.5*this.rem, left: 8*this.rem};
           self.width = self.clientWidth - self.margin.left - self.margin.right;
           self.height = self.clientHeight - self.margin.top - self.margin.bottom;
 
@@ -188,7 +186,7 @@
               .rangeRoundBands([0, self.x0.rangeBand()], .2, 0);
 
           self.y = d3.scale.linear()
-              .domain([0, d3.max(self.massagedData, function(d) { return d3.max(d.recordKeys, function(d) { return d.value; }); }) * 1.2])
+              .domain([0, d3.max(self.massagedData, function(d) { return d3.max(d.recordKeys, function(d) { return d.value; }); }) * (1 + self.yDomainPadding)])
               .range([self.height, 0]);
 
           self.xAxis = d3.svg.axis()
@@ -293,8 +291,9 @@
               .attr("fill", function(d) { return self.colors(d.name); })
               .attr("height", 0)
               .transition()
-              .duration(function(d) { return d.value*50;})
-              .delay(function(d, i, j) { return (j * self.recordKeys.length + i) * 100; })
+              // .duration(function(d) { return d.value*50;})
+              .duration(500)
+              .delay(function(d, i, j) { return (j * self.recordKeys.length + i) * 75; })
               .attr("height", function(d) { return self.height - self.y(d.value); })
               .attr("y", function(d) { return self.y(d.value); });
         }

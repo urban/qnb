@@ -10,13 +10,26 @@
       }
 
       #legend {
-          float:right;
-          padding-right: 20px;
+        position: absolute;
+        left: 10rem;
+        top: 39rem;
+        font-family: "BentonSansF", "Helvetica", "Arial", sans-serif;
+        font-weight: 700;
+        mix-blend-mode: multiply;
+        fill: #ccc;
+        opacity: .2;
+        text-transform: uppercase;
+        font-size: 5rem;
+        line-height: 100%;
       }
 
+      #currentYearTitle {
+        font-weight: 300;
+      }
     </style>
     <div id="legend">
-      <h3><span id="currentCountryTitle">India</span> <span id="currentYearTitle">2015</span></h3>
+      <div id="currentCountryTitle">India</div>
+      <div id="currentYearTitle">2015</div>
     </div>
 
     <svg id="chart"></svg>
@@ -40,12 +53,13 @@
           var self = this;
           var countriesData = self.data.data;
 
-          this.rem = parseInt($("body").css("font-size"));
-
           // Setup all the constants
           var duration = 500;
-          var width = this.clientWidth;
-          var height = this.clientHeight;
+
+          this.margin = {top: 0, right: 20*this.rem, bottom: 0, left: 0};
+          var width = this.clientWidth - this.margin.left - this.margin.right;
+          var height = this.clientHeight - this.margin.top - this.margin.bottom;
+
           var radius = Math.floor(Math.min(width/2, height/2) * 0.9);
           var colors = this.colors;
           var fontColors = this.fontColors;
@@ -65,6 +79,8 @@
             recordKeys.push( countriesData[countries[0]]["2015"][i].label );
           }
 
+          colors.domain(recordKeys);
+
 
           var currentYear = 0;
           var currentCountry = 0;
@@ -73,14 +89,12 @@
           /////////////////////////////////////////////////////////////////////////////////////////////
           var updateChart = function(dataset) {
 
-            //console.log(dataset);
-
             arcs.data(donut(dataset))
                 .enter()
                 .append("path")
                 .attr("stroke", "white")
                 .attr("stroke-width", 2)
-                .attr("fill", function(d, i) { return colors(i); })
+                .attr("fill", function(d) { return colors(d.data.label); })
                 .attr("d", arc);
 
             arcs.transition()
@@ -97,18 +111,18 @@
                 else { return 1; }
               });
 
-            sliceLabel.data(donut(dataset)).enter()
-              .append("text")
-              .attr("class", "arcLabel")
-              .attr("transform", function(d) { return "translate(" + (arc.centroid(d)) + ")"; })
-              .attr("text-anchor", "middle")
-              .style("fill-opacity", function(d) {
-                if (d.value === 0) { return 1e-6; }
-                else { return 1; }
-              })
-              .text(function(d) {
-                return d.data.label;
-              });
+            // sliceLabel.data(donut(dataset)).enter()
+            //   .append("text")
+            //   .attr("class", "arcLabel")
+            //   .attr("transform", function(d) { return "translate(" + (arc.centroid(d)) + ")"; })
+            //   .attr("text-anchor", "middle")
+            //   // .style("fill-opacity", function(d) {
+            //   //   if (d.value === 0) { return 1e-6; }
+            //   //   else { return 1; }
+            //   // })
+            //   .text(function(d) {
+            //     return d.data.label;
+            //   });
           };
           /////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -121,10 +135,10 @@
             .outerRadius(radius);
 
           var svg = d3.select(this.$.chart)
-            .append("svg")
-            .append("svg")
-            .attr("width", width)
-            .attr("height", height);
+            // .append("svg")
+            // .append("svg")
+            .attr("width", width + self.margin.left + self.margin.right)
+            .attr("height", height + self.margin.top + self.margin.bottom)
 
           var arc_grp = svg.append("g")
             .attr("class", "arcGrp")
@@ -141,46 +155,67 @@
             .append("path")
             .attr("stroke", "white")
             .attr("stroke-width", 2)
-            .attr("fill", function(d, i) { return colors(i); })
+            .attr("fill", function(d) { return colors(d.data.label); })
             .attr("d", arc)
             .each(function(d) { return this.current = d; });
 
           var sliceLabel = label_group.selectAll("text")
             .data(donut(countriesData[countries[currentCountry]][years[currentYear]]));
 
-          sliceLabel.enter()
-            .append("text")
-            .attr("class", "arcLabel")
-            //.attr('fill', function (d, i) { return self.fontColors(i); })
-            .attr('fill', function (d, i) { return "#fff"; })
-            .attr("transform", function(d) { return "translate(" + (arc.centroid(d)) + ")"; })
-            .attr("text-anchor", "middle")
-            .style("fill-opacity", function(d) {
-              if (d.value === 0) { return 1e-6; }
-              else { return 1; }
-            })
-            .text(function(d) { return d.data.label; });
+          // sliceLabel.enter()
+          //   .append("text")
+          //   .attr("class", "arcLabel")
+          //   //.attr('fill', function (d, i) { return self.fontColors(i); })
+          //   // .attr('fill', function (d, i) { return "#fff"; })
+          //   .attr("transform", function(d) { return "translate(" + (arc.centroid(d)) + ")"; })
+          //   .attr("text-anchor", "middle")
+          //   // .style("fill-opacity", function(d) {
+          //   //   if (d.value === 0) { return 1e-6; }
+          //   //   else { return 1; }
+          //   // })
+          //   .text(function(d) { return d.data.label; });
 
           var legend = arc_grp.selectAll(".legend")
               .data(recordKeys.slice().reverse())
             .enter().append("g")
               .classed("legend", true)
               .attr("transform", function(d, i) {
-                console.log(width, self.rem);
-                //return "translate(" + (width + self.rem * 5) + "," + (height - (i * self.rem * 2) - self.rem) + ")";
-                return "translate(" + (width/2 - self.rem * 16) + ", " + (-(height/2) + (i * self.rem * 3)) + ")";
+                // return "translate(" + (width + self.rem * 5) + "," + ((i * self.rem * 2) - self.rem) + ")";
+                return "translate(" + (width/2  + self.rem * 5) + ", " + ((i * self.rem * 2)) + ")";
               });
 
           legend.append("rect")
               .attr("width", self.rem)
               .attr("height", self.rem)
-              .style("fill", self.colors);
+              .style("fill", colors)
 
           legend.append("text")
               .attr("x", self.rem * 1.8)
               .style("font-size", "1rem")
               .attr("dy", "1em")
               .text(function(d) { return d; });
+
+
+          // var legend = arc_grp.selectAll(".legend")
+          //     .data(recordKeys.slice().reverse())
+          //   .enter().append("g")
+          //     .classed("legend", true)
+          //     .attr("transform", function(d, i) {
+          //       console.log(width, self.rem);
+          //       //return "translate(" + (width + self.rem * 5) + "," + (height - (i * self.rem * 2) - self.rem) + ")";
+          //       return "translate(" + (width/2 - self.rem * 16) + ", " + (-(height/2) + (i * self.rem * 3)) + ")";
+          //     });
+
+          // legend.append("rect")
+          //     .attr("width", self.rem)
+          //     .attr("height", self.rem)
+          //     .style("fill", self.colors);
+
+          // legend.append("text")
+          //     .attr("x", self.rem * 1.8)
+          //     .style("font-size", "1rem")
+          //     .attr("dy", "1em")
+          //     .text(function(d) { return d; });
 
             //Update the data
             this.start = (function ()

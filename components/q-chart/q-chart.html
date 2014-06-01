@@ -5,10 +5,10 @@
   <script>
     (function () {
       var themeColors = {
-        blue: ["#65BAF1", "#6B9AF2", "#5CEFEA", "#C2C8CC", "#FFD262", "#FF9562"],
-        green: ["#52E388", "#4FD9C6", "#8DF258", "#C2CCC4", "#FFC488", "#FF8C8C"],
-        yellow: ["#F9CA3E", "#F9E83E", "#FFB553", "#D1CFC2", "#79ACF3", "#95DFE6"],
-        orange: ["#FABA71", "#FAD471", "#FA8D71", "#CCC5BE", "#7295E6", "#64E5BE"]
+        blue: ["#65BAF1", "#C2C8CC", "#6B9AF2", "#5CEFEA", "#FFD262", "#FF9562"],
+        green: ["#52E388", "#C2CCC4", "#4FD9C6", "#8DF258", "#FFC488", "#FF8C8C"],
+        yellow: ["#F9CA3E", "#D1CFC2", "#F9E83E", "#FFB553", "#79ACF3", "#95DFE6"],
+        orange: ["#FABA71", "#CCC5BE", "#FAD471", "#FA8D71", "#7295E6", "#64E5BE"]
       };
 
       var years = [ "2015", "2017", "2019", "2021", "2023", "2025", "2027", "2029", "2031", "2033", "2035"];
@@ -22,6 +22,7 @@
         theme: null,
         years: years,
         index: 0,
+        yDomainPadding: .2,
         ready: function () {
           this.rem = parseInt($("body").css("font-size"));
           this.theme = this.theme || "blue";
