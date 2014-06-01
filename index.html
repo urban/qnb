@@ -18,7 +18,7 @@
             <q-chart-line url="/data/capital_return_rates.json" theme="green" yAxisLabel="Percent Return" recordKey="Name"></q-chart-line>
         </q-visualization>
         <q-visualization flex title="Birthrate by Urban Density" hasContent>
-          <q-chart-grouped-bar url="/data/birthrate_urbanism.json" theme="green" yAxisLabel="People sq KM" recordKey="Density"></q-chart-grouped-bar>
+          <q-chart-line url="/data/birthrate_urbanism.json" theme="green" yAxisLabel="Per 1000" recordKey="Density"></q-chart-line>
         </q-visualization>
       </q-view>
     </frog-card>
@@ -142,8 +142,8 @@
         <q-visualization flex title="Use of anxiety medications by country/age">
           <q-chart-gb-rotating url="/data/anxiety_medication.json" yAxisLabel="Years" recordKey="age"></q-chart-gb-rotating>
         </q-visualization>
-        <q-visualization flex title="Gini Coefficient">
-          <q-chart-line url="/data/gini_coefficient.json" yAxisLabel="Years" recordKey="country"></q-chart-line>
+        <q-visualization flex title="Percent of Population Experiencing Water Scarcity in a Year">
+          <q-chart-line url="/data/water_scarcity_physical.json" yAxisLabel="Percent" recordKey="Country"></q-chart-line>
         </q-visualization>
       </q-view>
     </frog-card>

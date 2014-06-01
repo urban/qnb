@@ -2,40 +2,25 @@
 "title":"Water Scarcity by Country",
 "data": [
 {"Country":"India",
-"Physical Water Scarcity": [
+"By Year": [
     {"year":2015, "value":9}, {"year":2017, "value":11}, {"year":2019, "value":12}, {"year":2021, "value":13}, {"year":2023, "value":13}, {"year":2025, "value":14}, {"year":2027, "value":15}, {"year":2029, "value":16}, {"year":2031, "value":15}, {"year":2033, "value":16}, {"year":2035, "value":18}
-    ], 
-"Economic Water Scarcity" : [
-    {"year":2015, "value":17}, {"year":2017, "value":18}, {"year":2019, "value":18}, {"year":2021, "value":22}, {"year":2023, "value":28}, {"year":2025, "value":29}, {"year":2027, "value":32}, {"year":2029, "value":31}, {"year":2031, "value":35}, {"year":2033, "value":37}, {"year":2035, "value":38}
-]},
+    ]},
 
 {"Country":"Nigeria", 
-"Economic Water Scarcity" : [
-    {"year":2015, "value":18}, {"year":2017, "value":22}, {"year":2019, "value":21}, {"year":2021, "value":23}, {"year":2023, "value":24}, {"year":2025, "value":25}, {"year":2027, "value":26}, {"year":2029, "value":27}, {"year":2031, "value":28}, {"year":2033, "value":24}, {"year":2035, "value":25}
+"By Year" : [
+    {"year":2015, "value":15}, {"year":2017, "value":16}, {"year":2019, "value":21}, {"year":2021, "value":23}, {"year":2023, "value":21}, {"year":2025, "value":20}, {"year":2027, "value":21}, {"year":2029, "value":27}, {"year":2031, "value":28}, {"year":2033, "value":24}, {"year":2035, "value":25}
 ]},
 
 {"Country":"China", 
-"Physical Water Scarcity": [
-    {"year":2015, "value":16}, {"year":2017, "value":17}, {"year":2019, "value":18}, {"year":2021, "value":19}, {"year":2023, "value":22}, {"year":2025, "value":23}, {"year":2027, "value":25}, {"year":2029, "value":24}, {"year":2031, "value":22}, {"year":2033, "value":28}, {"year":2035, "value":27}
-    ], 
-"Economic Water Scarcity" : [
-    {"year":2015, "value":3}, {"year":2017, "value":4}, {"year":2019, "value":5}, {"year":2021, "value":4}, {"year":2023, "value":6}, {"year":2025, "value":7}, {"year":2027, "value":7}, {"year":2029, "value":8}, {"year":2031, "value":9}, {"year":2033, "value":12}, {"year":2035, "value":14}
-]},
-
-{"Country":"Indonesia", 
-"Physical Water Scarcity": [
-    {"year":2015, "value":1}, {"year":2017, "value":1}, {"year":2019, "value":1}, {"year":2021, "value":1}, {"year":2023, "value":1}, {"year":2025, "value":1}, {"year":2027, "value":1}, {"year":2029, "value":1}, {"year":2031, "value":1}, {"year":2033, "value":1}, {"year":2035, "value":1}
-    ], 
-"Economic Water Scarcity" : [
-    {"year":2015, "value":7}, {"year":2017, "value":5}, {"year":2019, "value":6}, {"year":2021, "value":7}, {"year":2023, "value":6}, {"year":2025, "value":7}, {"year":2027, "value":8}, {"year":2029, "value":12}, {"year":2031, "value":14}, {"year":2033, "value":11}, {"year":2035, "value":13}
-]},
+"By Year": [
+    {"year":2015, "value":13}, {"year":2017, "value":17}, {"year":2019, "value":18}, {"year":2021, "value":19}, {"year":2023, "value":22}, {"year":2025, "value":23}, {"year":2027, "value":25}, {"year":2029, "value":24}, {"year":2031, "value":22}, {"year":2033, "value":28}, {"year":2035, "value":27}
+    ]
+},
 
 {"Country":"Mexico", 
-"Physical Water Scarcity": [
+"By Year": [
     {"year":2015, "value":5}, {"year":2017, "value":6}, {"year":2019, "value":7}, {"year":2021, "value":9}, {"year":2023, "value":5}, {"year":2025, "value":8}, {"year":2027, "value":9}, {"year":2029, "value":12}, {"year":2031, "value":13}, {"year":2033, "value":12}, {"year":2035, "value":11}
-    ], 
-"Economic Water Scarcity" : [
-    {"year":2015, "value":20}, {"year":2017, "value":20}, {"year":2019, "value":20}, {"year":2021, "value":22}, {"year":2023, "value":24}, {"year":2025, "value":27}, {"year":2027, "value":22}, {"year":2029, "value":17}, {"year":2031, "value":16}, {"year":2033, "value":17}, {"year":2035, "value":18}
-]}
+    ]
+}
 ]
 }

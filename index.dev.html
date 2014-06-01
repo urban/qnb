@@ -12,14 +12,14 @@
 
   <frog-deck id="deck" transition="fade">
 
-    <frog-card delay="10000">
-      <q-view flex class="orange" url="/data/stories/story-1.json">
-        <q-visualization flex title="Birthrate by Urban Density" hasContent>
-          <q-chart-grouped-bar url="/data/birthrate_urbanism.json" theme="orange" yAxisLabel="People sq KM" recordKey="Density"></q-chart-grouped-bar>
+    <frog-card>
+      <q-view class="green" url="/data/stories/story-1.json">
+        <q-visualization flex title="Religiousness by country by age group">
+          <q-chart-line url="/data/birthrate_urbanism.json" theme="green" recordKey="Density"></q-chart-line>
         </q-visualization>
 
         <q-visualization flex title="Worldwide Growth and Capital Return" hasContent>
-          <q-chart-line url="/data/capital_return_rates.json" theme="orange" yAxisLabel="Percent Return" recordKey="Name"></q-chart-line>
+          <q-chart-line url="/data/capital_return_rates.json" theme="green" yAxisLabel="Percent Return" recordKey="Name"></q-chart-line>
         </q-visualization>
       </q-view>
     </frog-card>

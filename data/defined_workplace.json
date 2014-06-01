@@ -3,25 +3,25 @@
 "data": [
 {"Country":"India",
 "By Year": [
-    {"year":2015, "value":76}, {"year":2017, "value":74}, {"year":2019, "value":70}, {"year":2021, "value":72}, {"year":2023, "value":68}, {"year":2025, "value":67}, {"year":2027, "value":66}, {"year":2029, "value":60}, {"year":2031, "value":58}, {"year":2033, "value":56}, {"year":2035, "value":52}
+    {"year":2015, "value":76}, {"year":2017, "value":74}, {"year":2019, "value":70}, {"year":2021, "value":72}, {"year":2023, "value":68}, {"year":2025, "value":67}, {"year":2027, "value":66}, {"year":2029, "value":60}, {"year":2031, "value":58}, {"year":2033, "value":56}, {"year":2035, "value":48}
     ]
 },
 
 {"Country":"China" ,
 "By Year": [
-    {"year":2015, "value":89}, {"year":2017, "value":85}, {"year":2019, "value":84}, {"year":2021, "value":83}, {"year":2023, "value":82}, {"year":2025, "value":75}, {"year":2027, "value":76}, {"year":2029, "value":74}, {"year":2031, "value":73}, {"year":2033, "value":70}, {"year":2035, "value":69}
+    {"year":2015, "value":89}, {"year":2017, "value":85}, {"year":2019, "value":84}, {"year":2021, "value":83}, {"year":2023, "value":82}, {"year":2025, "value":75}, {"year":2027, "value":76}, {"year":2029, "value":74}, {"year":2031, "value":73}, {"year":2033, "value":70}, {"year":2035, "value":65}
     ]
 },
 
 {"Country":"Brazil" ,
 "By Year": [
-    {"year":2015, "value":91}, {"year":2017, "value":89}, {"year":2019, "value":85}, {"year":2021, "value":84}, {"year":2023, "value":83}, {"year":2025, "value":79}, {"year":2027, "value":78}, {"year":2029, "value":77}, {"year":2031, "value":76}, {"year":2033, "value":76}, {"year":2035, "value":77}
+    {"year":2015, "value":91}, {"year":2017, "value":89}, {"year":2019, "value":85}, {"year":2021, "value":84}, {"year":2023, "value":83}, {"year":2025, "value":79}, {"year":2027, "value":78}, {"year":2029, "value":77}, {"year":2031, "value":76}, {"year":2033, "value":76}, {"year":2035, "value":71}
     ]
 },
 
 {"Country":"USA" ,
 "By Year": [
-    {"year":2015, "value":89}, {"year":2017, "value":87}, {"year":2019, "value":85}, {"year":2021, "value":85}, {"year":2023, "value":84}, {"year":2025, "value":81}, {"year":2027, "value":76}, {"year":2029, "value":75}, {"year":2031, "value":72}, {"year":2033, "value":68}, {"year":2035, "value":65}
+    {"year":2015, "value":89}, {"year":2017, "value":84}, {"year":2019, "value":85}, {"year":2021, "value":85}, {"year":2023, "value":82}, {"year":2025, "value":79}, {"year":2027, "value":74}, {"year":2029, "value":71}, {"year":2031, "value":70}, {"year":2033, "value":67}, {"year":2035, "value":60}
     ]
 }
 ]
