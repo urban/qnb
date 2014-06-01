@@ -40,6 +40,8 @@
           var self = this;
           var countriesData = self.data.data;
 
+          this.rem = parseInt($("body").css("font-size"));
+
           // Setup all the constants
           var duration = 500;
           var width = this.clientWidth;
@@ -47,6 +49,8 @@
           var radius = Math.floor(Math.min(width/2, height/2) * 0.9);
           var colors = this.colors;
           var fontColors = this.fontColors;
+
+          var recordKeys = [];
 
           var years = [ "2015", "2017", "2019", "2021", "2023", "2025", "2027", "2029", "2031", "2033", "2035"];
           var countries = [];
@@ -56,6 +60,11 @@
               countries.push(key);
             }
           }
+
+          for (var i = 0; i < countriesData[countries[0]]["2015"].length; i++) {
+            recordKeys.push( countriesData[countries[0]]["2015"][i].label );
+          }
+
 
           var currentYear = 0;
           var currentCountry = 0;
@@ -142,7 +151,8 @@
           sliceLabel.enter()
             .append("text")
             .attr("class", "arcLabel")
-            .attr('fill', function (d, i) { return fontColors(i); })
+            //.attr('fill', function (d, i) { return self.fontColors(i); })
+            .attr('fill', function (d, i) { return "#fff"; })
             .attr("transform", function(d) { return "translate(" + (arc.centroid(d)) + ")"; })
             .attr("text-anchor", "middle")
             .style("fill-opacity", function(d) {
@@ -150,6 +160,27 @@
               else { return 1; }
             })
             .text(function(d) { return d.data.label; });
+
+          var legend = arc_grp.selectAll(".legend")
+              .data(recordKeys.slice().reverse())
+            .enter().append("g")
+              .classed("legend", true)
+              .attr("transform", function(d, i) {
+                console.log(width, self.rem);
+                //return "translate(" + (width + self.rem * 5) + "," + (height - (i * self.rem * 2) - self.rem) + ")";
+                return "translate(" + (width/2 - self.rem * 16) + ", " + (-(height/2) + (i * self.rem * 3)) + ")";
+              });
+
+          legend.append("rect")
+              .attr("width", self.rem)
+              .attr("height", self.rem)
+              .style("fill", self.colors);
+
+          legend.append("text")
+              .attr("x", self.rem * 1.8)
+              .style("font-size", "1rem")
+              .attr("dy", "1em")
+              .text(function(d) { return d; });
 
             //Update the data
             this.start = (function ()

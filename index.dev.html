@@ -14,13 +14,13 @@
 
     <frog-card>
       <q-view class="green" url="/data/stories/story-1.json">
-        <q-visualization flex title="Religiousness by country by age group">
-          <q-chart-line url="/data/birthrate_urbanism.json" theme="green" recordKey="Density"></q-chart-line>
+        <q-visualization full title="Religiousness by country by age group">
+          <q-chart-ring url="/data/religiousness.json"></q-chart-ring>
         </q-visualization>
 
-        <q-visualization flex title="Worldwide Growth and Capital Return" hasContent>
+<!--         <q-visualization flex title="Worldwide Growth and Capital Return" hasContent>
           <q-chart-line url="/data/capital_return_rates.json" theme="green" yAxisLabel="Percent Return" recordKey="Name"></q-chart-line>
-        </q-visualization>
+        </q-visualization> -->
       </q-view>
     </frog-card>
 
