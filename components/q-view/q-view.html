@@ -59,7 +59,7 @@
 
       :host(.yellow) .story-panel {
         background-color: #ffde1a;
-        color: #333;
+        color: #444;
       }
 
       .visualizations {
@@ -79,6 +79,11 @@
         color: #339ce2;
         mix-blend-mode: color-dodge;
         opacity: .9;
+      }
+
+      :host(.yellow) .story-panel h3 {
+        color: #734D00;
+        mix-blend-mode: color-burn;
       }
 
       .story-location,
@@ -107,12 +112,8 @@
         clear: both;
       }
 
-      .story-panel p {
-        font-family: "Georgia", serif;
-        margin-top: 0;
-        font-weight: 400;
-        font-size: 1.45rem;
-        line-height: 140%;
+      :host(.yellow) .story-panel h1 {
+        mix-blend-mode: multiply;
       }
 
       .story-panel hr.short {
@@ -132,6 +133,23 @@
         left: 0;
         width: 2.5rem;
         background-color: #fff;
+      }
+
+      :host(.yellow) .story-panel hr.short:before {
+        background-color: #444;
+        mix-blend-mode: multiply;
+      }
+
+      .story-panel p {
+        font-family: "Georgia", serif;
+        margin-top: 0;
+        font-weight: 400;
+        font-size: 1.5rem;
+        line-height: 140%;
+      }
+
+      :host(.yellow) .story-panel p {
+        mix-blend-mode: multiply;
       }
 
       polyfill-next-selector { content: ':host main > *'; }
