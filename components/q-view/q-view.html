@@ -3,96 +3,135 @@
 <polymer-element name="q-view" attributes="url">
   <template>
     <style>
-      *, *:before, *:after {
+      *,
+      *:before,
+      *:after {
         -moz-box-sizing: border-box;
         -webkit-box-sizing: border-box;
         box-sizing: border-box;
       }
 
+      .clearfix:before,
+      .clearfix:after {
+        content: "";
+        display: table;
+      }
+
+      .clearfix:after {
+        clear: both;
+      }
+
+      .clearfix {
+        zoom: 1;
+      }
+
       :host {
-        display: -webkit-box !important;
-        display: -ms-flexbox !important;
-        display: -moz-flex !important;
-        display: -webkit-flex !important;
-        display: flex !important;
-        flex-direction: row;
         height: 100%;
         width: 100%;
       }
 
-      h1 {
-        font: 2em/1.4375em "Georgia",serif;
-        font-style: italic;
-        font-weight: normal;
-        margin-bottom: 0
-      }
-
-      h3 {
-        border-bottom: 1px solid #fff;
-        font-family: "BentonSans","Arial",sans-serif;
-        font-size: 1.2em;
-        font-weight: bold;
-        margin-top: 0;
-        padding-bottom: 0.4rem;
-        text-transform: uppercase;
-      }
-
-      aside {
-        background-color: #2c88dc;
+      .story-panel {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 70%;
+        background-color: #339ce2;
+        padding: 3rem 6rem 0 2rem;
         color: #fff;
-        font: normal 1em/1.625em "Georgia",serif;
-        flex: 0 1 auto;
-        order: 1;
-        width: 33.333%;
       }
 
-      :host(.green) aside {
-        background-color: #3eb307;
+      :host(.green) .story-panel {
+        background-color: #299f55;
       }
 
-      :host(.orange) aside {
-        background-color: #ef6d09;
+      :host(.green) .story-panel h3 {
+        color: #299f55;
       }
 
-      :host(.yellow) aside {
-        background-color: #fdd81b;
-        color: #111;
-      }
-      :host(.yellow) section > header {
-        border-bottom-color: #111;
+      :host(.orange) .story-panel {
+        background-color: #f58300;
       }
 
-      aside > header {
-        background-color: #111;
-        color: #fff;
-        height: 33.333%;
-        padding: 2rem;
+      :host(.orange) .story-panel h3 {
+        color: #f58300;
       }
 
-      section {
-        padding: 2rem;
+      :host(.yellow) .story-panel {
+        background-color: #ffde1a;
+        color: #333;
       }
 
-      section > header {
-        border-bottom: 1px solid #fff;
-        font-family: "BentonSans","Arial",sans-serif;
-        font-weight: bold;
+      .visualizations {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 30%;
+        right: 0;
       }
 
-      section > header strong:first-child {
+      .story-panel h3 {
+        font-weight: 700;
+        font-size: 1.4rem;
+        line-height: 115%;
+        margin: 0 0 5rem;
         text-transform: uppercase;
+        color: #339ce2;
+        mix-blend-mode: color-dodge;
+        opacity: .9;
       }
 
-      .pull-right {
-        float: right;
-      }
-      
-      main {
+      .story-location,
+      .story-time {
+        text-transform: uppercase;
+        font-weight: 700;
+        color: #222;
         background-color: #fff;
-        height: 100%;
-        order: 2;
-        padding-bottom: 2rem;
-        width: 100%;
+        float: left;
+        clear: both;
+        font-size: 1.2rem;
+        padding: .5rem .5rem .1rem;
+      }
+
+      .story-location {
+        margin-bottom: .6rem;
+      }
+
+      .story-panel h1 {
+        font-size: 3.5rem;
+        line-height: 100%;
+        font-weight: 700;
+        margin: .6rem 0 1.5rem;
+        text-transform: uppercase;
+        float: left;
+        clear: both;
+      }
+
+      .story-panel p {
+        font-family: "Georgia", serif;
+        margin-top: 0;
+        font-weight: 400;
+        font-size: 1.45rem;
+        line-height: 140%;
+      }
+
+      .story-panel hr.short {
+        display: block;
+        height: 0;
+        border: 0;
+        position: relative;
+        margin: 0 0 2rem;
+      }
+
+      .story-panel hr.short:before {
+        content: "";
+        position: absolute;
+        display: block;
+        top: 0;
+        bottom: -1px;
+        left: 0;
+        width: 2.5rem;
+        background-color: #fff;
       }
 
       polyfill-next-selector { content: ':host main > *'; }
@@ -114,20 +153,23 @@
         height: 50%;
         width: 100%;
       }
+
     </style>
-    <aside>
+    <aside class="story-panel">
       <header>
         <h3>Data-in-the-Life of the Next Billion</h3>
-        <h1>{{model.title}}</h1>
       </header>
       <section>
-        <header>
-          <strong>{{model.time}}</strong><strong class="pull-right">{{model.location}}</strong>
+        <header class="clearfix">
+          <div class="story-location">{{model.location}}</div>
+          <div class="story-time">{{model.time}}</div>
+          <h1>{{model.title}}</h1>
         </header>
+        <hr class="short clearfix">
         <p>{{model.story}}</p>
       </section>
     </aside>
-    <main class="grid">
+    <main class="visualizations">
       <content></content>
     </main>
   </template>
