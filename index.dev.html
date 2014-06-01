@@ -14,8 +14,8 @@
   
     <frog-card>
       <q-view class="green" url="/data/stories/story-1.json">
-        <q-visualization flex title="Worldwide Growth and Capital Return" hasContent>
-            <q-chart-line url="/data/capital_return_rates.json" yAxisLabel="Percent Return" recordKey="Name"></q-chart-line>
+        <q-visualization flex title="Surgeries over lifetime by Country and Wealth">
+          <q-chart-stacked-bar url="/data/household_debt.json" recordKey="bracket" yAxisLabel="Pct of Yearly Income"></q-chart-stacked-bar>
         </q-visualization>
       </q-view>
     </frog-card>

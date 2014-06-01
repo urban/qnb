@@ -38,7 +38,7 @@
         yAxisLabel: null,
         xAxisLabel: null,
         recordKey: null,
-        margin: {top: 20, right: 20, bottom: 30, left: 60},
+        margin: {top: 20, right: 60, bottom: 30, left: 60},
         render: function () {
           console.log('render!!');
           this.isRendered = true;
@@ -142,13 +142,13 @@
               .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
 
           legend.append("rect")
-            .attr("x", width - 18)
+            .attr("x", width + 50)
             .attr("width", 18)
             .attr("height", 18)
             .style("fill", color);
 
           legend.append("text")
-            .attr("x", width - 24)
+            .attr("x", width + 40)
             .attr("y", 9)
             .attr("dy", ".35em")
             .style("text-anchor", "end")
