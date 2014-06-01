@@ -6,6 +6,56 @@
     <style>
       :host {
         display: block;
+        height: 100%;
+        margin-left: -5rem;
+        position: relative;
+      }
+
+      .axis .domain {
+        stroke: none;
+      }
+
+      .axis.y text {
+        font-family: "Georgia", serif;
+        fill: #888;
+      }
+
+      .axis.y .label {
+        font-size: 1.3rem;
+      }
+
+      .axis.y .tick text {
+        text-anchor: end;
+        font-size: 1.2rem;
+        font-weight: bold;
+        font-style: italic;
+      }
+
+      .axis.x text {
+        font-family: "BentonSansExtraCondensed", "Helvetica", "Arial", sans-serif;
+        font-size: 1.4rem;
+        letter-spacing: .05em;
+        font-weight: 500;
+        fill: #333;
+      }
+
+      .axis.y .tick line {
+        stroke-dasharray: 2,2;
+        stroke: #ccc;
+      }
+
+      .axis.x .tick line {
+        stroke: none;
+      }
+
+      .axis path,
+      .axis line {
+        fill: none;
+        shape-rendering: crispEdges;
+      }
+
+      *[class*=data-] {
+        mix-blend-mode: multiply;
       }
     </style>
     <svg id="chart"></svg>
@@ -24,25 +74,29 @@
         init: function () {
           var self = this;
 
-          this.margin = {top: 50, right: 50, bottom: 50, left: 50};
+          this.margin = {top: 3*this.rem, right: 0, bottom: 2.5*this.rem, left: 5*this.rem};
           this.width = this.clientWidth - this.margin.left - this.margin.right;
           this.height = this.clientHeight - this.margin.top - this.margin.bottom;
 
           this.x = d3.scale.ordinal()
               .domain(_.map(self.data.data, function(d) { return d.year; }))
-              .rangeRoundBands([0, self.width], .3);
+              .rangeRoundBands([0, self.width], .3, 0);
 
           this.y = d3.scale.linear()
-              .domain([0, d3.max(self.data.data, function(d) { return d.value; })])
+              .domain([0, d3.max(self.data.data, function(d) { return d.value; })*1.2])
               .range([self.height, 0]);
 
           this.xAxis = d3.svg.axis()
               .scale(self.x)
+              .tickSize(0)
+              .tickPadding(self.rem)
               .orient("bottom");
 
           this.yAxis = d3.svg.axis()
               .scale(self.y)
-              .orient("left");
+              .ticks(Math.round(self.height / self.rem / 4))
+              .tickSize(self.width)
+              .orient("right");
 
         },
         initChart: function() {
@@ -61,15 +115,25 @@
               .call(self.xAxis);
 
           //draw y axis
-          this.g.append("g")
+          var gy = this.g.append("g")
               .attr("class", "y axis")
-              .call(self.yAxis)
-            .append("text")
-              .attr("transform", "rotate(-90)")
-              .attr("y", 6)
-              .attr("dy", ".71em")
-              .style("text-anchor", "end")
+              .call(self.yAxis);
+
+          gy.append("text")
+              .classed("label", true)
+              .attr("y", 0)
+              .attr("x", 0)
               .text(self.yAxisLabel);
+
+          gy.select(".tick").selectAll("*")
+              .attr("transform", "translate(0, -" + self.rem/10 + ")");
+
+          gy.selectAll(".tick line")
+              .style("stroke-width", self.rem/10);
+
+          gy.selectAll(".tick").selectAll("text")
+              .attr("x", -self.rem)
+              .style("text-anchor", "end");
 
         },
         render: function () {
@@ -80,10 +144,10 @@
           this.init();
           this.initChart();
 
-          this.g.selectAll(".bar")
+          this.g.selectAll(".data-bar")
               .data(self.data.data)
             .enter().append("rect")
-              .classed("bar", true)
+              .classed("data-bar", true)
               .attr("x", function(d) { return self.x(d.year); })
               .attr("width", self.x.rangeBand())
               .attr("y", function(d) { return self.height; })

@@ -23,6 +23,7 @@
         years: years,
         index: 0,
         ready: function () {
+          this.rem = parseInt($("body").css("font-size"));
           this.theme = this.theme || "blue";
           this.colors = d3.scale.ordinal()
               .range(themeColors[this.theme]);
