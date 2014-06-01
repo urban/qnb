@@ -188,14 +188,14 @@
               self.intervalId = setInterval(function()
               {
 
-                if(currentYear < years.length) {
+                if(currentYear < years.length - 1) {
                   currentYear+=1;
                 } else {
                   currentYear = 0;
                   currentCountry+=1;
                 }
 
-                if(currentCountry > countries.length) {
+                if(currentCountry > countries.length - 1) {
                   currentCountry = 0;
                 }
 
