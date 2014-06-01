@@ -1,0 +1,22 @@
+{
+"title":"Return on Capital and Worldwide Growth Rate",
+"data": [
+
+{"Name":"Growth", 
+"By Year": [
+     {"year":2015, "value":2.1}, {"year":2017, "value":1.9}, {"year":2019, "value":2.1}, {"year":2021, "value":2.0}, 
+    {"year":2023, "value":1.8}, {"year":2025, "value":1.7}, {"year":2027, "value":2.9}, {"year":2029, "value":2.3}, 
+    {"year":2031, "value":2.1}, {"year":2033, "value":1.9}, {"year":2035, "value":2.3}
+    ]
+},
+
+{"Name":"Return", 
+"By Year": [
+     {"year":2015, "value":5.2}, {"year":2017, "value":5.1}, {"year":2019, "value":5.4}, {"year":2021, "value":4.5}, 
+    {"year":2023, "value":5.4}, {"year":2025, "value":6.1}, {"year":2027, "value":6.1}, {"year":2029, "value":5.9}, 
+    {"year":2031, "value":6.1}, {"year":2033, "value":6.0}, {"year":2035, "value":5.9}
+    ]
+}
+
+]
+}

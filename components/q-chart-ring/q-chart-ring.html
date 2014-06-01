@@ -8,7 +8,17 @@
       :host {
         display: block;
       }
+
+      #legend {
+          float:right;
+          padding-right: 20px;
+      }
+
     </style>
+    <div id="legend">
+      <h3><span id="currentCountryTitle">India</span> <span id="currentYearTitle">2015</span></h3>
+    </div>
+
     <svg id="chart"></svg>
   </template>
   <script>
@@ -154,6 +164,9 @@
                 if(currentCountry > countries.length) {
                   currentCountry = 0;
                 }
+
+                self.$.currentYearTitle.innerHTML = years[currentYear];
+                self.$.currentCountryTitle.innerHTML = countries[currentCountry];
 
                 return updateChart(countriesData[countries[currentCountry]][years[currentYear]]);
 

@@ -1,0 +1,8 @@
+{
+"title":"Assignments Graded by Software Worldwide Per Year in Millions",
+"data": [
+	{"year":"2015", "value":1.2}, {"year":"2017", "value":2.5}, {"year":"2019", "value":9.5}, 
+	{"year":"2021", "value":383.5}, {"year":"2023", "value":625.5}, {"year":"2025", "value":3128}, 
+	{"year":"2027", "value":5252}, {"year":"2029", "value":6945}, {"year":"2031", "value":9842}, 
+	{"year":"2033", "value":16890}, {"year":"2035", "value":25792}]
+}

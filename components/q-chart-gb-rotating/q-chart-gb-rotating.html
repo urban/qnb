@@ -194,19 +194,21 @@ and then years. and flip through countries showing each as a grouped barchart
               // update the chart?
               //////////////////////////////////////////////////////////
               year
-                .data(massagedData);
+                .data(massagedData)
+                .attr("transform", function(d) {
+                  console.log(d.year);
+                  return "translate(" + x0(d.year) + ",0)";
+                });
 
               year.selectAll("rect")
                 .data(function(d) {
                   return d.data; 
                 })
                 .transition()
-                .attr("height", function(d) {
+                .attr("y", function(d) {
                   return y(d.value);
                 })
-                .attr("y", function(d) {
-                  return height - y(d.value);
-                });
+                .attr("height", function(d) { return height - y(d.value); });
               //////////////////////////////////////////////////////////
 
               lastUpdate = Date.now();
