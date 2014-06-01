@@ -6,26 +6,59 @@
     <style>
       :host {
         display: block;
+        height: 100%;
+        margin-left: -5rem;
+        position: relative;
       }
 
-      .axis {
-        font: 10px sans-serif;
+      .axis .domain {
+        stroke: none;
+      }
+
+      .axis.y text {
+        font-family: "Georgia", serif;
+        fill: #888;
+      }
+
+      .axis.y .label {
+        font-size: 1.3rem;
+      }
+
+      .axis.y .tick text {
+        text-anchor: end;
+        font-size: 1.2rem;
+        font-weight: bold;
+        font-style: italic;
+      }
+
+      .axis.x text {
+        font-family: "BentonSansExtraCondensed", "Helvetica", "Arial", sans-serif;
+        font-size: 1.4rem;
+        letter-spacing: .05em;
+        font-weight: 500;
+        fill: #333;
+      }
+
+      .axis.y .tick line {
+        stroke-dasharray: 2,2;
+        stroke: #ccc;
+      }
+
+      .axis.x .tick line {
+        stroke: none;
       }
 
       .axis path,
       .axis line {
         fill: none;
-        stroke: #000;
         shape-rendering: crispEdges;
       }
 
-      .city path {
-        /*stroke: black;*/
-        stroke-width: 2px;
+      .data-line path {
+        mix-blend-mode: multiply;
         fill: none;
+
       }
-
-
     </style>
     <svg id="chart"></svg>
   </template>
@@ -35,8 +68,8 @@
       Polymer('q-chart-line', {
         recordKey:null,
         render: function () {
-
           var self = this;
+          this.rem = parseInt($("body").css("font-size"));
           var data = this.data.data;
           var recordKeys = [];
 
@@ -45,17 +78,21 @@
           }
 
           var lineChart = function() {
-            var margin = {top: 50, right: 50, bottom: 50, left: 50};
-            var width = 400;
-            var height = 300;
-            var x = d3.time.scale();
-            var y = d3.scale.linear().range([height, 0]);
+            var margin = {top: 3*self.rem, right: 20*self.rem, bottom: 2.5*self.rem, left: 5*self.rem};
+            var width = self.clientWidth - margin.left - margin.right;
+            var height = self.clientHeight - margin.top - margin.bottom;
+            var x = d3.scale.linear();
+            var y = d3.scale.linear();
             var xAxis = d3.svg.axis()
-                .orient("bottom")
-                .ticks(d3.time.year, 1)
-                .tickFormat(d3.time.format("%Y"));
+                .tickSize(0)
+                .tickPadding(self.rem)
+                .orient("bottom");
+                // .ticks(d3.time.  year, 1)
+                // .tickFormat(d3.time.format("%Y"));
             var yAxis = d3.svg.axis()
-                .orient("left");
+                // .ticks(Math.round(height / self.rem / 5))
+                .tickSize(width)
+                .orient("right");
             var key = null;
             var clipPath = null;
             var transitionDuration = 250;
@@ -63,20 +100,22 @@
             //function for drawing the line
             var line = d3.svg.line()
                 .x(function(d) { return x(d.year); })
-                .y(function(d) { return y(d.value); })
+                .y(function(d) { return y(d.value); });
 
             function init(data) {
               var flattenedData = _.flatten(data, key);
 
               x.range([0, width])
-                  .domain(d3.extent(flattenedData, function(d) { 
+                  .domain(d3.extent(flattenedData, function(d) {
                     return d.year
                   }))
               y.range([height, 0])
-                  .domain(d3.extent(flattenedData, function(d) { return d.value}));
+                  .domain([0, d3.max(flattenedData, function(d) { return d.value}) * 1.2]);
 
               xAxis.scale(x);
               yAxis.scale(y);
+
+              self.colors.domain(recordKeys);
             }
 
             function initChart(container) {
@@ -104,56 +143,59 @@
                   .call(xAxis);
 
               //draw y-axis
-              g.append("g")
+              var gy = g.append("g")
                   .attr("class", "y axis")
-                  .call(yAxis)
-                .append("text")
-                  .attr("y", -10)
-                  .attr("x", 10);
+                  .call(yAxis);
 
+              gy.append("text")
+                  .classed("label", true)
+                  .attr("y", 0)
+                  .attr("x", 0)
+                  .text(self.yAxisLabel);
 
+              gy.select(".tick").selectAll("*")
+                  .attr("transform", "translate(0, -" + self.rem/10 + ")");
+
+              gy.selectAll(".tick line")
+                  .style("stroke-width", self.rem/10);
+
+              gy.selectAll(".tick").selectAll("text")
+                  .attr("x", -self.rem)
+                  .style("text-anchor", "end");
 
              //draw legend
               var legend = g.selectAll(".legend")
                   .data(recordKeys.slice().reverse())
                 .enter().append("g")
-                  .attr("class", "legend")
-                  .attr("transform", function(d, i) { return "translate(0," + i * 25 + ")"; });
+                  .classed("legend", true)
+                  .attr("transform", function(d, i) { return "translate(" + (width + self.rem * 5) + "," + (height - (i * self.rem * 2) - self.rem) + ")"; });
 
               legend.append("rect")
-                  .attr("x", (width + margin.right) - 18)
-                  .attr("width", 18)
-                  .attr("height", 18)
-                  .style("fill", function(d) { 
-                    return colorsByKey[d];
-                  });
+                  .attr("width", self.rem)
+                  .attr("height", self.rem)
+                  .style("fill", self.colors);
 
               legend.append("text")
-                  .attr("x", (width + margin.right) - 24)
-                  .attr("y", 9)
-                  .attr("dy", ".35em")
-                  .style("text-anchor", "end")
-                  .text(function(d) {
-                    return d;
-                  });
+                  .attr("x", self.rem * 1.8)
+                  .style("font-size", "1rem")
+                  .attr("dy", "1em")
+                  .text(function(d) { return d; });
             }
 
             function drawData(data, g) {
               //create a <g> element for each city
-              var cities = g.selectAll("[class*=city]")
+              var cities = g.selectAll("[class*=data-line]")
                   .data(data)
                 .enter().append("g")
-                  .attr("class", function(d) { return "city " + d[self.recordKey] })
+                  .attr("class", function(d) { return "data-line " + d[self.recordKey] })
                   .attr("clip-path", "url(#line-clip)");
 
               //draw line for each sensor_id
               cities.append("path")
                   .attr("class", "line")
                   .attr("d", function(d) { return line(d[key]); })
-                  .attr('stroke', function(d) { 
-                    console.log(d);
-                    return colorsByKey[d[self.recordKey]]; 
-                  });
+                  .attr('stroke', function(d) { return self.colors(d[self.recordKey]); })
+                  .style("stroke-width", self.rem * .2);
 
               var clipPathCounter = 0;
 
@@ -209,35 +251,22 @@
             return chart;
           }
 
-          function cleanData(data, key) {
-            _.each(data, function(city) {
-              _.each(city[key], function(fspd) {
-                fspd.year = new Date(fspd.year, 0, 0);
-              });
-            })
-            return data;
-          }
+          // function cleanData(data, key) {
+          //   _.each(data, function(city) {
+          //     _.each(city[key], function(fspd) {
+          //       fspd.year = new Date(fspd.year, 0, 0);
+          //     });
+          //   })
+          //   return data;
+          // }
 
-          var key = "By Year",
-              cleanData = cleanData(data, key),
-              margin = {top: 50, right: 50, bottom: 50, left: 50},
-              width = self.clientWidth - margin.left - margin.right,
-              height = self.clientHeight - margin.top - margin.bottom;
+          var key = "By Year";
 
           var lineChartSample = lineChart()
-              .margin(margin)
-              .width(width)
-              .height(height)
               .key(key);
 
-          var colorsByKey = {};
-          
-          for( var i = 0; i < cleanData.length; i++ ) {
-            colorsByKey[cleanData[i][self.recordKey]] = self.colors(i);
-          }
-
           d3.select(this.$.chart)
-              .datum(cleanData)
+              .datum(this.data.data)
               .call(lineChartSample);
 
 
