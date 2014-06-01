@@ -1,19 +1,15 @@
 <link rel="import" href="/bower_components/polymer/polymer.html">
 <script src="/bower_components/d3/d3.min.js"></script>
 
-<polymer-element name="q-chart" attributes="url">
+<polymer-element name="q-chart" attributes="url theme">
   <script>
     (function () {
-
-      // blue, yellow, green, orange, black
-      var defaultColors = ['#2c88dc', '#fdd81b', '#3eb307', '#ef6d09', '#922'];
-      // black, black, black, black, white
-      var defaultFontColors = ['#000', '#000', '#000', '#000', '#fff'];
-
-      var colorFn = d3.scale.ordinal()
-        .range(defaultColors);
-      var fontColorsFn = d3.scale.ordinal()
-        .range(defaultFontColors);
+      var themeColors = {
+        blue: ["#65BAF1", "#6B9AF2", "#5CEFEA", "#C2C8CC", "#FFD262", "#FF9562"],
+        green: ["#52E388", "#4FD9C6", "#8DF258", "#C2CCC4", "#FFC488", "#FF8C8C"],
+        yellow: ["#F9CA3E", "#F9E83E", "#FFB553", "#D1CFC2", "#79ACF3", "#95DFE6"],
+        orange: ["#FABA71", "#FAD471", "#FA8D71", "#CCC5BE", "#7295E6", "#64E5BE"]
+      };
 
       var years = [ "2015", "2017", "2019", "2021", "2023", "2025", "2027", "2029", "2031", "2033", "2035"];
 
@@ -22,11 +18,15 @@
         data: null,
         chart: null,
         isRendered: false,
-        colors: colorFn,
-        fontColors: fontColorsFn,
+        colors: null,
+        theme: null,
         years: years,
         index: 0,
         ready: function () {
+          this.theme = this.theme || "blue";
+          this.colors = d3.scale.ordinal()
+              .range(themeColors[this.theme]);
+
           this.onLoad = (function (err, res) {
             if (err) console.error(err, this);
             this.data = res;

@@ -15,10 +15,10 @@
     <frog-card delay="10000">
       <q-view flex class="green" url="/data/stories/story-1.json">
         <q-visualization flex title="Worldwide Growth and Capital Return" hasContent>
-            <q-chart-line url="/data/capital_return_rates.json" yAxisLabel="Percent Return" recordKey="Name"></q-chart-line>
+            <q-chart-line url="/data/capital_return_rates.json" theme="green" yAxisLabel="Percent Return" recordKey="Name"></q-chart-line>
         </q-visualization>
         <q-visualization flex title="Birthrate by Urban Density" hasContent>
-          <q-chart-grouped-bar url="/data/birthrate_urbanism.json" yAxisLabel="People sq KM" recordKey="Density"></q-chart-grouped-bar>
+          <q-chart-grouped-bar url="/data/birthrate_urbanism.json" theme="green" yAxisLabel="People sq KM" recordKey="Density"></q-chart-grouped-bar>
         </q-visualization>
       </q-view>
     </frog-card>
@@ -74,10 +74,10 @@
     <frog-card delay="20000">
       <q-view class="orange" url="/data/stories/story-6.json">
         <q-visualization flex title="Surgeries over lifetime by Country and Wealth">
-          <q-chart-gb-rotating url="/data/surgeries_lifetime.json" yAxisLabel="Surgeries" recordKey="bracket"></q-chart-gb-rotating>
+          <q-chart-gb-rotating url="/data/surgeries_lifetime.json" theme="orange" yAxisLabel="Surgeries" recordKey="bracket"></q-chart-gb-rotating>
         </q-visualization>
         <q-visualization flex title="Lifespan in Years">
-          <q-chart-line url="/data/lifespan.json" yAxisLabel="Years" recordKey="Country"></q-chart-line>
+          <q-chart-line url="/data/lifespan.json" theme="orange" yAxisLabel="Years" recordKey="Country"></q-chart-line>
         </q-visualization>
       </q-view>
     </frog-card>
@@ -96,10 +96,10 @@
     <frog-card delay="10000">
       <q-view class="yellow" url="/data/stories/story-8.json">
         <q-visualization flex title="Consumption of synthetic meat by country">
-          <q-chart-stacked-bar url="/data/consumption_artificial_meat.json" recordKey="country"></q-chart-stacked-bar>
+          <q-chart-stacked-bar url="/data/consumption_artificial_meat.json" theme="yellow" recordKey="country"></q-chart-stacked-bar>
         </q-visualization>
         <q-visualization flex title="Automated cars on the road by country">
-          <q-chart-grouped-bar url="/data/automated_cars.json" recordKey="Country"></q-chart-grouped-bar>
+          <q-chart-grouped-bar url="/data/automated_cars.json" theme="yellow" recordKey="Country"></q-chart-grouped-bar>
         </q-visualization>
       </q-view>
     </frog-card>
