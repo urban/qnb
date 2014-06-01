@@ -12,8 +12,8 @@
 	{"Country":"China" ,
 	"By Year": [
 	    {"year":2015, "value":4.1}, {"year":2017, "value":4.8}, {"year":2019, "value":5.4}, {"year":2021, "value":7.3}, 
-	    {"year":2023, "value":8.5}, {"year":2025, "value":10.4}, {"year":2027, "value":11.4}, {"year":2029, "value":11.1}, 
-	    {"year":2031, "value":12.1}, {"year":2033, "value":12.2}, {"year":2035, "value":12.8}
+	    {"year":2023, "value":8.5}, {"year":2025, "value":10.4}, {"year":2027, "value":12.4}, {"year":2029, "value":13.1}, 
+	    {"year":2031, "value":13.1}, {"year":2033, "value":14.2}, {"year":2035, "value":14.8}
 	    ]
 	},
 
@@ -28,8 +28,8 @@
 	{"Country":"USA" ,
 	"By Year": [
 	    {"year":2015, "value":18.2}, {"year":2017, "value":18.2}, {"year":2019, "value":17.8}, {"year":2021, "value":17.2}, 
-	    {"year":2023, "value":17.8}, {"year":2025, "value":17.4}, {"year":2027, "value":17.4}, {"year":2029, "value":17.6}, 
-	    {"year":2031, "value":17.9}, {"year":2033, "value":17.2}, {"year":2035, "value":17.4}
+	    {"year":2023, "value":17.8}, {"year":2025, "value":17.4}, {"year":2027, "value":17.4}, {"year":2029, "value":17.1}, 
+	    {"year":2031, "value":17.0}, {"year":2033, "value":16.8}, {"year":2035, "value":15.4}
 	    ]
 	}
 ]
