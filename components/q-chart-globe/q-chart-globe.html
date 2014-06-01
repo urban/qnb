@@ -8,14 +8,14 @@
     <style>
       :host {
         display: block;
-      } 
+      }
 
       .foreground {
         fill: #d8ffff;
         stroke: #333;
         stroke-width: 1.5px;
       }
-       
+
       .land {
         fill: #d7c7ad;
         stroke: #766951;
@@ -120,7 +120,7 @@
 }
  
 .land {
-  fill: #222;
+  fill: #fff;
 }
  
 .boundary {
@@ -167,7 +167,7 @@
         },
         urlChanged: function (oldVal, newVal) {
           // this.async(this.draw);
-          d3.json(newVal, this.onLoad);        
+          d3.json(newVal, this.onLoad);
         },
         load: function (err, res) {
           this.data = res.data;
@@ -184,6 +184,12 @@
           clearInterval(this.intervalId);
         },
         render: function () {
+          if(this.chart)
+          {
+            this.chart.selectAll("*")
+              .remove();
+          }
+
           var self = this;
           var diameter = self.clientWidth / 2,
             radius = diameter/2,
@@ -217,6 +223,7 @@
           svg.append("defs").append("path")
               .datum({type: "Sphere"})
               .attr("id", "sphere")
+
               .attr("d", path);
            
           svg.append("use")
@@ -285,9 +292,9 @@
             .attr("d", path)
             .attr("id", function(d,i) { return d.id; })
             .style("fill", function(d,i) { return d.color; });
-         
+
           // isRendered
-          this.isRendered = true;
+          // this.isRendered = true;
           // HACK to keep context of local vars
           this.start = (function () {
             self.intervalId = setInterval(function() {
@@ -307,7 +314,7 @@
                 });
 
                 svg.select('#Europe').style({
-                  fill: getCurrentColor("Asia")
+                  fill: getCurrentColor("Europe")
                 });
 
                 svg.select('#NA').style({

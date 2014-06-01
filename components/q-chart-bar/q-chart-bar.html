@@ -65,12 +65,6 @@
 
       Polymer('q-chart-bar', {
         label:null,
-        start: function () {
-
-        },
-        stop: function () {
-
-        },
         init: function () {
           var self = this;
 
@@ -136,13 +130,8 @@
               .style("text-anchor", "end");
 
         },
-        render: function () {
-          this.isRendered = true;
-
+        drawData: function() {
           var self = this;
-
-          this.init();
-          this.initChart();
 
           this.g.selectAll(".data-bar")
               .data(self.data.data)
@@ -158,6 +147,16 @@
               .delay(function(d, i) { return i * 300; })
               .attr("height", function(d) { return self.height - self.y(d.value); })
               .attr("y", function(d) { return self.y(d.value); });
+        },
+        render: function () {
+          var self = this;
+
+          this.chart.selectAll("*")
+              .remove();
+
+          this.init();
+          this.initChart();
+          this.drawData();
         }
       });
 

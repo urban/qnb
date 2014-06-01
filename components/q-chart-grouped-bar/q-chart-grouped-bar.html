@@ -262,7 +262,9 @@
           return g;
         },
         render: function () {
-          this.isRendered = true;
+          // this.isRendered = true;
+          this.chart.selectAll("*")
+              .remove();
 
           var self = this;
           var data = self.data.data;

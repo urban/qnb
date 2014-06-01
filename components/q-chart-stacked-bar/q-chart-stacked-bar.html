@@ -74,7 +74,9 @@
         xAxisLabel: null,
         recordKey: null,
         render: function () {
-          this.isRendered = true;
+          // this.isRendered = true;
+          this.chart.selectAll("*")
+              .remove();
 
           var self = this;
           var data = this.data.data;

@@ -34,6 +34,9 @@
           clearInterval(this.intervalId);
         },
         render: function () {
+          this.chart.selectAll("*")
+              .remove();
+
           var self = this;
           var countriesData = self.data.data;
 
@@ -49,7 +52,7 @@
 
           var recordKeys = [];
 
-          var years = [ "2015", "2017", "2019", "2021", "2023", "2025", "2027", "2029", "2031", "2033", "2035"];  
+          var years = [ "2015", "2017", "2019", "2021", "2023", "2025", "2027", "2029", "2031", "2033", "2035"];
           var countries = [];
 
           for (var key in countriesData) {
@@ -65,7 +68,7 @@
 
           var currentYear = 0;
           var currentCountry = 0;
-          
+
           /////////////////////////////////////////////////////////////////////////////////////////////
           /////////////////////////////////////////////////////////////////////////////////////////////
           var updateChart = function(dataset) {
@@ -93,7 +96,7 @@
                 if (d.value === 0) { return 1e-6; }
                 else { return 1; }
               });
-              
+
             sliceLabel.data(donut(dataset)).enter()
               .append("text")
               .attr("class", "arcLabel")
@@ -103,7 +106,7 @@
                 if (d.value === 0) { return 1e-6; }
                 else { return 1; }
               })
-              .text(function(d) { 
+              .text(function(d) {
                 return d.data.label;
               });
           };
@@ -162,10 +165,10 @@
               .data(recordKeys.slice().reverse())
             .enter().append("g")
               .classed("legend", true)
-              .attr("transform", function(d, i) { 
+              .attr("transform", function(d, i) {
                 console.log(width, self.rem);
-                //return "translate(" + (width + self.rem * 5) + "," + (height - (i * self.rem * 2) - self.rem) + ")"; 
-                return "translate(" + (width/2 - self.rem * 16) + ", " + (-(height/2) + (i * self.rem * 3)) + ")"; 
+                //return "translate(" + (width + self.rem * 5) + "," + (height - (i * self.rem * 2) - self.rem) + ")";
+                return "translate(" + (width/2 - self.rem * 16) + ", " + (-(height/2) + (i * self.rem * 3)) + ")";
               });
 
           legend.append("rect")
@@ -180,11 +183,11 @@
               .text(function(d) { return d; });
 
             //Update the data
-            this.start = (function () 
+            this.start = (function ()
             {
-              self.intervalId = setInterval(function() 
+              self.intervalId = setInterval(function()
               {
-                
+
                 if(currentYear < years.length) {
                   currentYear+=1;
                 } else {
