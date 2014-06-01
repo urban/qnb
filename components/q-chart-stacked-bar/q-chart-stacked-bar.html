@@ -7,7 +7,7 @@
       :host {
         display: block;
         height: 100%;
-        margin-left: -5rem;
+        margin-left: -8rem;
         position: relative;
       }
 
@@ -26,7 +26,7 @@
 
       .axis.y .tick text {
         text-anchor: end;
-        font-size: 1.2rem;
+        font-size: 1rem;
         font-weight: bold;
         font-style: italic;
       }
@@ -81,7 +81,7 @@
           var self = this;
           var data = this.data.data;
 
-          this.margin = {top: 3*this.rem, right: 20*this.rem, bottom: 2.5*this.rem, left: 5*this.rem};
+          this.margin = {top: 3*this.rem, right: 20*this.rem, bottom: 2.5*this.rem, left: 8*this.rem};
           var width = this.clientWidth - this.margin.left - this.margin.right;
           var height = this.clientHeight - this.margin.top - this.margin.bottom;
 
@@ -130,9 +130,8 @@
           });
 
           //massagedData.sort(function (a, b) { return b.total - a.total });
-
           x.domain(massagedData.map(function(d) { return d.year; }));
-          y.domain([0, d3.max(massagedData, function(d) { return d.total; })]);
+          y.domain([0, d3.max(massagedData, function(d) { return d.total; })*(1 + self.yDomainPadding)]);
 
           g.append("g")
             .attr("class", "x axis")
