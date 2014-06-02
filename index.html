@@ -12,7 +12,7 @@
 
   <frog-deck id="deck" transition="fade">
 
-    <frog-card delay="10000">
+    <frog-card>
       <q-view flex class="green" url="/data/stories/story-1.json">
         <q-visualization flex title="Worldwide Growth and Capital Return" hasContent>
             <q-chart-line url="/data/capital_return_rates.json" theme="green" yTickFormat="%" recordKey="Name"></q-chart-line>
@@ -23,7 +23,7 @@
       </q-view>
     </frog-card>
 
-    <frog-card delay="10000">
+    <frog-card>
       <q-view class="yellow" url="/data/stories/story-2.json">
         <q-visualization flex title="Average Commute to Workplace in KM" hasContent>
           <q-chart-grouped-bar url="/data/avg_commute.json" theme="yellow" yAxisLabel="Minutes" recordKey="City"></q-chart-grouped-bar>
@@ -34,7 +34,7 @@
       </q-view>
     </frog-card>
 
-    <frog-card delay="10000">
+    <frog-card>
       <q-view class="orange" url="/data/stories/story-3.json">
         <q-visualization flex title="Average Drones Overhead in Major Cities">
           <!-- <q-chart-grouped-bar url="/data/drones_overhead.json" yAxisLabel="Drones" recordKey="City"></q-chart-bar> -->
@@ -46,7 +46,7 @@
       </q-view>
     </frog-card>
 
-    <frog-card delay="10000">
+    <frog-card>
       <q-view class="blue" url="/data/stories/story-4.json">
         <q-visualization flex title="Amount of Currency Fluctuation Per Day">
           <q-chart-grouped-bar url="/data/currency_fluctuation.json" theme="blue" yTickFormat="%" recordKey="Currency"></q-chart-grouped-bar>
@@ -57,7 +57,7 @@
       </q-view>
     </frog-card>
 
-    <frog-card delay="10000">
+    <frog-card>
       <q-view class="green" url="/data/stories/story-5.json">
         <q-visualization flex title="Food Poisoning Deaths">
           <q-chart-grouped-bar url="/data/food_poisoning_deaths.json" theme="green" recordKey="Country"></q-chart-grouped-bar>
@@ -79,7 +79,7 @@
       </q-view>
     </frog-card>
 
-    <frog-card delay="10000">
+    <frog-card>
       <q-view class="orange" url="/data/stories/story-6.json">
         <q-visualization flex title="Face scans Per Day">
           <q-chart-line url="/data/face_scans_day.json" theme="orange" recordKey="City"></q-chart-line>
@@ -90,7 +90,7 @@
       </q-view>
     </frog-card>
 
-    <frog-card delay="10000">
+    <frog-card>
       <q-view class="blue" url="/data/stories/story-8.json">
         <q-visualization flex title="Consumption of Synthetic Meat by Country">
           <q-chart-stacked-bar url="/data/consumption_artificial_meat.json" theme="blue" recordKey="country"></q-chart-stacked-bar>
@@ -101,7 +101,7 @@
       </q-view>
     </frog-card>
 
-    <frog-card delay="10000">
+    <frog-card>
       <q-view class="green" url="/data/stories/story-9.json">
         <q-visualization flex title="Subcutanesous Health Implants by Country">
           <q-chart-line url="/data/subcutaneous_health_implants.json" theme="green" recordKey="Country"></q-chart-line>
@@ -112,7 +112,7 @@
       </q-view>
     </frog-card>
 
-    <frog-card delay="10000">
+    <frog-card>
       <q-view class="yellow" url="/data/stories/story-10.json">
         <q-visualization flex title="Gini Coefficient">
           <q-chart-line url="/data/gini_coefficient.json" theme="yellow" recordKey="Country"></q-chart-line>
@@ -123,7 +123,7 @@
       </q-view>
     </frog-card>
 
-    <frog-card delay="10000">
+    <frog-card>
       <q-view class="orange" url="/data/stories/story-11.json">
         <q-visualization flex title="Hours of Screen Time per Day by Age">
           <q-chart-gb-rotating url="/data/hours_screentime.json" theme="orange" yAxisLabel="Years" recordKey="age"></q-chart-gb-rotating>
@@ -134,7 +134,7 @@
       </q-view>
     </frog-card>
 
-    <frog-card delay="10000">
+    <frog-card>
       <q-view class="blue" url="/data/stories/story-12.json">
         <q-visualization flex title="Use of Anxiety Medications by Country/Age">
           <q-chart-gb-rotating url="/data/anxiety_medication.json" theme="blue" yAxisLabel="Years" recordKey="age"></q-chart-gb-rotating>
@@ -145,7 +145,7 @@
       </q-view>
     </frog-card>
 
-    <frog-card delay="10000">
+    <frog-card>
       <q-view class="green" url="/data/stories/story-13.json">
         <q-visualization flex title="Imaging Devices per Household in India">
           <q-chart-stacked-bar url="/data/imaging_devices.json" theme="green" recordKey="bracket"></q-chart-stacked-bar>
@@ -156,7 +156,7 @@
       </q-view>
     </frog-card>
 
-    <frog-card delay="10000">
+    <frog-card>
       <q-view class="yellow" url="/data/stories/story-14.json">
         <q-visualization flex title="Debt Per Person by Country &amp; Income Bracket">
           <q-chart-stacked-bar url="/data/household_debt.json" theme="yellow" recordKey="bracket" yTickFormat="%" yAxisLabel="% Income"></q-chart-stacked-bar>
@@ -167,7 +167,7 @@
       </q-view>
     </frog-card>
 
-    <frog-card delay="10000">
+    <frog-card>
       <q-view class="orange" url="/data/stories/story-15.json">
         <q-visualization flex title="Ghz of Processing Power that 1 Day of Salary Can Purchase">
           <q-chart-grouped-bar url="/data/ghz_1_day.json" theme="orange" yAxisLabel="Devices" recordKey="Country"></q-chart-grouped-bar>
@@ -186,7 +186,7 @@
       </q-view>
     </frog-card>
 
-    <frog-card delay="10000">
+    <frog-card>
       <q-view class="green" url="/data/stories/story-17.json">
         <q-visualization flex title="# of languages for Commercial Speech Recognition">
           <q-chart-bar url="/data/speech_rec_languages.json" theme="green" label=""></q-chart-bar>
@@ -197,7 +197,7 @@
       </q-view>
     </frog-card>
 
-    <frog-card delay="10000">
+    <frog-card>
       <q-view class="yellow" url="/data/stories/story-18.json">
         <q-visualization flex title="Road accidents per 1000 people by Country">
           <q-chart-line url="/data/traffic_fatalities.json" theme="yellow" recordKey="Country"></q-chart-line>
@@ -208,7 +208,7 @@
       </q-view>
     </frog-card>
 
-    <frog-card delay="10000">
+    <frog-card>
       <q-view class="orange" url="/data/stories/story-19.json">
         <q-visualization flex title="Coca-Colas consumed">
           <q-chart-grouped-bar url="/data/coca_cola.json" theme="orange" recordKey="Country"></q-chart-grouped-bar>
@@ -231,7 +231,7 @@
       </q-view>
     </frog-card>
 
-    <frog-card delay="10000">
+    <frog-card>
       <q-view class="green" url="/data/stories/story-21.json">
         <q-visualization full title="Deforestation/Desertification Worldwide" hasContent>>
           <q-chart-globe theme="green" url="/data/deforestation.json" dataTopLevel="Continent"></q-chart-globe>
@@ -246,7 +246,7 @@
     // listen for presentation ready event
     document.addEventListener('ready', function (e) {
       // kick off presentation
-      // window.presentation.start();
+      window.presentation.start();
     }, false);
   </script>
 </body>
