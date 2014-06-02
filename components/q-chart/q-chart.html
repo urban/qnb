@@ -24,7 +24,7 @@
         index: 0,
         yDomainPadding: .1,
         ready: function () {
-          this.rem = parseInt($("body").css("font-size"));
+          this.rem = parseInt(window.getComputedStyle(document.querySelector('body')).fontSize);
           this.theme = this.theme || "blue";
           this.colors = d3.scale.ordinal()
               .range(themeColors[this.theme]);

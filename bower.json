@@ -26,8 +26,7 @@
     "d3": "https://github.com/mbostock/d3.git",
     "c3": "https://github.com/masayuki0812/c3.git",
     "dimple": "https://github.com/PMSI-AlignAlytics/dimple.git",
-    "lodash": "~2.4.1",
-    "jquery": "~2.1.1"
+    "lodash": "~2.4.1"
   },
   "resolutions": {
     "polymer": "master",

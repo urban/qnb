@@ -68,27 +68,19 @@
   font-style: normal;
 }
 
-html {
-  font-size: 15px;
-}
-
 html,
 body {
+  color: #222;
+  font-family: "BentonSansF", "Helvetica", "Arial", sans-serif;
+  font-size: 2.25vmin;
+  font-style: normal;
+  font-weight: 400;
   height: 100%;
+  line-height: 100%;
+  text-rendering: optimizeLegibility;
   width: 100%;
   -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  font-family: "BentonSansF", "Helvetica", "Arial", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  line-height: 100%;
-  color: #222;
 }
-
-/*body {
-  width: 1920px;
-  height: 1080px;
-}*/
 
 frog-deck {
   height: 100%;
