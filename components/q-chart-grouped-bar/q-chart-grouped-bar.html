@@ -87,21 +87,31 @@
 
           this.massagedData = [];
           this.recordKeys = [];
-          this.years = _.uniq(_.pluck(_.flatten(data, "By Year"), "year"));
+          this.years = data.reduce(function (a, b) {
+              var key = 'By Year';
+              if (a[key]) return a[key].concat(b[key]);
+              return b[key];
+            })
+            .map(function (d) { return d['year']; })
+            .filter(function (d, i, self) {
+              return self.indexOf(d) === i;
+            });
 
           var tempDatum,
               tempKey,
               tempValue;
 
-          _.each(this.years, function (year, i) {
+          this.years.forEach(function (year, i) {
             tempDatum = {
               year: year,
               recordKeys: []
             };
 
-            _.each(data, function (d) {
+            data.forEach(function (d) {
               tempKey = d[self.recordKey];
-              tempValue = _.find(d["By Year"], {year: year}).value;
+              tempValue = d['By Year'].filter(function (d) {
+                return d['year'] === year;
+              })[0]['value'];
 
               tempDatum[tempKey] = tempValue;
 
@@ -131,7 +141,12 @@
               .domain(self.recordKeys)
               .rangeRoundBands([0, self.x0.rangeBand()], .2, 0);
 
-          var yExtent = d3.extent(_.flatten(self.massagedData, "recordKeys"), function(d) { return d.value; });
+          var yExtent = d3.extent(self.massagedData.map(function (d) {
+            return d['recordKeys'];
+          }).reduce(function (a, b) {
+            return a.concat(b);
+          }), function (d) { return d.value; } );
+          
           var yMin = (yExtent[0] - (yExtent[1] - yExtent[0])*self.yDomainPadding) > 0 ? (yExtent[0] - (yExtent[1] - yExtent[0])*self.yDomainPadding) : 0;
           var yMax = yExtent[1] + ((yExtent[1] - yExtent[0])*self.yDomainPadding);
 

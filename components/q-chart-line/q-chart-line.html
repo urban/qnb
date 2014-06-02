@@ -110,7 +110,10 @@
                 .y(function(d) { return y(d.value); });
 
             function init(data) {
-              var flattenedData = _.flatten(data, key);
+              var flattenedData = data.reduce(function (a, b) {
+                if (a[key]) return a[key].concat(b[key]);
+                return b[key];
+              });
 
               x.range([0, width])
                   .domain(d3.extent(flattenedData, function(d) { return d.year }));
@@ -124,7 +127,6 @@
                   .nice(4);
 
               xAxis.scale(x)
-                  // .tickValue(_.uniq(_.map(flattenedData, function(d) { return d.year })))
                   .tickFormat(d3.format("d"))
                   .tickSize(0)
                   .tickPadding(self.rem * 1.2);
@@ -263,15 +265,6 @@
 
             return chart;
           }
-
-          // function cleanData(data, key) {
-          //   _.each(data, function(city) {
-          //     _.each(city[key], function(fspd) {
-          //       fspd.year = new Date(fspd.year, 0, 0);
-          //     });
-          //   })
-          //   return data;
-          // }
 
           var key = "By Year";
 

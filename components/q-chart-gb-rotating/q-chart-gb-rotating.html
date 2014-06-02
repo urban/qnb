@@ -82,6 +82,13 @@
   <script>
     (function () {
 
+      function flatten(arr, key) {
+        return arr.reduce(function (a, b) {
+          if (a[key]) return a[key].concat(b[key]);
+          return b[key];
+        });
+      };
+
       Polymer('q-chart-gb-rotating', {
         yAxisLabel:null,
         xAxisLabel:null,
@@ -107,8 +114,6 @@ and then years. and flip through countries showing each as a grouped barchart
           var self = this;
 
           var data = self.data.data;
-
-          this.rem = parseInt($("body").css("font-size"));
 
           self.margin = {top: 3*this.rem, right: 20*this.rem, bottom: 2.5*this.rem, left: 8*this.rem};
           self.width = self.clientWidth - self.margin.left - self.margin.right;
@@ -152,7 +157,6 @@ and then years. and flip through countries showing each as a grouped barchart
           var massagedData = [];
           var lastUpdate = Date.now();
 
-          // console.log(data[dataIndex]);
           massagedData = data[dataIndex]["By Year"];
 
 
@@ -168,17 +172,13 @@ and then years. and flip through countries showing each as a grouped barchart
           x0.domain(this.years)
             .rangeRoundBands([0, self.width], .25, 0);
 
-          // .domain(massagedData.map(function(d) {
-          //   return d.year;
-          // }));
-
           x1.domain(recordKeys).rangeRoundBands([0, x0.rangeBand()], .2, 0);
 
-          var yExtent = d3.extent(_.flatten(_.flatten(_.flatten(data, "By Year"), "data"), "value"));
+          var yExtent = d3.extent(flatten(flatten(data, 'By Year'), 'data').map(function (d) { return d['value']; }));
+          
           var yMin = (yExtent[0] - (yExtent[1] - yExtent[0])*self.yDomainPadding) > 0 ? (yExtent[0] - (yExtent[1] - yExtent[0])*self.yDomainPadding) : 0;
           var yMax = yExtent[1] + ((yExtent[1] - yExtent[0])*self.yDomainPadding);
 
-          // y.domain([0, d3.max( _.flatten(_.flatten(_.flatten(data, "By Year"), "data"), "value") ) * (1 + self.yDomainPadding)]);
           y.domain([yMin, yMax])
               .nice(4);
 
@@ -293,7 +293,6 @@ and then years. and flip through countries showing each as a grouped barchart
               year
                 .data(massagedData)
                 .attr("transform", function(d) {
-                  // console.log(d.year);
                   return "translate(" + x0(d.year) + ",0)";
                 });
 

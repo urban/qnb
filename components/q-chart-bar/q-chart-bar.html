@@ -77,7 +77,7 @@
           this.height = this.clientHeight - this.margin.top - this.margin.bottom;
 
           this.x = d3.scale.ordinal()
-              .domain(_.map(self.data.data, function(d) { return d.year; }))
+              .domain(self.data.data.map(function (d) { return d.year; }))
               .rangeRoundBands([0, self.width], .65, 0);
 
           var yExtent = d3.extent(self.data.data, function(d) { return d.value; });
