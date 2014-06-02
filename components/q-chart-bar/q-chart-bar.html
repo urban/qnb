@@ -21,14 +21,18 @@
       }
 
       .axis.y .label {
-        font-size: 1.3rem;
+        font-size: 1rem;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        font-weight: bold;
       }
 
       .axis.y .tick text {
         text-anchor: end;
-        font-size: 1.2rem;
+        font-size: 1.1rem;
         font-weight: bold;
         font-style: italic;
+        letter-spacing: 0.05em;
       }
 
       .axis.x text {
@@ -77,23 +81,26 @@
               .rangeRoundBands([0, self.width], .65, 0);
 
           var yExtent = d3.extent(self.data.data, function(d) { return d.value; });
-          var yMin = (yExtent[0] - (yExtent[1] - yExtent[0])*self.yDomainPadding) > 0 ? yExtent[0] : 0;
+          var yMin = (yExtent[0] - (yExtent[1] - yExtent[0])*self.yDomainPadding) > 0 ? (yExtent[0] - (yExtent[1] - yExtent[0])*self.yDomainPadding) : 0;
           var yMax = yExtent[1] + ((yExtent[1] - yExtent[0])*self.yDomainPadding);
 
+
           this.y = d3.scale.linear()
+              .range([self.height, 0])
               .domain([yMin, yMax])
-              .range([self.height, 0]);
+              .nice(4);
 
           this.xAxis = d3.svg.axis()
               .scale(self.x)
               .tickSize(0)
-              .tickPadding(self.rem)
+              .tickPadding(self.rem * 1.2)
               .orient("bottom");
 
           this.yAxis = d3.svg.axis()
               .scale(self.y)
-              .ticks(Math.round(self.height / self.rem / 4))
+              .ticks(6)
               .tickSize(self.width)
+              .tickFormat(d3.format("s"))
               .orient("right");
 
         },
@@ -123,10 +130,13 @@
               .attr("class", "y axis")
               .call(self.yAxis);
 
+          //y axis label
           gy.append("text")
               .classed("label", true)
-              .attr("y", 0)
-              .attr("x", 0)
+              .attr("x", -self.rem)
+              .attr("y", self.height + self.margin.bottom)
+              .attr("transform", "translate(0,-" + (self.rem * .2) + ")")
+              .style("text-anchor", "end")
               .text(self.yAxisLabel);
 
           gy.select(".tick").selectAll("*")

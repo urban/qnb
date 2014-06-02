@@ -12,18 +12,13 @@
 
   <frog-deck id="deck" transition="fade">
 
-    <frog-card>
-      <q-view url="/data/stories/story-2.json">
-        <q-visualization flex title="Food Poisoning Deaths">
-          <q-chart-grouped-bar url="/data/food_poisoning_deaths.json" yAxisLabel="Deaths" recordKey="Country"></q-chart-grouped-bar>
+    <frog-card delay="7000">
+      <q-view class="yellow" url="/data/stories/story-18.json">
+        <q-visualization flex title="Road accidents per 1000 people by Country">
+          <q-chart-line url="/data/traffic_fatalities.json" theme="yellow" recordKey="Country"></q-chart-line>
         </q-visualization>
-      </q-view>
-    </frog-card>
-
-    <frog-card>
-      <q-view class="green" url="/data/stories/story-1.json">
-        <q-visualization full title="Surgeries over lifetime by Country and Wealth">
-          <q-chart-globe url="/data/deforestation.json" dataTopLevel="Continent"></q-chart-globe>
+        <q-visualization flex title="Visits to Starbucks per Person by Country">
+          <q-chart-grouped-bar url="/data/starbucks_visits.json" theme="yellow" recordKey="Country"></q-chart-grouped-bar>
         </q-visualization>
       </q-view>
     </frog-card>
@@ -31,6 +26,23 @@
   </frog-deck>
 
   <script src="main.js"></script>
+  <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+  <script>
+
+  $(function() {
+    var windowWidthRange = [1440, 1920];
+    var remRange = [10, 15];
+    var rem = (window.innerWidth - windowWidthRange[0]) / (windowWidthRange[1] - windowWidthRange[0]) * (remRange[1] - remRange[0]) + remRange[0];
+
+    $("html").css("font-size", rem);
+  });
+
+    // listen for presentation ready event
+    document.addEventListener('ready', function (e) {
+      // kick off presentation
+      window.presentation.start();
+    }, false);
+  </script>
 
 </body>
 </html>

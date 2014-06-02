@@ -68,6 +68,10 @@
   font-style: normal;
 }
 
+html {
+  font-size: 15px;
+}
+
 html,
 body {
   height: 100%;
@@ -78,9 +82,13 @@ body {
   font-weight: 400;
   font-style: normal;
   line-height: 100%;
-  font-size: 10px;
   color: #222;
 }
+
+/*body {
+  width: 1920px;
+  height: 1080px;
+}*/
 
 frog-deck {
   height: 100%;

@@ -21,14 +21,18 @@
       }
 
       .axis.y .label {
-        font-size: 1.3rem;
+        font-size: 1rem;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        font-weight: bold;
       }
 
       .axis.y .tick text {
         text-anchor: end;
-        font-size: 1.2rem;
+        font-size: 1.1rem;
         font-weight: bold;
         font-style: italic;
+        letter-spacing: 0.05em;
       }
 
       .axis.x text {
@@ -61,7 +65,7 @@
       .legend text {
         font-family: "BentonSansF", "Helvetica", "Arial", sans-serif;
         fill: #333;
-        font-size: 1.2rem;
+        text-transform: uppercase;
       }
     </style>
     <svg id="chart"></svg>
@@ -112,64 +116,6 @@
             self.massagedData.push(tempDatum);
           });
         },
-        /*cleanData: function() {
-          var self = this;
-          var data = this.data.data;
-
-          // console.log(data);
-
-          this.recordKeys = [];
-          for( var i = 0; i < data.length; i++ ) {
-            this.recordKeys.push(data[i][self.recordKey]);
-          }
-          this.years = [ "2015", "2017", "2019", "2021", "2023", "2025", "2027", "2029", "2031", "2033", "2035"]
-
-          // I'm doing this because a lot of the data isn't in a format that d3 wants, and I
-          // don't feel like redoing all the JSON files
-          ///////////////////////////////////////////////////////////////////////////////////////////
-          this.massagedData = [];
-          var firstStageMassaging = {};
-          for( var i = 0; i < self.years.length; i++ )
-          {
-             firstStageMassaging[self.years[i]] = [];
-          }
-          // first step : years all together
-          for( var i = 0; i < data.length; i++ )
-          {
-            var countryName = data[i][self.recordKey];
-
-            for( var j = 0; j < data[i]["By Year"].length; j++ )
-            {
-              var year = data[i]["By Year"][j].year;
-              var record = {};
-              record[data[i][self.recordKey]] = data[i]["By Year"][j].value;
-              firstStageMassaging[year].push(record);
-            }
-          }
-
-          for( var prop in firstStageMassaging )
-          {
-            var finalRecord = { year:prop };
-            for(var j = 0; j < firstStageMassaging[prop].length; j++ )
-            {
-              for(var prop2 in firstStageMassaging[prop][j])
-              {
-                finalRecord[prop2] = firstStageMassaging[prop][j][prop2];
-              }
-            }
-            this.massagedData.push(finalRecord);
-          }
-
-          this.massagedData.forEach(function(d) {
-            d.recordKeys = [];
-            for( var prop in d ) {
-              if(prop != "year" && prop != "recordKeys") {
-                var p = {name:prop, value:d[prop]};
-                d.recordKeys.push(p);
-              }
-            }
-          });
-        },*/
         init: function() {
           var self = this;
 
@@ -185,20 +131,32 @@
               .domain(self.recordKeys)
               .rangeRoundBands([0, self.x0.rangeBand()], .2, 0);
 
+          var yExtent = d3.extent(_.flatten(self.massagedData, "recordKeys"), function(d) { return d.value; });
+          var yMin = (yExtent[0] - (yExtent[1] - yExtent[0])*self.yDomainPadding) > 0 ? (yExtent[0] - (yExtent[1] - yExtent[0])*self.yDomainPadding) : 0;
+          var yMax = yExtent[1] + ((yExtent[1] - yExtent[0])*self.yDomainPadding);
+
           self.y = d3.scale.linear()
-              .domain([0, d3.max(self.massagedData, function(d) { return d3.max(d.recordKeys, function(d) { return d.value; }); }) * (1 + self.yDomainPadding)])
-              .range([self.height, 0]);
+              .domain([yMin, yMax])
+              .range([self.height, 0])
+              .nice(4);
 
           self.xAxis = d3.svg.axis()
               .scale(self.x0)
               .tickSize(0)
-              .tickPadding(self.rem)
+              .tickPadding(self.rem * 1.2)
               .orient("bottom");
+
+          var percentage = function(d) {
+            return d + "%";
+          };
+
+          var tickFormat = (self.yTickFormat === "%") ? percentage : d3.format("s");
 
           self.yAxis = d3.svg.axis()
               .scale(self.y)
-              .ticks(Math.round(self.height / self.rem / 5))
+              .ticks(6)
               .tickSize(self.width)
+              .tickFormat(tickFormat)
               .orient("right");
 
           self.colors.domain(self.recordKeys);
@@ -223,10 +181,13 @@
               .attr("class", "y axis")
               .call(self.yAxis);
 
+          //y axis label
           gy.append("text")
               .classed("label", true)
-              .attr("y", 0)
-              .attr("x", 0)
+              .attr("x", -self.rem)
+              .attr("y", self.height + self.margin.bottom)
+              .attr("transform", "translate(0,-" + (self.rem * .2) + ")")
+              .style("text-anchor", "end")
               .text(self.yAxisLabel);
 
           gy.select(".tick").selectAll("*")
@@ -244,17 +205,17 @@
               .data(self.recordKeys.slice().reverse())
             .enter().append("g")
               .classed("legend", true)
-              .attr("transform", function(d, i) { return "translate(" + (self.width + self.rem * 5) + "," + (self.height - (i * self.rem * 2) - self.rem) + ")"; });
+              .attr("transform", function(d, i) { return "translate(" + (self.width + self.rem * 5) + "," + (self.height - (i * self.rem * 2.4) - self.rem*1.2) + ")"; });
 
           legend.append("rect")
-              .attr("width", self.rem)
-              .attr("height", self.rem)
+              .attr("width", self.rem * 1.2)
+              .attr("height", self.rem * 1.2)
               .style("fill", self.colors);
 
           legend.append("text")
-              .attr("x", self.rem * 1.8)
-              .style("font-size", "1rem")
-              .attr("dy", "1em")
+              .attr("x", self.rem * 2)
+              .style("font-size", "1.1rem")
+              .attr("dy", ".95em")
               .text(function(d) { return d; });
 
           return g;
@@ -291,7 +252,6 @@
               .attr("fill", function(d) { return self.colors(d.name); })
               .attr("height", 0)
               .transition()
-              // .duration(function(d) { return d.value*50;})
               .duration(500)
               .delay(function(d, i, j) { return (j * self.recordKeys.length + i) * 75; })
               .attr("height", function(d) { return self.height - self.y(d.value); })

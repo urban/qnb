@@ -21,14 +21,18 @@
       }
 
       .axis.y .label {
-        font-size: 1.3rem;
+        font-size: 1rem;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        font-weight: bold;
       }
 
       .axis.y .tick text {
         text-anchor: end;
-        font-size: 1rem;
+        font-size: 1.1rem;
         font-weight: bold;
         font-style: italic;
+        letter-spacing: 0.05em;
       }
 
       .axis.x text {
@@ -61,7 +65,7 @@
       .legend text {
         font-family: "BentonSansF", "Helvetica", "Arial", sans-serif;
         fill: #333;
-        font-size: 1.2rem;
+        text-transform: uppercase;
       }
     </style>
     <svg id="chart"></svg>
@@ -99,15 +103,22 @@
           var xAxis = d3.svg.axis()
             .scale(x)
             .tickSize(0)
-            .tickPadding(self.rem)
+            .tickPadding(self.rem * 1.2)
             .orient("bottom");
+
+          var percentage = function(d) {
+            return d + "%";
+          };
+
+          var tickFormat = (self.yTickFormat === "%") ? percentage : d3.format("s");
 
           var yAxis = d3.svg.axis()
             .scale(y)
-            .ticks(Math.round(height / self.rem / 4))
+            .ticks(6)
+            // .ticks(Math.round(height / self.rem / 4))
             .tickSize(width)
-            .orient("right");
-            // .tickFormat(d3.format(".2s"));
+            .orient("right")
+            .tickFormat(tickFormat);
 
           var key = 'By Year';
           var massagedData = data[this.index][key];
@@ -116,7 +127,7 @@
           var recordKeys = massagedData[0]['data'].map(function (d) {
             return d[self.recordKey];
           });
-          // console.log(recordKeys);
+
           color.domain(recordKeys);
 
           massagedData.forEach(function (d) {
@@ -131,7 +142,13 @@
 
           //massagedData.sort(function (a, b) { return b.total - a.total });
           x.domain(massagedData.map(function(d) { return d.year; }));
-          y.domain([0, d3.max(massagedData, function(d) { return d.total; })*(1 + self.yDomainPadding)]);
+
+          var yExtent = d3.extent(massagedData, function(d) { return d.total; });
+          var yMin = 0;
+          var yMax = yExtent[1] + ((yExtent[1] - yExtent[0])*self.yDomainPadding);
+
+          y.domain([yMin, yMax])
+              .nice(4);
 
           g.append("g")
             .attr("class", "x axis")
@@ -142,10 +159,13 @@
               .attr("class", "y axis")
               .call(yAxis);
 
+          //y axis label
           gy.append("text")
               .classed("label", true)
-              .attr("y", 0)
-              .attr("x", 0)
+              .attr("x", -self.rem)
+              .attr("y", height + self.margin.bottom)
+              .attr("transform", "translate(0,-" + (self.rem * .2) + ")")
+              .style("text-anchor", "end")
               .text(self.yAxisLabel);
 
           gy.select(".tick").selectAll("*")
@@ -184,17 +204,17 @@
               .data(color.domain().slice().reverse())
             .enter().append("g")
               .classed("legend", true)
-              .attr("transform", function(d, i) { return "translate(" + (width + self.rem * 5) + "," + (height - (i * self.rem * 2) - self.rem) + ")"; });
+              .attr("transform", function(d, i) { return "translate(" + (width + self.rem * 5) + "," + (height - (i * self.rem * 2.4) - self.rem*1.2) + ")"; });
 
           legend.append("rect")
-              .attr("width", self.rem)
-              .attr("height", self.rem)
+              .attr("width", self.rem * 1.2)
+              .attr("height", self.rem * 1.2)
               .style("fill", self.colors);
 
           legend.append("text")
-              .attr("x", self.rem * 1.8)
-              .style("font-size", "1rem")
-              .attr("dy", "1em")
+              .attr("x", self.rem * 2)
+              .style("font-size", "1.1rem")
+              .attr("dy", ".95em")
               .text(function(d) { return d; });
         }
       });

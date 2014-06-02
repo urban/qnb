@@ -1,7 +1,7 @@
 <link rel="import" href="/bower_components/polymer/polymer.html">
 <script src="/bower_components/d3/d3.min.js"></script>
 
-<polymer-element name="q-chart" attributes="url theme">
+<polymer-element name="q-chart" attributes="url theme yTickFormat yAxisLabel">
   <script>
     (function () {
       var themeColors = {
@@ -22,7 +22,7 @@
         theme: null,
         years: years,
         index: 0,
-        yDomainPadding: .2,
+        yDomainPadding: .1,
         ready: function () {
           this.rem = parseInt($("body").css("font-size"));
           this.theme = this.theme || "blue";
@@ -48,13 +48,13 @@
             .attr("height", this.clientHeight);
         },
         start: function () {
-          console.log('do animation here in sub-class');
+          // console.log('do animation here in sub-class');
         },
         stop: function () {
-          console.log('stop animation here in sub-class');
+          // console.log('stop animation here in sub-class');
         },
         render: function () {
-          console.log('this method should be overriden in the sub-class');
+          // console.log('this method should be overriden in the sub-class');
         }
       });
 

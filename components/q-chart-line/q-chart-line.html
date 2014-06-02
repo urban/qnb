@@ -21,14 +21,18 @@
       }
 
       .axis.y .label {
-        font-size: 1.3rem;
+        font-size: 1rem;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        font-weight: bold;
       }
 
       .axis.y .tick text {
         text-anchor: end;
-        font-size: 1.2rem;
+        font-size: 1.1rem;
         font-weight: bold;
         font-style: italic;
+        letter-spacing: 0.05em;
       }
 
       .axis.x text {
@@ -57,7 +61,12 @@
       .data-line path {
         mix-blend-mode: multiply;
         fill: none;
+      }
 
+      .legend text {
+        font-family: "BentonSansF", "Helvetica", "Arial", sans-serif;
+        fill: #333;
+        text-transform: uppercase;
       }
     </style>
     <svg id="chart"></svg>
@@ -82,17 +91,15 @@
           }
 
           var lineChart = function() {
-            var margin = {top: 3*self.rem, right: 20*self.rem, bottom: 2.5*self.rem, left: 8*self.rem};
+            var margin = {top: 2*self.rem, right: 20*self.rem, bottom: 2.5*self.rem, left: 8*self.rem};
             var width = self.clientWidth - margin.left - margin.right;
             var height = self.clientHeight - margin.top - margin.bottom;
             var x = d3.scale.linear().nice();
             var y = d3.scale.linear().nice();
             var xAxis = d3.svg.axis()
-                .tickSize(0)
-                .tickPadding(self.rem)
                 .orient("bottom");
             var yAxis = d3.svg.axis()
-                .tickSize(width)
+                // .tickSize(width)
                 .orient("right");
             var key = null;
             var clipPath = null;
@@ -107,25 +114,32 @@
               var flattenedData = _.flatten(data, key);
 
               x.range([0, width])
-                  .domain(d3.extent(flattenedData, function(d) { return d.year }))
-                  // .domain(_.uniq(_.map(flattenedData, function(d) { return d.year })))
-                  // .domain(d3.extent(flattenedData, function(d) { return d.year }))
-                  // .rangePoints([0, width], 0);
+                  .domain(d3.extent(flattenedData, function(d) { return d.year }));
 
               var yExtent = d3.extent(flattenedData, function(d) { return d.value});
-              var yMin = (yExtent[0] - (yExtent[1] - yExtent[0])*self.yDomainPadding) > 0 ? yExtent[0] : 0;
+              var yMin = (yExtent[0] - (yExtent[1] - yExtent[0])*self.yDomainPadding) > 0 ? (yExtent[0] - (yExtent[1] - yExtent[0])*self.yDomainPadding) : 0;
               var yMax = yExtent[1] + ((yExtent[1] - yExtent[0])*self.yDomainPadding);
 
-              console.log(yMin, yMax);
-
               y.range([height, 0])
-                  .domain([yMin, yMax]);
+                  .domain([yMin, yMax])
+                  .nice(4);
 
               xAxis.scale(x)
+                  // .tickValue(_.uniq(_.map(flattenedData, function(d) { return d.year })))
                   .tickFormat(d3.format("d"))
-                  // .ticks(_.uniq(_.map(flattenedData, function(d) { return d.year })).length + 1)
+                  .tickSize(0)
+                  .tickPadding(self.rem * 1.2);
+
+              var percentage = function(d) {
+                return d + "%";
+              };
+
+              var tickFormat = (self.yTickFormat === "%") ? percentage : d3.format("s");
+
               yAxis.scale(y)
-                  .ticks(Math.round(height / self.rem / 4));
+                  .tickFormat(tickFormat)
+                  .ticks(6)
+                  .tickSize(width);
 
               self.colors.domain(recordKeys);
             }
@@ -159,14 +173,14 @@
                   .attr("class", "y axis")
                   .call(yAxis);
 
+              //y axis label
               gy.append("text")
                   .classed("label", true)
-                  .attr("y", 0)
-                  .attr("x", 0)
+                  .attr("x", -self.rem)
+                  .attr("y", height + margin.bottom)
+                  .attr("transform", "translate(0,-" + (self.rem * .2) + ")")
+                  .style("text-anchor", "end")
                   .text(self.yAxisLabel);
-
-              gy.select(".tick").selectAll("*")
-                  .attr("transform", "translate(0, -" + self.rem/10 + ")");
 
               gy.selectAll(".tick line")
                   .style("stroke-width", self.rem/10);
@@ -180,17 +194,17 @@
                   .data(recordKeys.slice().reverse())
                 .enter().append("g")
                   .classed("legend", true)
-                  .attr("transform", function(d, i) { return "translate(" + (width + self.rem * 5) + "," + (height - (i * self.rem * 2) - self.rem) + ")"; });
+                  .attr("transform", function(d, i) { return "translate(" + (width + self.rem * 5) + "," + (height - (i * self.rem * 2.4) - self.rem*1.2) + ")"; });
 
               legend.append("rect")
-                  .attr("width", self.rem)
-                  .attr("height", self.rem)
+                  .attr("width", self.rem * 1.2)
+                  .attr("height", self.rem * 1.2)
                   .style("fill", self.colors);
 
               legend.append("text")
-                  .attr("x", self.rem * 1.8)
-                  .style("font-size", "1rem")
-                  .attr("dy", "1em")
+                  .attr("x", self.rem * 2)
+                  .style("font-size", "1.1rem")
+                  .attr("dy", ".95em")
                   .text(function(d) { return d; });
             }
 
