@@ -6,7 +6,6 @@
   <script src="/bower_components/platform/platform.js"></script>
   <!-- imports -->
   <link rel="import" href="/imports.html">
-  <link rel="stylesheet" href="styles.css">
 </head>
 <body unresolved>
 
@@ -14,10 +13,10 @@
 
     <frog-card>
       <q-view flex class="green" url="/data/stories/story-1.json">
-        <q-visualization flex title="Worldwide Growth and Capital Return" hasContent>
+        <q-visualization flex title="Worldwide Growth and Capital Return">
             <q-chart-line url="/data/capital_return_rates.json" theme="green" yTickFormat="%" recordKey="Name"></q-chart-line>
         </q-visualization>
-        <q-visualization flex title="Birthrate by Urban Density" hasContent>
+        <q-visualization flex title="Birthrate by Urban Density">
           <q-chart-line url="/data/birthrate_urbanism.json" theme="green" yAxisLabel="Per 1k" recordKey="Density"></q-chart-line>
         </q-visualization>
       </q-view>
@@ -25,10 +24,10 @@
 
     <frog-card>
       <q-view class="yellow" url="/data/stories/story-2.json">
-        <q-visualization flex title="Average Commute to Workplace in KM" hasContent>
+        <q-visualization flex title="Average Commute to Workplace in KM">
           <q-chart-grouped-bar url="/data/avg_commute.json" theme="yellow" yAxisLabel="Minutes" recordKey="City"></q-chart-grouped-bar>
         </q-visualization>
-        <q-visualization flex title="Percentage of Workers Travelling To a Defined Workplace" hasContent>
+        <q-visualization flex title="Percentage of Workers Travelling To a Defined Workplace">
           <q-chart-grouped-bar url="/data/defined_workplace.json" theme="yellow" yTickFormat="%" recordKey="Country"></q-chart-grouped-bar>
         </q-visualization>
       </q-view>
@@ -37,7 +36,6 @@
     <frog-card>
       <q-view class="orange" url="/data/stories/story-3.json">
         <q-visualization flex title="Average Drones Overhead in Major Cities">
-          <!-- <q-chart-grouped-bar url="/data/drones_overhead.json" yAxisLabel="Drones" recordKey="City"></q-chart-bar> -->
           <q-chart-line url="/data/drones_overhead.json" theme="orange" recordKey="City"></q-chart-line>
         </q-visualization>
         <q-visualization flex title="KGs Chicken Earned in 1 Day Salary">
@@ -51,7 +49,7 @@
         <q-visualization flex title="Amount of Currency Fluctuation Per Day">
           <q-chart-grouped-bar url="/data/currency_fluctuation.json" theme="blue" yTickFormat="%" recordKey="Currency"></q-chart-grouped-bar>
         </q-visualization>
-        <q-visualization flex title="Home Ownership Rates by Country" hasContent>
+        <q-visualization flex title="Home Ownership Rates by Country">
           <q-chart-grouped-bar url="/data/home_ownership.json" theme="blue" yTickFormat="%" recordKey="Country"></q-chart-grouped-bar>
         </q-visualization>
       </q-view>
@@ -213,7 +211,7 @@
         <q-visualization flex title="Coca-Colas consumed">
           <q-chart-grouped-bar url="/data/coca_cola.json" theme="orange" recordKey="Country"></q-chart-grouped-bar>
         </q-visualization>
-        <q-visualization flex title="Water Usage Per Person" hasContent>
+        <q-visualization flex title="Water Usage Per Person">
           <q-chart-grouped-bar url="/data/water_usage_pp.json" theme="orange" yAxisLabel="IL Per Day" recordKey="Country"></q-chart-grouped-bar>
         </q-visualization>
       </q-view>
@@ -233,7 +231,7 @@
 
     <frog-card>
       <q-view class="green" url="/data/stories/story-21.json">
-        <q-visualization full title="Deforestation/Desertification Worldwide" hasContent>>
+        <q-visualization full title="Deforestation/Desertification Worldwide">
           <q-chart-globe theme="green" url="/data/deforestation.json" dataTopLevel="Continent"></q-chart-globe>
         </q-visualization>
       </q-view>

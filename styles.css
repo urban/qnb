@@ -1,72 +1,4 @@
-@font-face {
-  font-family: "BentonSansF";
-  src: url(assets/fonts/BentonSansF-ExtraLight.otf);
-  font-weight: 200;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "BentonSansF";
-  src: url(assets/fonts/BentonSansF-Book.otf);
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "BentonSansF";
-  src: url(assets/fonts/BentonSansF-BookItalic.otf);
-  font-weight: 400;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: "BentonSansF";
-  src: url(assets/fonts/BentonSansF-Medium.otf);
-  font-weight: 500;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "BentonSansF";
-  src: url(assets/fonts/BentonSansF-Bold.otf);
-  font-weight: 700;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "BentonSansF";
-  src: url(assets/fonts/BentonSansF-BoldItalic.otf);
-  font-weight: 700;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: "BentonSansExtraCondensed";
-  src: url(assets/fonts/BentonSansComp-Light.otf);
-  font-weight: 200;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "BentonSansExtraCondensed";
-  src: url(assets/fonts/BentonSansComp-Book.otf);
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "BentonSansExtraCondensed";
-  src: url(assets/fonts/BentonSansComp-Medium.otf);
-  font-weight: 500;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "BentonSansExtraCondensed";
-  src: url(assets/fonts/BentonSansComp-Bold.otf);
-  font-weight: 700;
-  font-style: normal;
-}
+@import '/assets/fonts/benton-sans.css';
 
 html,
 body {
@@ -85,18 +17,4 @@ body {
 frog-deck {
   height: 100%;
   width: 100%;
-}
-
-.clearfix:before,
-.clearfix:after {
-  content: "";
-  display: table;
-}
-
-.clearfix:after {
-  clear: both;
-}
-
-.clearfix {
-  zoom: 1;
 }
