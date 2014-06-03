@@ -4,6 +4,13 @@
   var deck = document.querySelector('#deck');
   var cards = deck.querySelectorAll('frog-card');
 
+  // exports
+  context.presentation = {
+    start: start,
+    stop: stop,
+    toggle: toggle
+  };
+
   deck.addEventListener('change', function (e) {
     var detail = e.detail;
     if (detail.oldVal) deselectVisualizations(cards[detail.oldVal]);
@@ -11,6 +18,13 @@
   });
 
   document.addEventListener('click', next, false);
+
+  // initial render
+  window.addEventListener('WebComponentsReady', function(e) {
+    selectVisualizations(cards[0]);
+    var readyEvent = new Event('ready');
+    document.dispatchEvent(readyEvent);
+  });
 
   function selectVisualizations(card) {
     var visualizations = card.querySelectorAll('q-visualization > *');
@@ -69,17 +83,4 @@
     }
   };
 
-  // initial render
-  window.addEventListener('WebComponentsReady', function(e) {
-    selectVisualizations(cards[0]);
-    var readyEvent = new Event('ready');
-    document.dispatchEvent(readyEvent);
-  });
-
-  // exports
-  context.presentation = {
-    start: start,
-    stop: stop,
-    toggle: toggle
-  }
 })(this);
