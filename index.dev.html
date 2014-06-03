@@ -6,7 +6,6 @@
   <script src="/bower_components/platform/platform.js"></script>
   <!-- imports -->
   <link rel="import" href="/imports.html">
-  <link rel="stylesheet" href="styles.css">
 </head>
 <body unresolved>
 
@@ -26,23 +25,5 @@
   </frog-deck>
 
   <script src="main.js"></script>
-  <script src="/bower_components/jquery/dist/jquery.min.js"></script>
-  <script>
-
-  $(function() {
-    var windowWidthRange = [1440, 1920];
-    var remRange = [10, 15];
-    var rem = (window.innerWidth - windowWidthRange[0]) / (windowWidthRange[1] - windowWidthRange[0]) * (remRange[1] - remRange[0]) + remRange[0];
-
-    $("html").css("font-size", rem);
-  });
-
-    // listen for presentation ready event
-    document.addEventListener('ready', function (e) {
-      // kick off presentation
-      window.presentation.start();
-    }, false);
-  </script>
-
 </body>
 </html>

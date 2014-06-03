@@ -2,7 +2,7 @@
   "name": "qnb",
   "version": "0.0.1",
   "authors": [
-    "Urban Faubion <urban.faubion@gmail.com>"
+    "Urban Faubion <urban.faubion@frogdesign.com>"
   ],
   "description": "Visualizations for the Quartz conference",
   "keywords": [
@@ -23,8 +23,8 @@
     "frog-thumbnail": "https://gitus.frogdesign.com/scm/webcomp/frog-thumbnail.git",
     "frog-grid": "https://gitus.frogdesign.com/scm/webcomp/frog-grid.git",
     "frog-deck": "https://gitus.frogdesign.com/scm/webcomp/frog-deck.git",
-    "d3": "https://github.com/mbostock/d3.git",
-    "c3": "https://github.com/masayuki0812/c3.git"
+    "benton-sans.css": "https://gitus.frogdesign.com/scm/webcomp/benton-sans.css.git",
+    "d3": "https://github.com/mbostock/d3.git"
   },
   "resolutions": {
     "polymer": "master",
